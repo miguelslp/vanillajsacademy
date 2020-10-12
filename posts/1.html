@@ -1,0 +1,44 @@
+---
+title: "Password Visibility"
+date: 2020-10-12
+---
+<p>Enter your username and password to login.</p>
+
+<form>
+  <div>
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username">
+  </div>
+
+  <div>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password">
+  </div>
+
+  <div>
+    <label for="show-password">
+      <input type="checkbox" name="show-passwords" id="show-password">
+      Show password
+    </label>
+  </div>
+
+  <p>
+    <button type="submit">Log In</button>
+  </p>
+</form>
+
+<script>
+// Variables
+var password = document.querySelector('#password');
+var toggle = document.querySelector('#show-password');
+
+// Methods
+var togglePassword = function () {
+  // password.type === "password" ? password.type = 'text' : password.type = 'password';
+  // password.type === "password" ? password.setAttribute('type', 'text') : password.setAttribute('type', 'password');
+  password.type = this.checked ? 'text' : 'password';
+};
+
+// Listeners
+toggle.addEventListener('change', togglePassword) ;
+</script>
