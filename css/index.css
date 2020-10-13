@@ -267,7 +267,7 @@ input {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(50ch, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(60ch, 1fr));
   gap: 2rem;
 }
 
