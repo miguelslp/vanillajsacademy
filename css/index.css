@@ -108,6 +108,10 @@ pre {
   margin: .5em 0;
   background-color: #f6f6f6;
 }
+button {
+  font-family: 'Source Sans Pro Regular', system-ui, sans-serif;
+  font-size: 1rem;
+}
 .highlight-line {
   display: block;
   padding: 0.125em 1em;
