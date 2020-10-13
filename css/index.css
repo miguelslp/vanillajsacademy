@@ -18,6 +18,10 @@ body {
   font-family: system-ui, sans-serif;
   color: var(--darkgray);
   background-color: var(--white);
+  /* vannilla js */
+  margin: 1em auto;
+  /* max-width: 40em; */
+  /* width: 88%; */
 }
 p:last-child {
   margin-bottom: 0;
@@ -39,6 +43,7 @@ a[href]:visited {
 }
 main {
   padding: 1rem;
+  border-bottom: 1px dashed var(--lightgray);
 }
 main :first-child {
   margin-top: 0;
@@ -225,16 +230,6 @@ a[href].direct-link:focus:visited,
   color: #aaa;
 }
 
-
-
-/* vanilla js */
-
-body {
-  margin: 1em auto;
-  max-width: 40em;
-  width: 88%;
-}
-
 label {
   display: block;
   width: 100%;
@@ -247,4 +242,16 @@ input {
 [type="checkbox"] {
   margin-bottom: 0;
   margin-right: 0.25em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50ch, 1fr));
+  gap: 2rem;
+}
+
+.htmlBox {
+  padding: 1.5em 1.5em;
+  border: 1px dashed var(--lightgray);
+  border-radius: 1.5em;
 }
