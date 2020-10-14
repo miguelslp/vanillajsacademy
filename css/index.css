@@ -62,7 +62,7 @@ a[href]:visited {
   color: var(--navy);
 }
 main {
-  padding: 1rem;
+  padding: 2rem 1rem;
   border-bottom: 1px dashed var(--lightgray);
 }
 main :first-child {
@@ -276,4 +276,24 @@ input {
   padding: 1.5em 1.5em;
   border: 1px dashed var(--lightgray);
   border-radius: 1.5em;
+}
+
+.l-stack {
+  --space: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.l-stack > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.l-stack > * + * {
+  margin-top: var(--space);
+}
+
+.l-stack:only-child {
+  height: 100%;
 }
