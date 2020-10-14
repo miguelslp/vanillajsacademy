@@ -275,6 +275,12 @@ input {
   gap: 2rem;
 }
 
+@media (max-width: 70ch) { 
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .htmlBox {
   padding: 1.5em 1.5em;
   border: 1px dashed var(--lightgray);
