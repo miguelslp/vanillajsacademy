@@ -3,7 +3,6 @@ title: "Password Visibility"
 date: 2020-10-12
 ---
 {% set html %}
-
 <p>Enter your username and password to login.</p>
 
 <form>
@@ -28,65 +27,44 @@ date: 2020-10-12
     <button type="submit">Log In</button>
   </p>
 </form>
-
 {% endset %}
+
 <div class="htmlBox">
-{{ html | safe }}
+  {{ html | safe }}
 </div>
 
 {% highlight "html" %}
 {{ html | safe }}
 {% endhighlight %}
 
-<script>
 {% set js %}
+<script async>
 
-// Variables
-var password = document.querySelector('#password');
-var passwordToggle = document.querySelector('#show-password');
+  // Variables
+  var password = document.querySelector('#password');
+  var passwordToggle = document.querySelector('#show-password');
 
-// Methods
-var togglePassword = function (event) {
-  if (event.target != passwordToggle) return;
-  password.type = passwordToggle.checked ? 'text' : 'password';
-};
+  // Methods
+  var togglePassword = function (event) {
+    if (event.target != passwordToggle) return;
+    password.type = passwordToggle.checked ? 'text' : 'password';
+  };
 
-// Listeners
-document.addEventListener('click', function(event) {
-  togglePassword(event);
-});
+  // Listeners
+  document.addEventListener('click', function (event) {
+    togglePassword(event);
+  });
 
-{% endset %}
 </script>
+{% endset %}
 
-{% highlight "js" %}
+
+{% highlight "html" %}
 {{ js | safe }}
 {% endhighlight %}
 
 <div class="htmlBox">
-{% markdown '/notes/1.md' %}
+  {% markdown '/notes/1.md' %}
 </div>
 
-<script async>
 {{ js | safe }}
-</script>
-
-
-<!-- 
-other ideas
-var togglePassword = function (event) {
-  // password.type = "password" ? password.type = 'text' : password.type = 'password';
-  // password.type = "password" ? password.setAttribute('type', 'text') : password.setAttribute('type', 'password');
-  if (event.target != passwordToggle) return;
-  password.type = passwordToggle.checked ? 'text' : 'password';
-}; -->
-<!-- 
-// Over engineered
-// var togglePassword = function (event, interaction, target) {
-//   // password.type = "password" ? password.type = 'text' : password.type = 'password';
-//   // password.type = "password" ? password.setAttribute('type', 'text') : password.setAttribute('type', 'password');
-//   if (event.target != interaction) return;
-//   target.type = interaction.checked ? 'text' : 'password';
-// }; -->
-<!-- 
-// toggle.addEventListener('change', togglePassword) ; -->
