@@ -6,12 +6,10 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@master
-      - name: NPM or Yarn install with caching
-        uses: bahmutov/npm-install@v1.1.0
-        with:
-          useLockFile: false
       - name: Build
         uses: TartanLlama/actions-eleventy@v1.2
+        with:
+          install_dependencies: true
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v1.1.0
         env:
