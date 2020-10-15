@@ -39,14 +39,13 @@ date: 2020-10-14
 <script async>
 
 	// Variables
-	var passwords = document.querySelectorAll('[data-password]');
-	var passwordsArray = Array.prototype.slice.call(passwords);
+	var passwords = Array.prototype.slice.call(document.querySelectorAll('[data-password]'));
 	var passwordToggle = document.querySelector('#show-passwords');
 
 	// Methods
 	var togglePasswords = function (event) {
 		if (event.target != passwordToggle) return;
-		passwordsArray.forEach(element => {
+		passwords.forEach(element => {
 			element.type = passwordToggle.checked ? 'text' : 'password';
 		});
 	};
