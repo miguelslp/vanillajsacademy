@@ -109,6 +109,7 @@ pre {
   padding: 1em;
   margin: .5em 0;
   background-color:#ededed;
+  overflow: auto;
 }
 button {
   font-family: 'Source Sans Pro Regular', system-ui, sans-serif;
