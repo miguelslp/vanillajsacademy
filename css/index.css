@@ -278,6 +278,7 @@ input {
   padding: 1.5em 1.5em;
   border: 1px dashed var(--lightgray);
   border-radius: 1.5em;
+  overflow: auto;
 }
 
 .l-stack {
