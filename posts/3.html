@@ -1,0 +1,104 @@
+---
+title: "Toggling passwords in multiple forms"
+date: 2020-10-16
+---
+{% set html %}
+<h2>Change Username</h2>
+
+<p>Enter your username and password to change your username.</p>
+
+<form>
+  <div>
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username">
+  </div>
+
+  <div>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" data-action="changeUsername">
+  </div>
+
+  <div>
+    <label for="show-password">
+      <input type="checkbox" name="show-passwords" id="show-password" data-action="changeUsername">
+      Show password
+    </label>
+  </div>
+
+  <p>
+    <button type="submit">Change Username</button>
+  </p>
+</form>
+
+<h2>Change Password</h2>
+
+<p>Enter your current password and new password below.</p>
+
+<form>
+  <div>
+    <label for="current-password">Current Password</label>
+    <input type="password" name="current-password" id="current-password" data-action="changePassword">
+  </div>
+
+  <div>
+    <label for="new-password">New Password</label>
+    <input type="password" name="new-password" id="new-password" data-action="changePassword">
+  </div>
+
+  <div>
+    <label for="show-passwords">
+      <input type="checkbox" name="show-passwords" id="show-passwords" data-action="changePassword">
+      Show passwords
+    </label>
+  </div>
+
+  <p>
+    <button type="submit">Change Passwords</button>
+  </p>
+</form>
+{% endset %}
+
+<div class="htmlBox">
+  {{ html | safe }}
+</div>
+
+{% highlight "html" %}
+{{ html | safe }}
+{% endhighlight %}
+
+{% set js %}
+<script async>
+  
+  // Variables
+  var passwords = Array.prototype.slice.call(document.querySelectorAll('[type="password"]'));
+
+  // Methods
+  var togglePasswords = function (event) {
+    if (event.target.matches('[name="show-passwords"]')) {
+      var action = event.target.getAttribute('data-action');
+      passwords.forEach(element => {
+        if (element.matches(`[data-action="${action}"]`)) {
+          element.type = event.target.checked ? 'text' : 'password';
+        };
+      })
+      
+    };
+  };
+
+  // Listeners
+  document.addEventListener('click', function (event) {
+    togglePasswords(event);
+  });
+
+</script>
+{% endset %}
+
+{% highlight "html" %}
+{{ js | safe }}
+{% endhighlight %}
+
+<div class="htmlBox">
+  {% markdown '/notes/3.md' %}
+</div>
+
+{{ js | safe }}
