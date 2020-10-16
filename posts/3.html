@@ -70,7 +70,7 @@ date: 2020-10-16
 <script async>
 
   // Variables
-  var passwords = Array.prototype.slice.call(document.querySelectorAll('[type="password"]'));
+  var passwords = Array.from(document.querySelectorAll('[type="password"]'));
 
   // Methods
   var togglePasswords = function (event) {
