@@ -59,7 +59,7 @@ a[href]:visited {
   color: var(--navy);
 }
 main {
-  padding: 2rem 1rem;
+  padding: 2rem 2rem;
   border-bottom: 1px dashed var(--lightgray);
 }
 main :first-child {
@@ -269,6 +269,10 @@ input {
 @media (max-width: 70ch) { 
   .grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  main {
+    padding: 1rem;
   }
 }
 
