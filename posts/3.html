@@ -15,12 +15,12 @@ date: 2020-10-16
 
   <div>
     <label for="password">Password</label>
-    <input type="password" name="password" id="password" data-action="changeUsername">
+    <input type="password" name="password" id="password" data-target="changeUsername">
   </div>
 
   <div>
     <label for="show-password">
-      <input type="checkbox" name="show-passwords" id="show-password" data-action="changeUsername">
+      <input type="checkbox" name="show-passwords" id="show-password" data-passwordToggle="changeUsername">
       Show password
     </label>
   </div>
@@ -37,17 +37,17 @@ date: 2020-10-16
 <form>
   <div>
     <label for="current-password">Current Password</label>
-    <input type="password" name="current-password" id="current-password" data-action="changePassword">
+    <input type="password" name="current-password" id="current-password" data-target="changePassword">
   </div>
 
   <div>
     <label for="new-password">New Password</label>
-    <input type="password" name="new-password" id="new-password" data-action="changePassword">
+    <input type="password" name="new-password" id="new-password" data-target="changePassword">
   </div>
 
   <div>
     <label for="show-passwords">
-      <input type="checkbox" name="show-passwords" id="show-passwords" data-action="changePassword">
+      <input type="checkbox" name="show-passwords" id="show-passwords" data-passwordToggle="changePassword">
       Show passwords
     </label>
   </div>
@@ -74,14 +74,13 @@ date: 2020-10-16
 
   // Methods
   var togglePasswords = function (event) {
-    if (event.target.matches('[name="show-passwords"]')) {
-      var action = event.target.getAttribute('data-action');
-      passwords.forEach(element => {
-        if (element.matches(`[data-action="${action}"]`)) {
-          element.type = event.target.checked ? 'text' : 'password';
-        };
-      })
-    };
+    if (!event.target.matches('[data-passwordToggle]')) return;
+    var targets = event.target.getAttribute('data-passwordToggle');
+    passwords.forEach(element => {
+      if (element.matches(`[data-target="${targets}"]`)) {
+        element.type = event.target.checked ? 'text' : 'password';
+      };
+    })
   };
 
   // Listeners
