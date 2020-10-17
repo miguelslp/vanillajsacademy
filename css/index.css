@@ -35,10 +35,7 @@ body {
   font-family: 'Source Sans Pro Regular', system-ui, sans-serif;
   color: var(--darkgray);
   background-color: var(--white);
-  /* vannilla js */
   margin: 1em auto;
-  /* max-width: 40em; */
-  /* width: 88%; */
 }
 h1 {
   font-family: 'Source Sans Pro Bold', system-ui, sans-serif;
@@ -88,7 +85,7 @@ pre,
 code {
   font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
   line-height: 1.5;
-  background-color: #ededed;
+  background-color: var(--lightgray);
   padding: 0.1em 0.2em;
 }
 pre {
@@ -108,7 +105,7 @@ pre {
   hyphens: none;
   padding: 1em;
   margin: .5em 0;
-  background-color:#ededed;
+  background-color:var(--lightgray);
   overflow: auto;
 }
 button {
