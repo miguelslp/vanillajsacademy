@@ -6,6 +6,7 @@ const pluginNavigation = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const markdownShortcode = require("eleventy-plugin-markdown-shortcode");
+const CleanCSS = require("clean-css");
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
@@ -33,6 +34,11 @@ module.exports = function(eleventyConfig) {
     }
 
     return array.slice(0, n);
+  });
+
+  // Clean CSS
+  eleventyConfig.addFilter("cssmin", function(code) {
+    return new CleanCSS({}).minify(code).styles;
   });
 
   eleventyConfig.addCollection("tagList", function(collection) {
