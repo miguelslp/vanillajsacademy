@@ -108,10 +108,16 @@ pre {
   background-color:var(--lightgray);
   overflow: auto;
 }
+
 button {
   font-family: 'Source Sans Pro Regular', system-ui, sans-serif;
   font-size: 1rem;
 }
+
+ul {
+  padding-inline-start: 20px;
+}
+
 .highlight-line {
   display: block;
   padding: 0.125em 1em;
