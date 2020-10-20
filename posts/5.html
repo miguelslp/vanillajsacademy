@@ -1,0 +1,62 @@
+---
+title: "Character Count"
+date: 2020-10-18
+---
+{% set html %}
+<label for="text">Enter your text below.</label>
+<textarea id="text"></textarea>
+<p>You've written <strong><span id="word-count">0</span> words</strong> and <strong><span id="character-count">0</span>
+    characters</strong>.</p>
+{% endset %}
+
+<div class="htmlBox">
+  {{ html | safe }}
+</div>
+
+{% highlight "html" %}
+{{ html | safe }}
+{% endhighlight %}
+
+{% set js %}
+<script async>
+
+  // Variables
+  let textArea = document.querySelector('textarea');
+  let charCounter = document.querySelector('#character-count');
+  let wordCounter = document.querySelector('#word-count');
+  let newArray;
+
+  // Methods
+  function getArrayCharacterCount(field) {
+    return field.join().length;
+  }
+
+  function getArrayWordCount(field) {
+    return field.length;
+  }
+
+  function handleInput(inputElement, countElement, wordCountElement) {
+    newArray = inputElement.value.split(' ').filter(function (item) {
+      return item != '';
+    })
+    countElement.textContent = getArrayCharacterCount(newArray);
+    wordCountElement.textContent = getArrayWordCount(newArray);
+  }
+
+  // Listeners
+  textArea.addEventListener('input', function () {
+    handleInput(this, charCounter, wordCounter);
+  });
+
+</script>
+{% endset %}
+
+{% highlight "html" %}
+{{ js | safe }}
+{% endhighlight %}
+
+<div class="htmlBox">
+  {% markdown '/notes/5.md' %}
+</div>
+
+{{ js | safe }}
