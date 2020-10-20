@@ -27,20 +27,12 @@ date: 2020-10-20
   let newArray;
 
   // Methods
-  function getArrayCharacterCount(field) {
-    return field.join('').length;
-  }
-
-  function getArrayWordCount(field) {
-    return field.length;
-  }
-
   function handleInput(inputElement, countElement, wordCountElement) {
     newArray = inputElement.value.split(/\s+/).filter(function (item) {
       return item != '';
     })
-    countElement.textContent = getArrayCharacterCount(newArray);
-    wordCountElement.textContent = getArrayWordCount(newArray);
+    countElement.textContent = newArray.join('').length;
+    wordCountElement.textContent = newArray.length;
   }
 
   // Listeners
