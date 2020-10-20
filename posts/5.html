@@ -1,6 +1,6 @@
 ---
-title: "Character Count"
-date: 2020-10-18
+title: "Character and Word Count"
+date: 2020-10-20
 ---
 {% set html %}
 <label for="text">Enter your text below.</label>
@@ -28,7 +28,7 @@ date: 2020-10-18
 
   // Methods
   function getArrayCharacterCount(field) {
-    return field.join().length;
+    return field.join('').length;
   }
 
   function getArrayWordCount(field) {
@@ -36,11 +36,12 @@ date: 2020-10-18
   }
 
   function handleInput(inputElement, countElement, wordCountElement) {
-    newArray = inputElement.value.split(' ').filter(function (item) {
+    newArray = inputElement.value.split(/\s+/).filter(function (item) {
       return item != '';
     })
     countElement.textContent = getArrayCharacterCount(newArray);
     wordCountElement.textContent = getArrayWordCount(newArray);
+    console.log(newArray);
   }
 
   // Listeners
