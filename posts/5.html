@@ -24,11 +24,10 @@ date: 2020-10-20
   let textArea = document.querySelector('textarea');
   let charCounter = document.querySelector('#character-count');
   let wordCounter = document.querySelector('#word-count');
-  let newArray;
 
   // Methods
   function handleInput(inputElement, countElement, wordCountElement) {
-    newArray = inputElement.value.split(/\s+/).filter(function (item) {
+    let newArray = inputElement.value.split(/\s+/).filter(function (item) {
       return item != '';
     })
     countElement.textContent = newArray.join('').length;
