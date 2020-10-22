@@ -31,10 +31,8 @@ date: 2020-10-22
     })
     let characterCount = newArray.join('').length;
     let wordCount = newArray.length;
-    counterParagraph.innerHTML = `
-    <p aria-live="polite" id="counterParagraph">You've written <strong>${wordCount} words</strong> and <strong>${characterCount}
-    characters</strong>.</p>
-    `;
+    counterParagraph.innerHTML = `<p aria-live="polite" id="counterParagraph">You've written <strong>${wordCount} words</strong> and <strong>${characterCount}
+    characters</strong>.</p>`;
   }
 
   // Listeners
