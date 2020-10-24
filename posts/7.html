@@ -34,21 +34,21 @@ date: 2020-10-24
         return Promise.reject(response);
       }
     }).then(function (data) {
-      let tempDiv = document.querySelector("#errorState");
-      if (tempDiv) tempDiv.remove();
+      let errorState = document.querySelector("#errorState");
+      if (errorState) errorState.remove();
       ronQuote.innerHTML = `
       <p>${data[0]}</p>
       <footer>— Ron Swanson</footer>`;
     }).
       catch(function (err) {
         console.warn("oh no something went wrong", err);
-        let tempDiv = document.querySelector("#errorState");
-        if (!tempDiv) {
-          tempDiv = document.createElement('p');
-          tempDiv.setAttribute("id", "errorState");
-          tempDiv.style.color = "red";
-          tempDiv.textContent = "There was an error getting a quote, please try again."
-          ronButton.after(tempDiv);
+        let errorState = document.querySelector("#errorState");
+        if (!errorState) {
+          errorState = document.createElement('p');
+          errorState.setAttribute("id", "errorState");
+          errorState.style.color = "red";
+          errorState.textContent = "There was an error getting a new quote, please try again."
+          ronButton.after(errorState);
         }
       })
   };
