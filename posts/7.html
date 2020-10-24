@@ -3,7 +3,7 @@ title: "Random Rom"
 date: 2020-10-24
 ---
 {% set html %}
-<blockquote></blockquote>
+<blockquote>Loading quote...</blockquote>
 
 <button>More Ron</button>
 
@@ -34,12 +34,22 @@ date: 2020-10-24
         return Promise.reject(response);
       }
     }).then(function (data) {
+      let tempDiv = document.querySelector("#errorState");
+      if (tempDiv) tempDiv.remove();
       ronQuote.innerHTML = `
       <p>${data[0]}</p>
       <footer>— Ron Swanson</footer>`;
     }).
       catch(function (err) {
         console.warn("oh no something went wrong", err);
+        let tempDiv = document.querySelector("#errorState");
+        if (!tempDiv) {
+          tempDiv = document.createElement('p');
+          tempDiv.setAttribute("id", "errorState");
+          tempDiv.style.color = "red";
+          tempDiv.textContent = "There was an error getting a quote, please try again."
+          ronButton.after(tempDiv);
+        }
       })
   };
   function handleInput(event) {
