@@ -112,7 +112,7 @@ pre {
 button {
   font-family: 'Source Sans Pro Regular', system-ui, sans-serif;
   font-size: 1rem;
-  border: 2px solid var(--lightgray);  
+  border: 1px solid var(--navy);  
   border-radius: 0.5em;
   background-color: var(--white);
   padding: 0.5rem 1rem;
