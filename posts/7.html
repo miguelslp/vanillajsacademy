@@ -26,10 +26,13 @@ date: 2020-10-24
   let ronButton = document.querySelector('button');
 
   // Methods
-  function callRon(event) {
-    if (event.target !== ronButton) return;
+  function callRon() {
     fetch('https://ron-swanson-quotes.herokuapp.com/v2/quotes').then(function (response) {
-      return response.json();
+      if (response.ok) {
+        return response.json();
+      } else {
+        return Promise.reject(response);
+      }
     }).then(function (data) {
       ronQuote.textContent = data[0];
     }).
@@ -37,9 +40,14 @@ date: 2020-10-24
         console.warn("oh no something went wrong", err);
       })
   };
+  function handleInput(event) {
+    if (event.target !== ronButton) return;
+    callRon();
+  };
 
-  // Listeners
-  document.addEventListener('click', callRon);
+  // Listeners and inits
+  callRon();
+  document.addEventListener('click', handleInput);
 
 </script>
 {% endset %}
