@@ -126,6 +126,10 @@ button:active {
   background-color: var(--gray);
 }
 
+button:focus {
+  border: 1px solid var(--blue);  
+}
+
 ul {
   padding-inline-start: 20px;
 }
