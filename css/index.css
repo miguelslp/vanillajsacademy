@@ -134,7 +134,18 @@ blockquote {
   border-left: 1px dashed var(--gray);
   margin-left: 0;
   padding-left: 0.5rem;
+}
+
+blockquote p {
   font-style: italic;
+}
+
+blockquote p::before {
+  content: open-quote;
+}
+
+blockquote p::after {
+  content: close-quote;
 }
 
 .highlight-line {
