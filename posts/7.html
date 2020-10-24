@@ -1,0 +1,55 @@
+---
+title: "Random Rom"
+date: 2020-10-24
+---
+{% set html %}
+<blockquote></blockquote>
+
+<button>More Ron</button>
+
+
+{% endset %}
+
+<div class="htmlBox">
+  {{ html | safe }}
+</div>
+
+{% highlight "html" %}
+{{ html | safe }}
+{% endhighlight %}
+
+{% set js %}
+<script async>
+
+  // Variables
+  let ronQuote = document.querySelector('blockquote');
+  let ronButton = document.querySelector('button');
+
+  // Methods
+  function callRon(event) {
+    if (event.target !== ronButton) return;
+    fetch('https://ron-swanson-quotes.herokuapp.com/v2/quotes').then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      ronQuote.textContent = data[0];
+    }).
+      catch(function (err) {
+        console.warn("oh no something went wrong", err);
+      })
+  };
+
+  // Listeners
+  document.addEventListener('click', callRon);
+
+</script>
+{% endset %}
+
+{% highlight "html" %}
+{{ js | safe }}
+{% endhighlight %}
+
+<div class="htmlBox">
+  {% markdown '/notes/7.md' %}
+</div>
+
+{{ js | safe }}

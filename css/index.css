@@ -112,10 +112,30 @@ pre {
 button {
   font-family: 'Source Sans Pro Regular', system-ui, sans-serif;
   font-size: 1rem;
+  border: 2px solid var(--lightgray);  
+  border-radius: 0.5em;
+  background-color: var(--white);
+  padding: 0.5rem 1rem;
+}
+
+button:hover {
+  background-color: var(--lightgray);
+}
+
+button:active {
+  background-color: var(--navy);
+  color: var(--white);
 }
 
 ul {
   padding-inline-start: 20px;
+}
+
+blockquote {
+  border-left: 0.4rem solid var(--lightgray);
+  margin-left: 0;
+  padding-left: 0.5rem;
+  font-style: italic;
 }
 
 .highlight-line {
