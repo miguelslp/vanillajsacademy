@@ -60,13 +60,13 @@ a[href]:visited {
 }
 main {
   padding: 2rem 2rem;
-  border-bottom: 1px dashed var(--lightgray);
+  border-bottom: 1px dashed var(--gray);
 }
 main :first-child {
   margin-top: 0;
 }
 header {
-  border-bottom: 1px dashed var(--lightgray);
+  border-bottom: 1px dashed var(--gray);
 }
 header:after {
   content: "";
@@ -123,8 +123,7 @@ button:hover {
 }
 
 button:active {
-  background-color: var(--navy);
-  color: var(--white);
+  background-color: var(--gray);
 }
 
 ul {
@@ -132,7 +131,7 @@ ul {
 }
 
 blockquote {
-  border-left: 0.4rem solid var(--lightgray);
+  border-left: 1px dashed var(--gray);
   margin-left: 0;
   padding-left: 0.5rem;
   font-style: italic;
@@ -304,7 +303,7 @@ input {
 
 .htmlBox {
   padding: 1.5em 1.5em;
-  border: 1px dashed var(--lightgray);
+  border: 1px dashed var(--gray);
   border-radius: 1.5em;
   overflow: auto;
 }
