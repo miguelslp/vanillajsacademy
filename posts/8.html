@@ -1,6 +1,6 @@
 ---
-title: "Random Rom"
-date: 2020-10-24
+title: "Random Rom without duplicates"
+date: 2020-10-26
 ---
 {% set html %}
 <blockquote aria-live="polite">Loading quote...</blockquote>
@@ -20,12 +20,28 @@ date: 2020-10-24
 
 {% set js %}
 <script async>
-
+  // gravar arrays, pedir fetch, ver se resultado está na array, se não estiver, adicionar à array, se a array tiver mais que 50, tirar o primeiro na array fora, se estiver na array, pedir outro.
   // Variables
   let ronQuote = document.querySelector('blockquote');
   let ronButton = document.querySelector('button');
+  let savedQuotes = [];
 
   // Methods
+  function updateQuote(quote) {
+    if (savedQuotes.indexOf(quote) > -1 || quote === "") {
+      callRon();
+      }
+    else {   
+      if (savedQuotes.length > 49) {
+        savedQuotes.splice(0, 1);
+      }
+      savedQuotes.push(quote);
+      }
+    ronQuote.innerHTML = `
+      <p>${savedQuotes[savedQuotes.length - 1]}</p>
+      <footer>— Ron Swanson</footer>`;
+  }
+
   function callRon() {
     fetch('https://ron-swanson-quotes.herokuapp.com/v2/quotes').then(function (response) {
       if (response.ok) {
@@ -36,9 +52,7 @@ date: 2020-10-24
     }).then(function (data) {
       let errorState = document.querySelector("#errorState");
       if (errorState) errorState.remove();
-      ronQuote.innerHTML = `
-      <p>${data[0]}</p>
-      <footer>— Ron Swanson</footer>`;
+      updateQuote(data[0]);
     }).
       catch(function (err) {
         console.warn("oh no something went wrong", err);
@@ -69,7 +83,7 @@ date: 2020-10-24
 {% endhighlight %}
 
 <div class="htmlBox">
-  {% markdown '/notes/7.md' %}
+
 </div>
 
 {{ js | safe }}
