@@ -30,10 +30,11 @@ date: 2020-10-26
     if (savedQuotes.indexOf(quote) > -1 || quote === "") {
       callRon();
     }
+    else if (savedQuotes.length > 49) {
+      savedQuotes.splice(0, 1);
+      savedQuotes.push(quote);
+    }
     else {
-      if (savedQuotes.length > 49) {
-        savedQuotes.splice(0, 1);
-      }
       savedQuotes.push(quote);
     }
     ronQuote.innerHTML = `
