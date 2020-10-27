@@ -20,7 +20,6 @@ date: 2020-10-26
 
 {% set js %}
 <script async>
-  // gravar arrays, pedir fetch, ver se resultado está na array, se não estiver, adicionar à array, se a array tiver mais que 50, tirar o primeiro na array fora, se estiver na array, pedir outro.
   // Variables
   let ronQuote = document.querySelector('blockquote');
   let ronButton = document.querySelector('button');
@@ -30,13 +29,13 @@ date: 2020-10-26
   function updateQuote(quote) {
     if (savedQuotes.indexOf(quote) > -1 || quote === "") {
       callRon();
-      }
-    else {   
+    }
+    else {
       if (savedQuotes.length > 49) {
         savedQuotes.splice(0, 1);
       }
       savedQuotes.push(quote);
-      }
+    }
     ronQuote.innerHTML = `
       <p>${savedQuotes[savedQuotes.length - 1]}</p>
       <footer>— Ron Swanson</footer>`;
