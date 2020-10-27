@@ -29,6 +29,7 @@ date: 2020-10-26
   function updateQuote(quote) {
     if (savedQuotes.indexOf(quote) > -1 || quote === "") {
       callRon();
+      return;
     }
     else if (savedQuotes.length > 49) {
       savedQuotes.splice(0, 1);
