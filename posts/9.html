@@ -36,7 +36,7 @@ date: 2020-10-28
     let stories = top5.map(function (story) {
       return `<li><a href="${story.short_url}" target="_blank">${story.title}</a></li>`;
     }).join('');
-    elem.innerHTML = stories;
+    elem.innerHTML = `<ul>${stories}</ul>`;
   }
 
   // Inits
