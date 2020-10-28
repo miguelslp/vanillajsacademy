@@ -1,0 +1,56 @@
+---
+title: "Latest 5 NYT top stories"
+date: 2020-10-28
+---
+{% set html %}
+<div id="app">Loading latest stories...</div>
+{% endset %}
+
+<div class="htmlBox">
+  {{ html | safe }}
+</div>
+
+{% highlight "html" %}
+{{ html | safe }}
+{% endhighlight %}
+
+{% set js %}
+<script async>
+
+  // Variables
+  let elem = document.querySelector('#app');
+
+  // Methods
+  // ---Get the arrays and call updateDOM
+  function callNYT() {
+    fetch('https://api.nytimes.com/svc/topstories/v2/home.json?api-key=V4DAxXaiDzvGkumnpxfO4LpmCd7dM9om').then(function (response) {
+      if (response.ok) {
+        return response.json();
+      } else {
+        return Promise.reject(response);
+      }
+    }).then((array) => updateDOM(array.results))};
+  // ---Helper function to insert the newest 5 as list items in the DOM
+  function updateDOM(storiesArray) {
+    let top5 = storiesArray.slice(0, 5);
+    let stories = top5.map(function (story) {
+      return `<li><a href="${story.short_url}" target="_blank">${story.title}</a></li>`;
+    }).join('');
+    elem.innerHTML = stories;
+  }
+
+  // Inits
+ callNYT();
+
+</script>
+{% endset %}
+
+{% highlight "html" %}
+{{ js | safe }}
+{% endhighlight %}
+
+<div class="htmlBox">
+
+</div>
+
+{{ js | safe }}
