@@ -34,7 +34,7 @@ date: 2020-10-28
   function updateDOM(storiesArray) {
     let top5 = storiesArray.slice(0, 5);
     let stories = top5.map(function (story) {
-      return `<li><a href="${story.short_url}" target="_blank">${story.title}</a></li>`;
+      return `<li><a href="${story.short_url}" target="_blank" rel="noreferrer">${story.title}</a></li>`;
     }).join('');
     elem.innerHTML = `<ul>${stories}</ul>`;
   }
