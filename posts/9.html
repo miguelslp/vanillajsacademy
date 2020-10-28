@@ -29,7 +29,7 @@ date: 2020-10-28
       } else {
         return Promise.reject(response);
       }
-    }).then((array) => updateDOM(array.results))};
+    }).then(array => updateDOM(array.results))};
   // ---Helper function to insert the newest 5 as list items in the DOM
   function updateDOM(storiesArray) {
     let top5 = storiesArray.slice(0, 5);
