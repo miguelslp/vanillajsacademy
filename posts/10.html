@@ -32,12 +32,21 @@ date: 2020-10-30
         return Promise.reject(response);
       }
     })
-      .then(array => updateDOM(array))
+      .then(array => updateDOM(array, section))
       .catch(function (error) {
-        console.warn("oh no something went wrong", error);
+        console.warn("Oh no something went wrong", error);
         let placeholder = document.querySelector("#placeholder");
         if (placeholder) placeholder.remove();
-        elem.innerHTML += `<h2>${section}</h2><p>Sorry, something went wrong gathering these stories.</p>`;
+        let errorState = document.querySelector('#errorState');
+        if (!errorState) {
+          errorState = document.createElement('p');
+          errorState.setAttribute("id", "errorState");
+          errorState.textContent = "Sorry, something went wrong gathering stories on"
+          app.after(errorState);
+        }
+        errorState.innerHTML += `
+        <code> ${section}</code>
+        `;
       })
   };
 
@@ -49,11 +58,14 @@ date: 2020-10-30
     }).join('');
     let placeholder = document.querySelector("#placeholder");
     if (placeholder) placeholder.remove();
-    elem.innerHTML += `<h2>${array.section}</h2><ul>${stories}</ul>`;
+    elem.innerHTML += `
+    <h2>${array.section}</h2>
+    <ul>${stories}</ul>
+    `;
   }
 
   // Inits
-  ['technology','arts','movies'].map(section => callNYT(section));
+  ['technology', 'arts', 'movies'].map(section => callNYT(section));
 
 </script>
 {% endset %}
