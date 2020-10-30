@@ -30,7 +30,13 @@ date: 2020-10-30
       } else {
         return Promise.reject(response);
       }
-    }).then(array => updateDOM(array.results, section))};
+    })
+    .then(array => updateDOM(array.results, section))
+    .catch(function (error) {
+      console.warn("oh no something went wrong", error)
+    })
+  };
+
   // ---Helper function to insert the newest 5 as list items in the DOM
   function updateDOM(storiesArray, section) {
     let top5 = storiesArray.slice(0, 5);
@@ -43,10 +49,9 @@ date: 2020-10-30
   }
 
   // Inits
- callNYT('Technology');
- callNYT('Arts');
- callNYT('Movies');
-
+  callNYT('Technology');
+  callNYT('Arts');
+  callNYT('Movies');
 </script>
 {% endset %}
 
