@@ -33,7 +33,10 @@ date: 2020-10-30
     })
     .then(array => updateDOM(array.results, section))
     .catch(function (error) {
-      console.warn("oh no something went wrong", error)
+      console.warn("oh no something went wrong", error);
+      let placeholder = document.querySelector("#placeholder");
+      if (placeholder) placeholder.remove();
+      elem.innerHTML += `<h2>${section}</h2><p>Sorry, something went wrong gathering these stories.</p>`;
     })
   };
 
@@ -52,7 +55,7 @@ date: 2020-10-30
   callNYT('Technology');
   callNYT('Arts');
   callNYT('Movies');
-  
+
 </script>
 {% endset %}
 
