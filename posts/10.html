@@ -25,15 +25,14 @@ date: 2020-10-30
   // Methods
   // ---Get the arrays and call updateDOM
   function callNYT(section) {
-    let sectionKey = section.toLowerCase();
-    fetch(`https://api.nytimes.com/svc/topstories/v2/${sectionKey}.json?api-key=V4DAxXaiDzvGkumnpxfO4LpmCd7dM9om`).then(function (response) {
+    fetch(`https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=V4DAxXaiDzvGkumnpxfO4LpmCd7dM9om`).then(function (response) {
       if (response.ok) {
         return response.json();
       } else {
         return Promise.reject(response);
       }
     })
-      .then(array => updateDOM(array.results, section))
+      .then(array => updateDOM(array))
       .catch(function (error) {
         console.warn("oh no something went wrong", error);
         let placeholder = document.querySelector("#placeholder");
@@ -43,20 +42,18 @@ date: 2020-10-30
   };
 
   // ---Helper function to insert the newest 5 as list items in the DOM
-  function updateDOM(storiesArray, section) {
-    let top5 = storiesArray.slice(0, 5);
+  function updateDOM(array) {
+    let top5 = array.results.slice(0, 5);
     let stories = top5.map(function (story) {
       return `<li><a href="${story.short_url}">${story.title}</a></li>`;
     }).join('');
     let placeholder = document.querySelector("#placeholder");
     if (placeholder) placeholder.remove();
-    elem.innerHTML += `<h2>${section}</h2><ul>${stories}</ul>`;
+    elem.innerHTML += `<h2>${array.section}</h2><ul>${stories}</ul>`;
   }
 
   // Inits
-  callNYT('Technology');
-  callNYT('Arts');
-  callNYT('Movies');
+  ['technology','arts','movies'].map(section => callNYT(section));
 
 </script>
 {% endset %}
