@@ -26,12 +26,9 @@ date: 2020-10-30
 
   Promise.allSettled([
   Promise.reject(new Error('an error')),
-  Promise.resolve(33),
-  new Promise(resolve => setTimeout(() => resolve(elem.innerHTML += 'it worked'), 0)),
-  99,
-  
+  Promise.resolve(1)
 ])
-.then(values => console.log(values));
+.then(() => elem.innerHTML += 'it worked');
 
 // [
 //   {status: "fulfilled", value: 33},
