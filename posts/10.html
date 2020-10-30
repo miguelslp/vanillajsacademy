@@ -32,7 +32,7 @@ date: 2020-10-30
         return Promise.reject(response);
       }
     })
-      .then(array => updateDOM(array, section))
+      .then(array => updateDOM(array))
       .catch(function (error) {
         console.warn("Oh no something went wrong", error);
         let placeholder = document.querySelector("#placeholder");
