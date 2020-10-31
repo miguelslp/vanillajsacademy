@@ -22,7 +22,7 @@ date: 2020-10-30
   // Variables
   let elem = document.querySelector('#app');
   let apiKey = 'V4DAxXaiDzvGkumnpxfO4LpmCd7dM9om';
-  let sections = ['technology', 'arts', 'movies','goodnews'];
+  let sections = ['technology', 'arts', 'movies','nonexisting'];
   let numberOfArticles = 5;
 
   // Methods
@@ -68,7 +68,7 @@ date: 2020-10-30
   }
 
   // Inits
-  // ---Calling also 'goodnews' as an error on purpose
+  // ---Calling also 'nonexisting' as an error on purpose
   sections.forEach(section => callNYT(section));
 
 </script>
