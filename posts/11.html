@@ -1,0 +1,95 @@
+---
+title: "Sanitizing the NYT API Data"
+date: 2020-11-01
+---
+{% set html %}
+<div id="app">
+  <span id="placeholder">Loading latest stories...</span>
+</div>
+{% endset %}
+
+<div class="htmlBox">
+  {{ html | safe }}
+</div>
+
+{% highlight "html" %}
+{{ html | safe }}
+{% endhighlight %}
+
+{% set js %}
+<script async>
+
+  // Variables
+  let elem = document.querySelector('#app');
+  let apiKey = 'V4DAxXaiDzvGkumnpxfO4LpmCd7dM9om';
+  let sections = ['technology', 'arts', 'movies', 'nonexisting'];
+  let numberOfArticles = 5;
+
+  // Methods
+  // ---Sanitizing function
+  function sanitizeHTML(str) {
+    return str.replace(/[^\w. ]/gi, function (c) {
+      return '&#' + c.charCodeAt(0) + ';';
+    });
+  };
+
+  // ---Error message UI
+  function errorState(error, section) {
+    console.warn("Oh no something went wrong", error);
+    let placeholder = document.querySelector("#placeholder");
+    if (placeholder) placeholder.remove();
+    let errorState = document.querySelector('#errorState');
+    if (!errorState) {
+      errorState = document.createElement('p');
+      errorState.setAttribute("id", "errorState");
+      errorState.textContent = "Sorry, something went wrong gathering stories on"
+      app.after(errorState);
+    }
+    errorState.innerHTML += `
+        <code> ${section}</code>
+        `;
+  };
+
+  // ---Get the arrays and call updateDOM
+  function callNYT(section) {
+    fetch(`https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${apiKey}`).then(function (response) {
+      if (response.ok) {
+        return response.json();
+      } else {
+        return Promise.reject(response);
+      }
+    })
+      .then(array => updateDOM(array))
+      .catch(error => errorState(error, section));
+  };
+
+  // ---Helper function to insert the newest 5 as list items in the DOM
+  function updateDOM(array) {
+    let top5 = array.results.slice(0, numberOfArticles);
+    let stories = top5.map(function (story) {
+      return `<article><a href="${sanitizeHTML(story.short_url)}">${sanitizeHTML(story.title)}</a></article>`;
+    }).join('');
+    let placeholder = document.querySelector("#placeholder");
+    if (placeholder) placeholder.remove();
+    elem.innerHTML += `
+    <h2>${array.section}</h2>
+    ${stories}
+    `;
+  };
+
+  // Inits
+  // ---Calling also 'nonexisting' as an error on purpose
+  sections.forEach(section => callNYT(section));
+
+</script>
+{% endset %}
+
+{% highlight "html" %}
+{{ js | safe }}
+{% endhighlight %}
+
+<div class="htmlBox">
+
+</div>
+
+{{ js | safe }}
