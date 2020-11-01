@@ -26,13 +26,7 @@ date: 2020-11-01
     fetch(
       `https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${apiKey}`
     )
-      .then(function (response) {
-        if (response.ok) {
-          return response.json();
-        } else {
-          return Promise.reject(response);
-        }
-      })
+      .then((response) =>  response.ok ? response.json() : Promise.reject(response))
       .then((array) => updateDOM(array))
       .catch((error) => errorState(error, section));
   }
