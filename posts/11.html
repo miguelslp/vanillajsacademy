@@ -50,7 +50,7 @@ date: 2020-11-01
     let placeholder = document.querySelector("#placeholder");
     if (placeholder) placeholder.remove();
     elem.innerHTML += `
-    <h2>${array.section}</h2>
+    <h2>${sanitizeHTML(array.section)}</h2>
     ${stories}
     `;
   }
