@@ -12,6 +12,7 @@ date: 2020-11-01
 <div class="htmlBox">{{ html | safe }}</div>
 
 {% highlight "html" %} {{ html | safe }} {% endhighlight %} {% set js %}
+
 <script async>
   // Variables
   let elem = document.querySelector("#app");
@@ -20,13 +21,6 @@ date: 2020-11-01
   let numberOfArticles = 2;
 
   // Methods
-  // ---Sanitizing function
-  function sanitizeHTML(str) {
-    return str.replace(/[^\w. ]/gi, function (c) {
-      return "&#" + c.charCodeAt(0) + ";";
-    });
-  }
-
   // ---Get the arrays and call updateDOM
   function callNYT(section) {
     fetch(
@@ -61,6 +55,13 @@ date: 2020-11-01
     `;
   }
 
+  // ---Sanitizing function
+  function sanitizeHTML(str) {
+    return str.replace(/[^\w. ]/gi, function (c) {
+      return "&#" + c.charCodeAt(0) + ";";
+    });
+  }
+
   // ---Error message UI
   function errorState(error, section) {
     console.warn("Oh no something went wrong", error);
@@ -83,6 +84,7 @@ date: 2020-11-01
   // ---Calling also 'nonexisting' as an error on purpose
   sections.forEach((section) => callNYT(section));
 </script>
+
 {% endset %} {% highlight "html" %} {{ js | safe }} {% endhighlight %}
 
 <div class="htmlBox"></div>
