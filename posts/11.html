@@ -3,15 +3,15 @@ title: "Sanitizing the NYT API Data"
 date: 2020-11-01
 ---
 
+<!-- Setting the html code -->
 {% set html %}
 <div id="app">
   <span id="placeholder">Loading latest stories...</span>
 </div>
 {% endset %}
 
-<div class="htmlBox">{{ html | safe }}</div>
-
-{% highlight "html" %} {{ html | safe }} {% endhighlight %} {% set js %}
+<!-- Setting the js code -->
+{% set js %}
 
 <script async>
   // Variables
@@ -78,8 +78,13 @@ date: 2020-11-01
   sections.forEach((section) => callNYT(section));
 </script>
 
-{% endset %} {% highlight "html" %} {{ js | safe }} {% endhighlight %}
+{% endset %} 
 
-<div class="htmlBox"></div>
+<!-- Rendering the html -->
+<div class="htmlBox">{{ html | safe }}</div>
 
+<!-- Rendering the html and js as syntax highlight -->
+{% highlight "html" %} {{ html | safe }} {{ js | safe }} {% endhighlight %} 
+
+<!-- Inserting the js as a script -->
 {{ js | safe }}
