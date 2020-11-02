@@ -1,6 +1,5 @@
-# Vanilla JS exercises
+# Vanilla JS Academy 2020 exercises
 
-Uses eleventy-base-blog as a starting point.
+https://vanillajsacademy.com/
 
-## About eleventy-base-blog
-[A starter repository](https://github.com/11ty/eleventy-base-blog) showing how to build a blog with the [Eleventy](https://github.com/11ty/eleventy) static site generator.
+Uses eleventy-base-blog as a starting point. [A starter repository](https://github.com/11ty/eleventy-base-blog) showing how to build a blog with the [Eleventy](https://github.com/11ty/eleventy) static site generator.
