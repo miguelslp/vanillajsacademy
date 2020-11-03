@@ -52,6 +52,9 @@ p,
 .tmpl-post li {
   line-height: 1.45;
 }
+a {
+  max-width: max-content;
+}
 a[href] {
   color: var(--blue);
 }
@@ -357,4 +360,15 @@ input {
 
 .l-icon .icon {
   margin-inline-end: 0.65rem;
+}
+
+.monsterGrid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  text-align: center;
+}
+
+.monsterGridItem {
+  min-height: 6em;
+  padding: 1em;
 }
