@@ -364,11 +364,15 @@ input {
 
 .monsterGrid {
   display: grid;
-  grid-template-columns: auto auto auto;
-  text-align: center;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  place-items: center;
 }
 
 .monsterGridItem {
   min-height: 6em;
   padding: 1em;
+}
+
+.full-width {
+  min-width: 100%;
 }

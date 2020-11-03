@@ -5,7 +5,7 @@ date: 2020-11-03
 
 <!-- Setting the html code -->
 {% set html %}
-<button id="shuffleButton" style="margin: auto;">Shuffle!</button>
+<button id="shuffleButton" class="full-width">Shuffle!</button>
 <div id="app" class="monsterGrid"></div>
 <footer>
   <hr />
@@ -68,12 +68,11 @@ date: 2020-11-03
   };
 
   function monstersGrid() {
-    let monsterGridItems = shuffle(monsters.slice())
+    elem.innerHTML = shuffle(monsters.slice())
       .map(function (item) {
-        return `<img class="monsterGridItem" src="../../img/${item}.svg" alt="An image of a ${(item === 'sock') ? "sock" : "monster"}"></img>`;
+        return `<img class="monsterGridItem" src="../../img/${item}.svg" alt="An image of a ${item === "sock" ? "sock" : "monster"}"></img>`;
       })
       .join("");
-    elem.innerHTML = monsterGridItems;
   }
 
   // Inits and listeners
