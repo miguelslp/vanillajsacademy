@@ -155,6 +155,11 @@ blockquote p::after {
   content: close-quote;
 }
 
+hr {
+  border: none;
+  border-bottom: 1px dashed var(--gray);
+}
+
 .highlight-line {
   display: block;
   padding: 0.125em 1em;
