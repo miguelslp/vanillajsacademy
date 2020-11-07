@@ -1,6 +1,6 @@
 ---
 title: "Find the Monsters before the sock!"
-date: 2020-11-03
+date: 2020-11-07
 ---
 
 <!-- Setting the html code -->
@@ -120,11 +120,11 @@ date: 2020-11-03
     monster.parentNode.innerHTML = `
     <img class="monsterGridItem" src="../../img/${monsterID}.svg" alt="An image of a ${monsterID === "sock" ? "sock" : "monster"}"></img>`
   }
-  
+
   let clickHandler = function (event) {
     // if it is restart button, restart game
     if (event.target === document.querySelector('#playButton')) return restartGame();
-    // if it is monster, swap images
+    // if it is a door, swap images
     let monster = event.target.closest('[data-monster-id]');
     if (!monster) return;
     let monsterID = monster.getAttribute('data-monster-id');
