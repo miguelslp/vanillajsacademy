@@ -122,7 +122,7 @@ date: 2020-11-07
   }
 
   let clickHandler = function (event) {
-    // if it is restart button, restart game
+    // if it is the playButton, restart game
     if (event.target === document.querySelector('#playButton')) return restartGame();
     // if it is a door, swap images
     let monster = event.target.closest('[data-monster-id]');
