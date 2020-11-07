@@ -1,0 +1,155 @@
+---
+title: "Find the Monsters before the sock!"
+date: 2020-11-03
+---
+
+<!-- Setting the html code -->
+{% set html %}
+<header class="full-width l-cluster scoreHeader">
+  <div>
+    <p id="score" aria-live="polite">Score: 0</p>
+  </div>
+</header>
+<div id="app" class="monsterGrid"></div>
+<footer>
+  <hr />
+  <p>
+    Icons by
+    <a href="https://thenounproject.com/term/door/311732/">Jamie Dickinson</a>,
+    <a href="https://thenounproject.com/term/monster/184225/">Nicky Knicky</a>,
+    <a href="https://thenounproject.com/term/monster/1510400/">Alvaro Cabrera</a>, <a
+      href="https://thenounproject.com/term/monster/28460/">Eliricon</a>,
+    <a href="https://thenounproject.com/term/monster/82823/">April Yang</a>,
+    <a href="https://thenounproject.com/term/monster/1062009/">tk66</a>,
+    <a href="https://thenounproject.com/term/monster/24990/">Alex WaZa</a>,
+    <a href="https://thenounproject.com/term/monster/37212/">Husein Aziz</a>,
+    <a href="https://thenounproject.com/term/monster/2236082">iconcheese</a>,
+    and
+    <a href="https://thenounproject.com/term/socks/38451/">Yazmin Alanis</a>.
+  </p>
+</footer>
+{% endset %}
+
+<!-- Setting the js code -->
+{% set js %}
+<script>
+  // Variables
+  let elem = document.querySelector("#app");
+  let scoreElem = document.querySelector('#score');
+  let score = 0;
+  let monsters = [
+    "monster1",
+    "monster2",
+    "monster3",
+    "monster4",
+    "monster5",
+    "monster6",
+    "monster7",
+    "monster8",
+    "monster9",
+    "monster10",
+    "monster11",
+    "sock",
+  ];
+  let playButton = document.createElement('button');
+  playButton.setAttribute("id", "playButton");
+  playButton.textContent = "Play again";
+
+  // Methods
+  let shuffle = function (array) {
+    let currentIndex = array.length;
+    let temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  };
+
+  let monstersGrid = function () {
+    elem.innerHTML = shuffle(monsters.slice())
+      .map(function (item) {
+        return `
+        <div class="monsterGridItem" aria-live="polite">
+          <button data-monster-id=${item} class="">
+            <img src="../../img/door.svg" alt="A door whera monster lies behind"></img>
+        </button>
+        </div>`;
+      })
+      .join("");
+  };
+
+  let restartGame = function () {
+    document.querySelector('#playButton').remove();
+    score = 0;
+    scoreElem.textContent = `Score: ${score}`;
+    monstersGrid();
+
+  }
+
+  let endGame = function () {
+    let doorsLeft = Array.from(document.querySelectorAll('[data-monster-id]'))
+    doorsLeft.forEach(door => door.remove());
+    scoreElem.after(playButton);
+  }
+
+  let wrongPick = function () {
+    scoreElem.textContent = `Score: ${score}. You've found a sock and lost the game 😢`
+    endGame();
+  }
+
+  let goodPick = function () {
+    score++;
+    if (score === 11) {
+      scoreElem.textContent = `Score: ${score}. Yay you've won! 🎉`
+      endGame();
+      return;
+    }
+    scoreElem.textContent = `Score: ${score}`;
+  }
+
+  let swapImage = function (monster, monsterID) {
+    monster.parentNode.innerHTML = `
+    <img class="monsterGridItem" src="../../img/${monsterID}.svg" alt="An image of a ${monsterID === "sock" ? "sock" : "monster"}"></img>`
+  }
+  let clickHandler = function (event) {
+    // if it is restart button, restart game
+    if (event.target === document.querySelector('#playButton')) return restartGame();
+    // if it is monster, swap images
+    let monster = event.target.closest('[data-monster-id]');
+    if (!monster) return;
+    let monsterID = monster.getAttribute('data-monster-id');
+    swapImage(monster, monsterID);
+    // decide if it was a good or wrong pick
+    if (monsterID === "sock") {
+      wrongPick();
+    }
+    else {
+      goodPick();
+    }
+  }
+
+  // Inits and listeners
+  monstersGrid();
+  document.addEventListener("click", clickHandler);
+
+</script>
+{% endset %}
+
+<!-- Rendering the html -->
+<div class="htmlBox">{{ html | safe }}</div>
+
+<!-- Rendering the html and js as syntax highlight -->
+{% highlight "html" %} {{ html | safe }} {{ js | safe }} {% endhighlight %}
+
+<!-- Inserting the js as a script -->
+{{ js | safe }}

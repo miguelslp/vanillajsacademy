@@ -367,6 +367,24 @@ input {
   margin-inline-end: 0.65rem;
 }
 
+.l-cluster {
+  --justify: flex-start;
+  --cluster-space: 1rem;
+  --align: center;
+  overflow: hidden;
+}
+.l-cluster > * {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: var(--justify-content);
+  align-items: var(--align);
+  margin: calc(var(--cluster-space) / 2 * -1);
+}
+
+.l-cluster > * > * {
+  margin: calc(var(--cluster-space) / 2);
+}
+
 .monsterGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -388,4 +406,16 @@ input {
 [data-monster-id] {
 	background-color: transparent;
 	border: 0;
+}
+
+.scoreHeader {
+  border: none;
+}
+.scoreHeader p {
+  margin: 24px 8px;
+}
+
+.scoreHeader button {
+  padding: 4px 8px;
+  margin: none;
 }
