@@ -81,29 +81,16 @@ date: 2020-11-07
         return `
         <div class="monsterGridItem" aria-live="polite">
           <button data-monster-id=${item} class="">
-            <img src="../../img/door.svg" alt="A door whera monster lies behind"></img>
+            <img src="../../img/door.svg" alt="A door where a monster lies behind"></img>
         </button>
         </div>`;
       })
       .join("");
   };
 
-  let restartGame = function () {
-    document.querySelector('#playButton').remove();
-    score = 0;
-    scoreElem.textContent = `Score: ${score}`;
-    monstersGrid();
-  }
-
-  let endGame = function () {
-    let doorsLeft = Array.from(document.querySelectorAll('[data-monster-id]'))
-    doorsLeft.forEach(door => door.remove());
-    scoreElem.after(playButton);
-  }
-
-  let wrongPick = function () {
-    scoreElem.textContent = `Score: ${score}. You've found a sock and lost the game 😢`
-    endGame();
+  let swapImage = function (monster, monsterID) {
+    monster.parentNode.innerHTML = `
+    <img class="monsterGridItem" src="../../img/${monsterID}.svg" alt="An image of a ${monsterID === "sock" ? "sock" : "monster"}"></img>`
   }
 
   let goodPick = function () {
@@ -116,9 +103,22 @@ date: 2020-11-07
     scoreElem.textContent = `Score: ${score}`;
   }
 
-  let swapImage = function (monster, monsterID) {
-    monster.parentNode.innerHTML = `
-    <img class="monsterGridItem" src="../../img/${monsterID}.svg" alt="An image of a ${monsterID === "sock" ? "sock" : "monster"}"></img>`
+  let wrongPick = function () {
+    scoreElem.textContent = `Score: ${score}. You've found a sock and lost the game 😢`
+    endGame();
+  }
+
+  let endGame = function () {
+    let doorsLeft = Array.from(document.querySelectorAll('[data-monster-id]'))
+    doorsLeft.forEach(door => door.remove());
+    scoreElem.after(playButton);
+  }
+
+  let restartGame = function () {
+    document.querySelector('#playButton').remove();
+    score = 0;
+    scoreElem.textContent = `Score: ${score}`;
+    monstersGrid();
   }
 
   let clickHandler = function (event) {
