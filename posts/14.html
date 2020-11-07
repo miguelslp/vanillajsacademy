@@ -93,7 +93,6 @@ date: 2020-11-03
     score = 0;
     scoreElem.textContent = `Score: ${score}`;
     monstersGrid();
-
   }
 
   let endGame = function () {
@@ -121,6 +120,7 @@ date: 2020-11-03
     monster.parentNode.innerHTML = `
     <img class="monsterGridItem" src="../../img/${monsterID}.svg" alt="An image of a ${monsterID === "sock" ? "sock" : "monster"}"></img>`
   }
+  
   let clickHandler = function (event) {
     // if it is restart button, restart game
     if (event.target === document.querySelector('#playButton')) return restartGame();
