@@ -47,7 +47,16 @@ h1 {
 }
 /* anchor toc exercise: */
 h2:target {
-  color: var(--darkred);
+  animation-duration: 4s;
+  animation-name: fadeBlack;
+}
+@keyframes fadeBlack {
+  from {
+    background-color: var(--lightgray);
+  }
+  to {
+    background-color: var(--white);
+  }
 }
 p:last-child {
   margin-bottom: 0;
