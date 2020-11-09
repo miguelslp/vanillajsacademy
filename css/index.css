@@ -36,9 +36,18 @@ body {
   color: var(--darkgray);
   background-color: var(--white);
   margin: 1em auto;
+  scroll-behavior: smooth;
 }
+@media screen and (prefers-reduced-motion: reduce) {
+  html, body {
+    scroll-behavior: auto;
+}}
 h1 {
   font-family: 'Source Sans Pro Bold', system-ui, sans-serif;
+}
+/* anchor toc exercise: */
+h2:target {
+  color: var(--darkred);
 }
 p:last-child {
   margin-bottom: 0;
