@@ -20,14 +20,12 @@ date: 2020-11-09
   let headers2 = Array.prototype.slice.call(document.querySelectorAll('h2'));
 
   // Methods
-  let renderTOC = function (array) {
-    array.forEach(header => {
-      toc.innerHTML += `<li><a href="#${header.id}">${header.textContent}</a></li>`;
-    });
+  let renderTOC = function (array, list) {
+    list.innerHTML = array.map(header => `<li><a href="#${header.id}">${header.textContent}</a></li>`).join('');
   }
 
   // Inits and listeners
-  renderTOC(headers2);
+  renderTOC(headers2, toc);
 </script>
 {% endset %}
 
