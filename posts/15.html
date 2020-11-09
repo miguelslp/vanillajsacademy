@@ -17,15 +17,15 @@ date: 2020-11-09
 <script>
   // Variables
   let toc = document.querySelector('#table-of-contents');
-  let headers2 = Array.prototype.slice.call(document.querySelectorAll('h2'));
+  let headingsLevel2 = Array.prototype.slice.call(document.querySelectorAll('h2'));
 
   // Methods
-  let renderTOC = function (array, list) {
-    list.innerHTML = array.map(header => `<li><a href="#${header.id}">${header.textContent}</a></li>`).join('');
+  let renderTOC = function (headings, list) {
+    list.innerHTML = headings.map(heading => `<li><a href="#${heading.id}">${heading.textContent}</a></li>`).join('');
   }
 
   // Inits and listeners
-  renderTOC(headers2, toc);
+  renderTOC(headingsLevel2, toc);
 </script>
 {% endset %}
 
