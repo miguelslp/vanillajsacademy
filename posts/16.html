@@ -21,11 +21,7 @@ date: 2020-11-11
 
   // Methods
   let prepareHeadings = function (headings) {
-    headings.map(function (heading) {
-      if (!heading.hasAttribute("id")) {
-        makeID(heading);
-      }
-    });
+    headings.map(heading => heading.hasAttribute("id") ? heading : makeID(heading));
   };
 
   let makeID = function (heading) {
