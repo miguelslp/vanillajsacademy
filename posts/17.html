@@ -40,11 +40,12 @@ date: 2020-11-13
             `<li><a href="#${heading.id}">${heading.textContent}</a></li>`
         )
         .join("");
-        
+
     };
 
     // Inits and listeners
     renderTOC(headingsArray, toc);
+    
   }
 
   tocMaker('h2','#table-of-contents');
