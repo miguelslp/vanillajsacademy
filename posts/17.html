@@ -13,11 +13,13 @@ date: 2020-11-13
 <!-- Setting the js code -->
 {% set js %}
 <script>
-  let tocMaker = function () {
+
+  let tocMaker = function (headingLevel, tocID) {
+
     // Variables
-    let toc = document.querySelector("#table-of-contents");
-    let headingsLevel2 = Array.prototype.slice.call(
-      document.querySelectorAll("h2")
+    let toc = document.querySelector(tocID);
+    let headingsArray = Array.prototype.slice.call(
+      document.querySelectorAll(headingLevel)
     );
 
     // Methods
@@ -38,12 +40,15 @@ date: 2020-11-13
             `<li><a href="#${heading.id}">${heading.textContent}</a></li>`
         )
         .join("");
+        
     };
 
     // Inits and listeners
-    renderTOC(headingsLevel2, toc);
+    renderTOC(headingsArray, toc);
   }
-  tocMaker();
+
+  tocMaker('h2','#table-of-contents');
+
 </script>
 {% endset %}
 
