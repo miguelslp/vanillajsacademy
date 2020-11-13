@@ -1,0 +1,6 @@
+.htmlBox {
+  padding: 1.5em 1.5em;
+  border: 1px dashed var(--gray);
+  border-radius: 1.5em;
+  overflow: auto;
+}

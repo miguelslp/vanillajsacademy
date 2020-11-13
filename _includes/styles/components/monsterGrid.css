@@ -1,0 +1,16 @@
+.monsterGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-auto-rows: 100px;
+  place-items: center;
+  padding: 2rem 0 2rem 0;
+  gap: 2rem 0;
+}
+.monsterGridItem {
+  min-height: 8em;
+  padding: 1em;
+}
+[data-monster-id] {
+	background-color: transparent;
+	border: 0;
+}

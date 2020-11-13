@@ -1,0 +1,14 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60ch, 1fr));
+  gap: 2rem;
+}
+@media (max-width: 70ch) { 
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  main {
+    padding: 1rem;
+  }
+}

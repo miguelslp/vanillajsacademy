@@ -1,0 +1,39 @@
+.l-icon {
+  display: inline-flex;
+  align-items: baseline;
+}
+.l-icon .icon {
+  margin-inline-end: 0.65rem;
+}
+.l-cluster {
+  --justify: flex-start;
+  --cluster-space: 1rem;
+  --align: center;
+  overflow: hidden;
+}
+.l-cluster > * {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: var(--justify-content);
+  align-items: var(--align);
+  margin: calc(var(--cluster-space) / 2 * -1);
+}
+.l-cluster > * > * {
+  margin: calc(var(--cluster-space) / 2);
+}
+.l-stack {
+  --space: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.l-stack > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.l-stack > * + * {
+  margin-top: var(--space);
+}
+.l-stack:only-child {
+  height: 100%;
+}
