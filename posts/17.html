@@ -24,14 +24,12 @@ date: 2020-11-13
     let prepareHeadings = function (headings) {
       headings.map(heading => heading.hasAttribute("id") ? heading : makeID(heading));
     };
-
     let makeID = function (heading) {
       let newID = heading.textContent
         .replace(new RegExp(" ", "g"), "-")
         .toLowerCase();
       heading.setAttribute("id", newID);
     };
-
     let renderTOC = function (headings, list) {
       prepareHeadings(headings);
       list.innerHTML = headings
