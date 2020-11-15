@@ -1,0 +1,75 @@
+---
+title: "Weather App"
+date: 2020-11-15
+---
+
+<!-- Setting the html code -->
+{% set html %}
+<div id="app" class="weatherApp">Checking the weather near you...</div>
+{% endset %}
+
+<!-- Setting the js code -->
+{% set js %}
+<script>
+
+  // Variables
+  let locationData;
+  let locationAPI = 'https://ipapi.co/json'
+
+  let weatherData;
+  let weatherAPI = ' https://api.weatherbit.io/v2.0/current'
+  let weatherKey = '5503cec5734c4b79a0f908a36937391e'
+
+  let app = document.querySelector('#app');
+
+  // Methods
+  let renderWeather = function (prop) {
+    app.innerHTML = `
+    <h2>${prop.city_name}</h2>
+    <img src="https://www.weatherbit.io/static/img/icons/${prop.weather.icon}.png" alt="${prop.weather.description}"></img>
+    <p><strong>${prop.app_temp}º C</strong></p>
+    <p>${prop.weather.description}</p>`
+  }
+
+  let getWeather = function () {
+    fetch(locationAPI).then(function (response) {
+      if (response.ok) {
+        return response.json();
+      } else {
+        return Promise.reject(response);
+      }
+    }).then(function (locationData) {
+      let lat = locationData.latitude;
+      let lon = locationData.longitude;
+      let locationParameters = `&lat=${lat}&lon=${lon}`;
+      return fetch(`${weatherAPI}?${locationParameters}&key=${weatherKey}`);
+    }).then(function (response) {
+      if (response.ok) {
+        return response.json();
+      } else {
+        return Promise.reject(response);
+      }
+    }).then(function (weatherData) {
+      let userWeather = weatherData.data[0];
+      renderWeather(userWeather); 
+    }).catch(function (error) {
+      console.warn(error);
+    });
+  }
+
+  // Inits and listeners
+  getWeather();
+
+</script>
+{% endset %}
+
+<!-- Rendering the html -->
+<div class="htmlBox">
+  {{ html | safe }}
+</div>
+
+<!-- Rendering the html and js as syntax highlight -->
+{% highlight "html" %} {{ html | safe }} {{ js | safe }} {% endhighlight %}
+
+<!-- Inserting the js as a script -->
+{{ js | safe }}
