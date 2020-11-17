@@ -14,6 +14,7 @@ date: 2020-11-15
 
   // Variables
   let locationAPI = 'https://ipapi.co/json'
+  let city;
 
   let weatherAPI = ' https://api.weatherbit.io/v2.0/current'
   let weatherKey = '5503cec5734c4b79a0f908a36937391e'
@@ -23,7 +24,7 @@ date: 2020-11-15
   // Methods
   function renderWeather(prop) {
     app.innerHTML = `
-    <p>{% include "icons/map-pin.svg" %} ${prop.city_name}</p>
+    <p>{% include "icons/map-pin.svg" %} ${city}</p>
     <div class="weatherGrid">
       <img src="https://www.weatherbit.io/static/img/icons/${prop.weather.icon}.png" alt="${prop.weather.description}"></img>
       <div>
@@ -41,6 +42,7 @@ date: 2020-11-15
         return Promise.reject(response);
       }
     }).then(function (locationData) {
+      city = locationData.city;
       let lat = locationData.latitude;
       let lon = locationData.longitude;
       let locationParameters = `&lat=${lat}&lon=${lon}`;
