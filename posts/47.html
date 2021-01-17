@@ -1,6 +1,6 @@
 ---
-title: "Form Autosave"
-date: 2020-11-30
+title: "Autosave"
+date: 2021-01-17
 lesson: 47
 ---
 <style>
@@ -42,6 +42,12 @@ lesson: 47
     localStorage.setItem(storagePrefix + id, event.target.value);
   };
 
+  var submitHandler = function (event) {
+    if (event.target.id !== 'save-me') return;
+
+    clearData();
+  }
+
   var getID = function (field) {
     if (field.id.length > 0) {
       return field.id;
@@ -73,12 +79,6 @@ lesson: 47
 
     });
   };
-
-  var submitHandler = function (event) {
-    if (event.target.id !== 'save-me') return;
-
-    clearData();
-  }
 
   var clearData = function () {
 
