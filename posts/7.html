@@ -1,13 +1,13 @@
 ---
-title: "Random Rom"
-date: 2020-10-24
+title: "Character Count"
+date: 2020-10-18
+lesson: 7
 ---
 {% set html %}
-<blockquote aria-live="polite">Loading quote...</blockquote>
+<label for="text">Enter your text below.</label>
+<textarea id="text"></textarea>
 
-<button>More Ron</button>
-
-
+<p>You've written <strong><span id="character-count">0</span> characters</strong>.</p>
 {% endset %}
 
 <div class="htmlBox">
@@ -22,44 +22,16 @@ date: 2020-10-24
 <script async>
 
   // Variables
-  let ronQuote = document.querySelector('blockquote');
-  let ronButton = document.querySelector('button');
+  let inputElement = document.querySelector('textarea');
+  let counter = document.querySelector('#character-count');
 
   // Methods
-  function callRon() {
-    fetch('https://ron-swanson-quotes.herokuapp.com/v2/quotes').then(function (response) {
-      if (response.ok) {
-        return response.json();
-      } else {
-        return Promise.reject(response);
-      }
-    }).then(function (data) {
-      let errorState = document.querySelector("#errorState");
-      if (errorState) errorState.remove();
-      ronQuote.innerHTML = `
-      <p>${data[0]}</p>
-      <footer>— Ron Swanson</footer>`;
-    }).
-      catch(function (err) {
-        console.warn("oh no something went wrong", err);
-        let errorState = document.querySelector("#errorState");
-        if (!errorState) {
-          errorState = document.createElement('p');
-          errorState.setAttribute("id", "errorState");
-          errorState.style.color = "red";
-          errorState.textContent = "There was an error getting a new quote, please try again."
-          ronButton.after(errorState);
-        }
-      })
-  };
-  function handleInput(event) {
-    if (event.target !== ronButton) return;
-    callRon();
-  };
+  function characterCount () {
+    counter.textContent = inputElement.value.length;
+  }
 
-  // Listeners and inits
-  callRon();
-  document.addEventListener('click', handleInput);
+  // Listeners
+  inputElement.addEventListener('input', characterCount)
 
 </script>
 {% endset %}
@@ -69,7 +41,7 @@ date: 2020-10-24
 {% endhighlight %}
 
 <div class="htmlBox">
-  {% markdown '/notes/7.md' %}
+  {% markdown '/notes/4.md' %}
 </div>
 
 {{ js | safe }}

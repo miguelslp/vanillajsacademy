@@ -1,11 +1,11 @@
 ---
-title: "Monsters!"
-date: 2020-11-03
+title: "Find the Monsters!"
+date: 2020-11-06
+lesson: 25
 ---
 
 <!-- Setting the html code -->
 {% set html %}
-<button id="shuffleButton" class="full-width">Shuffle!</button>
 <div id="app" class="monsterGrid"></div>
 <footer>
   <hr />
@@ -31,7 +31,6 @@ date: 2020-11-03
 <script>
   // Variables
   let elem = document.querySelector("#app");
-  let btn = document.querySelector("#shuffleButton");
   let monsters = [
     "monster1",
     "monster2",
@@ -70,16 +69,27 @@ date: 2020-11-03
   let monstersGrid = function () {
     elem.innerHTML = shuffle(monsters.slice())
       .map(function (item) {
-        return `<img class="monsterGridItem" src="../../img/${item}.svg" alt="An image of a ${item === "sock" ? "sock" : "monster"}"></img>`;
+        return `
+        <div class="monsterGridItem" aria-live="polite">
+          <button data-monster-id=${item} class="">
+            <img src="../../img/door.svg" alt="A door whera monster lies behind"></img>
+        </button>
+        </div>`;
       })
       .join("");
   };
 
+  let clickHandler = function (event) {
+    let monster = event.target.closest('[data-monster-id]');
+    if (!monster) return;
+    let monsterID = monster.getAttribute('data-monster-id');
+    monster.parentNode.innerHTML = `
+    <img class="monsterGridItem" src="../../img/${monsterID}.svg" alt="An image of a ${monsterID === "sock" ? "sock" : "monster"}"></img>`
+  }
   // Inits and listeners
   monstersGrid();
-  document.addEventListener("click", function (event) {
-    if (event.target === btn) monstersGrid();
-  });
+  document.addEventListener("click", clickHandler);
+
 </script>
 {% endset %}
 

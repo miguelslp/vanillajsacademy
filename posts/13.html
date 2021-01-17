@@ -1,102 +1,76 @@
 ---
-title: "Find the Monsters!"
-date: 2020-11-06
+title: "Random Rom"
+date: 2020-10-24
+lesson: 13
 ---
-
-<!-- Setting the html code -->
 {% set html %}
-<div id="app" class="monsterGrid"></div>
-<footer>
-  <hr />
-  <p>
-    Icons by
-    <a href="https://thenounproject.com/term/door/311732/">Jamie Dickinson</a>,
-    <a href="https://thenounproject.com/term/monster/184225/">Nicky Knicky</a>,
-    <a href="https://thenounproject.com/term/monster/1510400/">Alvaro Cabrera</a
-    >, <a href="https://thenounproject.com/term/monster/28460/">Eliricon</a>,
-    <a href="https://thenounproject.com/term/monster/82823/">April Yang</a>,
-    <a href="https://thenounproject.com/term/monster/1062009/">tk66</a>,
-    <a href="https://thenounproject.com/term/monster/24990/">Alex WaZa</a>,
-    <a href="https://thenounproject.com/term/monster/37212/">Husein Aziz</a>,
-    <a href="https://thenounproject.com/term/monster/2236082">iconcheese</a>,
-    and
-    <a href="https://thenounproject.com/term/socks/38451/">Yazmin Alanis</a>.
-  </p>
-</footer>
+<blockquote aria-live="polite">Loading quote...</blockquote>
+
+<button>More Ron</button>
+
+
 {% endset %}
 
-<!-- Setting the js code -->
+<div class="htmlBox">
+  {{ html | safe }}
+</div>
+
+{% highlight "html" %}
+{{ html | safe }}
+{% endhighlight %}
+
 {% set js %}
-<script>
+<script async>
+
   // Variables
-  let elem = document.querySelector("#app");
-  let monsters = [
-    "monster1",
-    "monster2",
-    "monster3",
-    "monster4",
-    "monster5",
-    "monster6",
-    "monster7",
-    "monster8",
-    "monster9",
-    "monster10",
-    "monster11",
-    "sock",
-  ];
+  let ronQuote = document.querySelector('blockquote');
+  let ronButton = document.querySelector('button');
 
   // Methods
-  let shuffle = function (array) {
-    let currentIndex = array.length;
-    let temporaryValue, randomIndex;
-
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-  };
-
-  let monstersGrid = function () {
-    elem.innerHTML = shuffle(monsters.slice())
-      .map(function (item) {
-        return `
-        <div class="monsterGridItem" aria-live="polite">
-          <button data-monster-id=${item} class="">
-            <img src="../../img/door.svg" alt="A door whera monster lies behind"></img>
-        </button>
-        </div>`;
+  function callRon() {
+    fetch('https://ron-swanson-quotes.herokuapp.com/v2/quotes').then(function (response) {
+      if (response.ok) {
+        return response.json();
+      } else {
+        return Promise.reject(response);
+      }
+    }).then(function (data) {
+      let errorState = document.querySelector("#errorState");
+      if (errorState) errorState.remove();
+      ronQuote.innerHTML = `
+      <p>${data[0]}</p>
+      <footer>— Ron Swanson</footer>`;
+    }).
+      catch(function (err) {
+        console.warn("oh no something went wrong", err);
+        let errorState = document.querySelector("#errorState");
+        if (!errorState) {
+          errorState = document.createElement('p');
+          errorState.setAttribute("id", "errorState");
+          errorState.style.color = "red";
+          errorState.textContent = "There was an error getting a new quote, please try again."
+          ronButton.after(errorState);
+        }
       })
-      .join("");
+  };
+  function handleInput(event) {
+    if (event.target !== ronButton) return;
+    callRon();
   };
 
-  let clickHandler = function (event) {
-    let monster = event.target.closest('[data-monster-id]');
-    if (!monster) return;
-    let monsterID = monster.getAttribute('data-monster-id');
-    monster.parentNode.innerHTML = `
-    <img class="monsterGridItem" src="../../img/${monsterID}.svg" alt="An image of a ${monsterID === "sock" ? "sock" : "monster"}"></img>`
-  }
-  // Inits and listeners
-  monstersGrid();
-  document.addEventListener("click", clickHandler);
+  // Listeners and inits
+  callRon();
+  document.addEventListener('click', handleInput);
 
 </script>
 {% endset %}
 
-<!-- Rendering the html -->
-<div class="htmlBox">{{ html | safe }}</div>
+{% highlight "html" %}
+{{ js | safe }}
+{% endhighlight %}
 
-<!-- Rendering the html and js as syntax highlight -->
-{% highlight "html" %} {{ html | safe }} {{ js | safe }} {% endhighlight %}
+<div class="htmlBox">
+  {% markdown '/notes/7.md' %}
+</div>
 
-<!-- Inserting the js as a script -->
 {{ js | safe }}

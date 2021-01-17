@@ -1,9 +1,13 @@
 ---
-title: "Latest 5 NYT top stories"
-date: 2020-10-28
+title: "Character and Word Count"
+date: 2020-10-20
+lesson: 9
 ---
 {% set html %}
-<div id="app">Loading latest stories...</div>
+<label for="text">Enter your text below.</label>
+<textarea id="text"></textarea>
+<p>You've written <strong><span id="word-count">0</span> words</strong> and <strong><span id="character-count">0</span>
+    characters</strong>.</p>
 {% endset %}
 
 <div class="htmlBox">
@@ -18,29 +22,23 @@ date: 2020-10-28
 <script async>
 
   // Variables
-  let elem = document.querySelector('#app');
+  let textArea = document.querySelector('textarea');
+  let charCounter = document.querySelector('#character-count');
+  let wordCounter = document.querySelector('#word-count');
 
   // Methods
-  // ---Get the arrays and call updateDOM
-  function callNYT() {
-    fetch('https://api.nytimes.com/svc/topstories/v2/home.json?api-key=V4DAxXaiDzvGkumnpxfO4LpmCd7dM9om').then(function (response) {
-      if (response.ok) {
-        return response.json();
-      } else {
-        return Promise.reject(response);
-      }
-    }).then(array => updateDOM(array.results))};
-  // ---Helper function to insert the newest 5 as list items in the DOM
-  function updateDOM(storiesArray) {
-    let top5 = storiesArray.slice(0, 5);
-    let stories = top5.map(function (story) {
-      return `<li><a href="${story.short_url}">${story.title}</a></li>`;
-    }).join('');
-    elem.innerHTML = `<ul>${stories}</ul>`;
+  function handleInput(inputElement, countElement, wordCountElement) {
+    let newArray = inputElement.value.split(/\s+/).filter(function (item) {
+      return item != '';
+    })
+    countElement.textContent = newArray.join('').length;
+    wordCountElement.textContent = newArray.length;
   }
 
-  // Inits
- callNYT();
+  // Listeners
+  textArea.addEventListener('input', function () {
+    handleInput(this, charCounter, wordCounter);
+  });
 
 </script>
 {% endset %}
@@ -50,7 +48,7 @@ date: 2020-10-28
 {% endhighlight %}
 
 <div class="htmlBox">
-
+  {% markdown '/notes/5.md' %}
 </div>
 
 {{ js | safe }}

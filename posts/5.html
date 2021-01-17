@@ -1,12 +1,62 @@
 ---
-title: "Character and Word Count"
-date: 2020-10-20
+title: "Toggling passwords in multiple forms"
+date: 2020-10-16
+lesson: 5
 ---
 {% set html %}
-<label for="text">Enter your text below.</label>
-<textarea id="text"></textarea>
-<p>You've written <strong><span id="word-count">0</span> words</strong> and <strong><span id="character-count">0</span>
-    characters</strong>.</p>
+<h2>Change Username</h2>
+
+<p>Enter your username and password to change your username.</p>
+
+<form>
+  <div>
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username">
+  </div>
+
+  <div>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" data-target="changeUsername">
+  </div>
+
+  <div>
+    <label for="show-password">
+      <input type="checkbox" name="show-passwords" id="show-password" data-passwordToggle="changeUsername">
+      Show password
+    </label>
+  </div>
+
+  <p>
+    <button type="submit">Change Username</button>
+  </p>
+</form>
+
+<h2>Change Password</h2>
+
+<p>Enter your current password and new password below.</p>
+
+<form>
+  <div>
+    <label for="current-password">Current Password</label>
+    <input type="password" name="current-password" id="current-password" data-target="changePassword">
+  </div>
+
+  <div>
+    <label for="new-password">New Password</label>
+    <input type="password" name="new-password" id="new-password" data-target="changePassword">
+  </div>
+
+  <div>
+    <label for="show-passwords">
+      <input type="checkbox" name="show-passwords" id="show-passwords" data-passwordToggle="changePassword">
+      Show passwords
+    </label>
+  </div>
+
+  <p>
+    <button type="submit">Change Passwords</button>
+  </p>
+</form>
 {% endset %}
 
 <div class="htmlBox">
@@ -21,23 +71,21 @@ date: 2020-10-20
 <script async>
 
   // Variables
-  let textArea = document.querySelector('textarea');
-  let charCounter = document.querySelector('#character-count');
-  let wordCounter = document.querySelector('#word-count');
+  var passwords = Array.from(document.querySelectorAll('[type="password"]'));
 
   // Methods
-  function handleInput(inputElement, countElement, wordCountElement) {
-    let newArray = inputElement.value.split(/\s+/).filter(function (item) {
-      return item != '';
+  var togglePasswords = function (event) {
+    if (!event.target.matches('[data-passwordToggle]')) return;
+    var targets = event.target.getAttribute('data-passwordToggle');
+    passwords.forEach(element => {
+      if (element.matches(`[data-target="${targets}"]`)) {
+        element.type = event.target.checked ? 'text' : 'password';
+      };
     })
-    countElement.textContent = newArray.join('').length;
-    wordCountElement.textContent = newArray.length;
-  }
+  };
 
   // Listeners
-  textArea.addEventListener('input', function () {
-    handleInput(this, charCounter, wordCounter);
-  });
+  document.addEventListener('click', togglePasswords);
 
 </script>
 {% endset %}
@@ -47,7 +95,7 @@ date: 2020-10-20
 {% endhighlight %}
 
 <div class="htmlBox">
-  {% markdown '/notes/5.md' %}
+  {% markdown '/notes/3.md' %}
 </div>
 
 {{ js | safe }}

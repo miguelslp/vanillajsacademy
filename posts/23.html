@@ -1,0 +1,94 @@
+---
+title: "Monsters!"
+date: 2020-11-03
+lesson: 23
+---
+
+<!-- Setting the html code -->
+{% set html %}
+<button id="shuffleButton" class="full-width">Shuffle!</button>
+<div id="app" class="monsterGrid"></div>
+<footer>
+  <hr />
+  <p>
+    Icons by
+    <a href="https://thenounproject.com/term/door/311732/">Jamie Dickinson</a>,
+    <a href="https://thenounproject.com/term/monster/184225/">Nicky Knicky</a>,
+    <a href="https://thenounproject.com/term/monster/1510400/">Alvaro Cabrera</a
+    >, <a href="https://thenounproject.com/term/monster/28460/">Eliricon</a>,
+    <a href="https://thenounproject.com/term/monster/82823/">April Yang</a>,
+    <a href="https://thenounproject.com/term/monster/1062009/">tk66</a>,
+    <a href="https://thenounproject.com/term/monster/24990/">Alex WaZa</a>,
+    <a href="https://thenounproject.com/term/monster/37212/">Husein Aziz</a>,
+    <a href="https://thenounproject.com/term/monster/2236082">iconcheese</a>,
+    and
+    <a href="https://thenounproject.com/term/socks/38451/">Yazmin Alanis</a>.
+  </p>
+</footer>
+{% endset %}
+
+<!-- Setting the js code -->
+{% set js %}
+<script>
+  // Variables
+  let elem = document.querySelector("#app");
+  let btn = document.querySelector("#shuffleButton");
+  let monsters = [
+    "monster1",
+    "monster2",
+    "monster3",
+    "monster4",
+    "monster5",
+    "monster6",
+    "monster7",
+    "monster8",
+    "monster9",
+    "monster10",
+    "monster11",
+    "sock",
+  ];
+
+  // Methods
+  let shuffle = function (array) {
+    let currentIndex = array.length;
+    let temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  };
+
+  let monstersGrid = function () {
+    elem.innerHTML = shuffle(monsters.slice())
+      .map(function (item) {
+        return `<img class="monsterGridItem" src="../../img/${item}.svg" alt="An image of a ${item === "sock" ? "sock" : "monster"}"></img>`;
+      })
+      .join("");
+  };
+
+  // Inits and listeners
+  monstersGrid();
+  document.addEventListener("click", function (event) {
+    if (event.target === btn) monstersGrid();
+  });
+</script>
+{% endset %}
+
+<!-- Rendering the html -->
+<div class="htmlBox">{{ html | safe }}</div>
+
+<!-- Rendering the html and js as syntax highlight -->
+{% highlight "html" %} {{ html | safe }} {{ js | safe }} {% endhighlight %}
+
+<!-- Inserting the js as a script -->
+{{ js | safe }}
