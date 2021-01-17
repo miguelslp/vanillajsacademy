@@ -1,0 +1,95 @@
+---
+title: "Weather App - Plugin"
+date: 2020-11-15
+lesson: 37
+---
+
+<!-- Setting the html code -->
+{% set html %}
+<div id="app" class="weatherApp l-stack">Checking the weather near you...</div>
+{% endset %}
+
+<!-- Setting the js code -->
+{% set js %}
+<script>
+var createWeatherApp = function (options) {
+
+  // Default settings
+  var defaults = {
+    selector: '#app',
+    weatherAPI: ' https://api.weatherbit.io/v2.0/current',
+    weatherKey: '5503cec5734c4b79a0f908a36937391e',
+    locationAPI: 'https://ipapi.co/json',
+  }
+
+  // Merge any user options into the defaults
+  var settings = Object.assign(defaults, options);
+
+  // Variables
+  let city;
+  let app = document.querySelector(settings.selector);
+
+  // Methods
+  function renderWeather(prop) {
+    app.innerHTML = `
+    <p>{% include "icons/map-pin.svg" %} ${city}</p>
+    <div class="weatherGrid">
+      <img src="https://www.weatherbit.io/static/img/icons/${prop.weather.icon}.png" alt="${prop.weather.description}"></img>
+      <div>
+        <p class="temperature"><strong>${prop.app_temp}º C</strong></span>
+        <p class="description">${prop.weather.description}</p>
+      <div>
+    </div>`
+  }
+
+  function getWeather () {
+    fetch(settings.locationAPI).then(function (response) {
+      if (response.ok) {
+        return response.json();
+      } else {
+        return Promise.reject(response);
+      }
+    }).then(function (locationData) {
+      city = locationData.city;
+      let lat = locationData.latitude;
+      let lon = locationData.longitude;
+      let locationParameters = `&lat=${lat}&lon=${lon}`;
+      return fetch(`${settings.weatherAPI}?${locationParameters}&key=${settings.weatherKey}`);
+    }).then(function (response) {
+      if (response.ok) {
+        return response.json();
+      } else {
+        return Promise.reject(response);
+      }
+    }).then(function (weatherData) {
+      let userWeather = weatherData.data[0];
+      renderWeather(userWeather); 
+    }).catch(function (error) {
+      console.warn(error);
+    });
+  }
+
+  // Inits and listeners
+  getWeather();
+};
+
+createWeatherApp();
+ 
+// Example with options
+// createWeatherApp({
+//   selector: 'something-else'
+// })
+
+</script>
+{% endset %}
+
+<!-- Rendering the html -->
+<div class="htmlBox">
+  {{ html | safe }}
+</div>
+
+<!-- Rendering the html and js as syntax highlight -->
+{% highlight "html" %} {{ html | safe }} {{ js | safe }} {% endhighlight %}
+
+<!-- Inserting the js as a script -->
+{{ js | safe }}
