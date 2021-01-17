@@ -1,0 +1,68 @@
+---
+title: "Helper Library"
+date: 2020-11-19
+---
+<style>
+  .btn-blue {
+    background-color: #0088cc;
+    color: #ffffff;
+  }
+
+  .btn-purple {
+    background-color: rebeccapurple;
+    color: #ffffff;
+  }
+</style>
+<!-- Setting the html code -->
+{% set html %}
+<button class="btn-blue" id="button-1">Button 1</button>
+<button class="btn-blue" id="button-2">Button 2</button>
+<button class="btn-blue" id="button-3">Button 3</button>
+{% endset %}
+<!-- Setting the js code -->
+{% set js %}
+<script>
+var _ = (function () {
+
+  // variables
+
+
+  // public methods
+  var methods = {};
+
+
+  // methods
+  methods.makeArray = function (nodelist) {
+    return Array.from(nodelist);
+  }
+  methods.getFirst = function (selector) {
+    return document.querySelector(selector);
+  }
+  methods.getAll = function (selector) {
+    return methods.makeArray(document.querySelectorAll(selector));
+  }
+  methods.addClass = function (c, a) {
+    a.forEach(element => element.classList.add(c));
+  }
+  methods.removeClass = function (c, a) {
+    a.forEach(element => element.classList.remove(c));
+  }
+
+
+  // return public methods
+  return methods;
+})();
+
+</script>
+{% endset %}
+
+<!-- Rendering the html -->
+<div class="htmlBox">
+  {{ html | safe }}
+</div>
+
+<!-- Rendering the html and js as syntax highlight -->
+{% highlight "html" %} {{ html | safe }} {{ js | safe }} {% endhighlight %}
+
+<!-- Inserting the js as a script -->
+{{ js | safe }}

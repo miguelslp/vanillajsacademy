@@ -1,0 +1,78 @@
+---
+title: "Countdown Timer"
+date: 2020-12-07
+---
+<style>
+
+</style>
+<!-- Setting the html code -->
+{% set html %}
+<div id="app"></div>
+{% endset %}
+<!-- Setting the js code -->
+{% set js %}
+<script>
+
+  // State based UI component
+  var Rue = function (selector, options) {
+    this.elem = document.querySelector(selector);
+    this.data = options.data;
+    this.template = options.template;
+  };
+
+  // Render a new UI
+  Rue.prototype.render = function () {
+    this.elem.innerHTML = this.template(this.data);
+  }
+
+  // The countdown
+  var app = new Rue('#app', {
+    data: {
+      count: 60,
+    },
+    template: function (props) {
+      var html = `${props.count}`;
+      return html;
+    }
+  })
+
+  // Render the countdown
+  app.render();
+
+  // Decrements count per second
+  var startCount = function() {
+    var countDown = window.setInterval(function () {
+    app.data.count--;
+    if (app.data.count === 0) {
+      window.clearInterval(countDown);
+      app.data.count = `End <button id="restart">Restart</button>`;
+    };
+    app.render();
+  }, 1000);
+  };
+
+  startCount();
+
+  document.addEventListener('click', function (event) {
+    let restart = document.querySelector('#restart');
+    if (event.target != restart) {
+      return
+    }
+    app.data.count = 60;
+    app.render();
+    startCount();
+  })
+
+</script>
+{% endset %}
+
+<!-- Rendering the html -->
+<div class="htmlBox">
+  {{ html | safe }}
+</div>
+
+<!-- Rendering the html and js as syntax highlight -->
+{% highlight "html" %} {{ html | safe }} {{ js | safe }} {% endhighlight %}
+
+<!-- Inserting the js as a script -->
+{{ js | safe }}
