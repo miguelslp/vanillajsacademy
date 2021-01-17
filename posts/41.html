@@ -1,0 +1,110 @@
+---
+title: "DOM Manipulation Library"
+date: 2021-01-17
+lesson: 41
+---
+<style>
+  .btn-blue {
+    background-color: #0088cc;
+    color: #ffffff;
+  }
+
+  .btn-purple {
+    background-color: rebeccapurple;
+    color: #ffffff;
+  }
+</style>
+<!-- Setting the html code -->
+{% set html %}
+<p>
+  <button class="btn-blue" id="button-1">Button 1</button>
+  <button class="btn-blue" id="button-2">Button 2</button>
+  <button class="btn-blue" id="button-3">Button 3</button>
+</p>
+
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+{% endset %}
+<!-- Setting the js code -->
+{% set js %}
+<script>
+  var $ = (function () {
+
+    var getArray = function (arr) {
+      return methods.Array.from(document.querySelectorAll(arr));
+    };
+
+    // The constructor object
+    var Constructor = function (selector) {
+      this.elems = document.querySelectorAll(selector);
+    };
+
+    // Get an immutable copy of the matching elements 
+    Constructor.prototype.items = function () {
+      return Array.prototype.slice.call(this.elems);
+    };
+
+    Constructor.prototype.first = function () {
+      return this.elems[0];
+    };
+
+    Constructor.prototype.last = function () {
+      return this.elems[this.elems.length - 1];
+    };
+
+    Constructor.prototype.addClass = function (className) {
+      this.items().forEach(function (elem) {
+        elem.classList.add(className);
+      });
+    };
+
+    Constructor.prototype.removeClass = function (className) {
+      this.items().forEach(function (elem) {
+        elem.classList.remove(className);
+      });
+    };
+
+    // Return the constructor
+    return Constructor;
+
+  })();
+
+  // Create new instances
+  var btns = new $('button');
+  var list = new $('ul');
+
+
+  // $.items()
+console.log('$.items()', btns.items());
+console.log('$.items()', list.items());
+
+// $.first()
+console.log('$.first()', btns.first());
+
+// $.last()
+console.log('$.last()', btns.last());
+
+// $.addClass()
+btns.addClass('btn-purple');
+
+// $.removeClass()
+btns.removeClass('btn-blue');
+
+
+
+</script>
+{% endset %}
+
+<!-- Rendering the html -->
+<div class="htmlBox">
+  {{ html | safe }}
+</div>
+
+<!-- Rendering the html and js as syntax highlight -->
+{% highlight "html" %} {{ html | safe }} {{ js | safe }} {% endhighlight %}
+
+<!-- Inserting the js as a script -->
+{{ js | safe }}
