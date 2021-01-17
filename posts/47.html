@@ -4,7 +4,7 @@ date: 2020-11-30
 lesson: 47
 ---
 <style>
- 
+
 </style>
 <!-- Setting the html code -->
 {% set html %}
@@ -31,21 +31,77 @@ lesson: 47
 <!-- Setting the js code -->
 {% set js %}
 <script>
-var form = document.querySelector('#save-me');
-var btn = document.querySelector('button');
+  var storagePrefix = 'form-autosave_';
 
-var formData = function() {
-   let data = Array.from(form.querySelectorAll('input')).map(e => e.value);
-   localStorage.setItem('formData', data);
-   console.log(data);
-}
+  var inputHandler = function (event) {
+    if (!event.target.closest('#save-me')) return;
 
-var formStart = function () {
-  let data = localStorage.getItem('formData');
-}
+    var id = getID(event.target);
+    if (!id) return;
 
-document.addEventListener('input', formData);
-btn.addEventListener('click', localStorage.removeItem('formData'));
+    localStorage.setItem(storagePrefix + id, event.target.value);
+  };
+
+  var getID = function (field) {
+    if (field.id.length > 0) {
+      return field.id;
+    }
+
+    if (field.name.length > 0) {
+      return field.name
+    }
+    return null;
+  };
+
+  var loadData = function () {
+    // Get all of the form fields
+    var fields = document.querySelectorAll('#save-me input, #save-me textarea');
+
+    // Loop through each field and load any saved data in localStorage
+    Array.prototype.slice.call(fields).forEach(function (field) {
+
+      // If the field has no usable ID, skip it
+      var id = getID(field);
+      if (!id) return;
+
+      // If there's no saved value in localStorage, skip it
+      var saved = localStorage.getItem(storagePrefix + id);
+      if (!saved) return;
+
+      // Set the field value to the saved data in localStorage
+      field.value = saved;
+
+    });
+  };
+
+  var submitHandler = function (event) {
+    if (event.target.id !== 'save-me') return;
+
+    clearData();
+  }
+
+  var clearData = function () {
+
+    // Get all of the form fields
+    var fields = document.querySelectorAll('#save-me input, #save-me textarea');
+
+    // Loop through each field and load any saved data in localStorage
+    Array.prototype.slice.call(fields).forEach(function (field) {
+
+      // If the field has no usable ID, skip it
+      var id = getID(field);
+      if (!id) return;
+
+      // Remove the item from localStorage
+      localStorage.removeItem(storagePrefix + id);
+
+    });
+
+  };
+
+  loadData();
+  document.addEventListener('input', inputHandler);
+  document.addEventListener('submit', submitHandler);
 
 </script>
 {% endset %}
