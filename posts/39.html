@@ -26,9 +26,6 @@ lesson: 39
 var _ = (function () {
 
   // variables
-
-
-  // public methods
   var methods = {};
 
 
@@ -53,6 +50,16 @@ var _ = (function () {
   // return public methods
   return methods;
 })();
+
+// _.toArray()
+var arr = _.makeArray(document.querySelectorAll('button'));
+console.log('_.makeArray()', arr);
+
+// _.get()
+var btn = _.getAll('#button-2');
+console.log('_getAll()', btn);
+
+
 
 </script>
 {% endset %}
