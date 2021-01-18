@@ -7,5 +7,15 @@ eleventyNavigation:
 
 {% set postslist = collections.posts %}
 {% set postslistCounter = collections.posts | length %}
+{% set experimentslist = collections.experiments %}
 <p>{{postslistCounter}} of 35 projects completed</p>
 {% include "postslist.njk" %}
+<div class="l-stack">
+<a class="l-icon" href="https://courses.gomakethings.com/academy/2020-10/" target="_blank" rel="noopener">
+{% include "icons/external-link.svg" %} Vanilla JS Academy</a>
+<a class="l-icon" href="https://vanillajstoolkit.com/reference/" target="_blank" rel="noopener">
+{% include "icons/external-link.svg" %} The Vanilla JS Toolkit</a>
+<a class="l-icon" href="https://github.com/miguelslp/vanillajsacademy/" target="_blank" rel="noopener">
+{% include "icons/external-link.svg" %} This project on Github</a>
+</div>
+{% include "experimentslist.njk" %}

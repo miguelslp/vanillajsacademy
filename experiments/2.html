@@ -1,0 +1,77 @@
+---
+title: "µland"
+---
+{% set html %}
+<div id="app" class="clock"></div>
+<a href="https://github.com/WebReflection/uland#readme">Link to µland</a>
+{% endset %}
+
+<div class="htmlBox">
+  {{ html | safe }}
+</div>
+
+{% highlight "html" %}
+{{ html | safe }}
+{% endhighlight %}
+
+{% set js %}
+<script type="module">
+  import { Component, render, html, useState, useEffect } from 'https://unpkg.com/uland?module';
+
+  const Counter = Component((initialState) => {
+    const [count, setCount] = useState(initialState);
+    return html`
+  <button onclick=${() => setCount(count + 1)}>
+    Count: ${count}
+  </button>`;
+  });
+
+  const TextInput = Component(() => {
+    const [name, setName] = useState("");
+    const updateName = (event) => {
+      setName(event.target.value);
+    };
+    return html`
+  <input type="text" value=${name} oninput=${updateName} placeholder="Reactive input" />
+  <p>${name}</p>
+  `;
+  })
+
+  const Wrapper = Component((props) => {
+    const styles = "color: red;"
+    return html`
+  <p>This is above</p>
+  <p>${props}</p>
+  <p style="${styles}">This is below</p>`;
+  })
+
+  const Clock = Component(() => {
+    const [time, setTime] = useState();
+    useEffect(() => {
+      setInterval(() => {
+        setTime(useState.time = new Date().toLocaleTimeString())
+      }, 1000);
+    })
+    return html`
+  <strong>The time is:</strong> <span>${time}</span>`;
+  })
+
+  render(document.querySelector('#app'), () => html`
+  <div>
+    ${Clock()}
+    ${Wrapper("Hello")} <hr>
+    Some counters.
+    ${Counter(0)} ${Counter(1)}
+    <br>
+    ${TextInput()}
+  </div>
+`);
+</script>
+{% endset %}
+
+
+{% highlight "html" %}
+{{ js | safe }}
+{% endhighlight %}
+
+{{ js | safe }}

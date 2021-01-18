@@ -41,6 +41,12 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+  eleventyConfig.addCollection("experiments", function(collectionApi) {
+    return collectionApi.getFilteredByTag("experiments").sort(function(a, b) {
+      return b.data.fileSlug - a.data.fileSlug;
+    });
+  });
+
   eleventyConfig.addCollection("tagList", function(collection) {
     let tagSet = new Set();
     collection.getAll().forEach(function(item) {

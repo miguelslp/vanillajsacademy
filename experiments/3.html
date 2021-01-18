@@ -1,0 +1,62 @@
+---
+title: "reefjs"
+---
+{% set html %}
+<div id="app"></div>
+<div id="textInput"></div>
+<a href="https://reefjs.com/getting-started/">Link to reefjs</a>
+{% endset %}
+
+<div class="htmlBox">
+  {{ html | safe }}
+</div>
+
+{% highlight "html" %}
+{{ html | safe }}
+{% endhighlight %}
+
+{% set js %}
+<!-- Use the latest major version -->
+<script src="https://cdn.jsdelivr.net/npm/reefjs@7/dist/reef.min.js"></script>
+<script>
+  // Setup the component
+  var app = new Reef('#app', {
+    data: {
+      time: new Date().toLocaleTimeString()
+    },
+    template: function (props) {
+      return `<strong>The time is:</strong> <span>${props.time}</span>`;
+    }
+  });
+
+  // Render the component
+  app.render();
+
+  // Update the clock once a second
+  window.setInterval(function () {
+    app.data.time = new Date().toLocaleTimeString();
+  }, 1000);
+
+  var textInput = new Reef('#textInput', {
+    data: {
+      value: ""
+    },
+    template: function (props) {
+      return `<input type="text" value="${props.value}" /><p>${props.value}</p>`;
+    }
+  });
+
+  textInput.render();
+
+  document.querySelector('input').addEventListener('input', function () {
+    textInput.data.value = event.target.value;  
+  })
+</script>
+{% endset %}
+
+
+{% highlight "html" %}
+{{ js | safe }}
+{% endhighlight %}
+
+{{ js | safe }}

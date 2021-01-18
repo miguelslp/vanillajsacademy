@@ -1,0 +1,70 @@
+---
+title: "µhtml + hooked-elements"
+---
+{% set html %}
+<my-counter></my-counter>
+<my-counter></my-counter>
+<my-clock></my-clock>
+<my-input></my-input>
+<div id="input"></div>
+<br>
+<a href="https://github.com/WebReflection/uhtml">Link to µhtml</a>
+<br>
+<a href="https://github.com/WebReflection/hooked-elements">Link to hooked-elements</a>
+{% endset %}
+
+<div class="htmlBox">
+  {{ html | safe }}
+</div>
+
+{% highlight "html" %}
+{{ html | safe }}
+{% endhighlight %}
+
+{% set js %}
+<script type="module">
+  import { render, html } from 'https://unpkg.com/uhtml?module';
+  import { define, useState, useEffect } from 'https://unpkg.com/hooked-elements?module';
+
+  define('my-counter', element => {
+    const [count, update] = useState(0);
+    render(element, html`
+    <button class="large btn" onclick=${() => update(count - 1)}>-</button>
+    <span class="large value">${count}</span>
+    <button class="large btn" onclick=${() => update(count + 1)}>+</button>
+  `);
+  });
+
+  define('my-clock', element => {
+    const [time, setTime] = useState();
+
+    useEffect(() => {
+      setInterval(() => {
+        setTime(useState.time = new Date().toLocaleTimeString())
+      }, 1000);
+    })
+
+    render(element, html`
+    <strong>The time is:</strong> <span>${time}</span>
+  `);
+  });
+
+  define('my-input', element => {
+    const [name, setName] = useState("");
+    const updateName = (event) => {
+      setName(event.target.value);
+    };
+    render(element, html`
+  <input type="text" value=${name} oninput=${updateName} placeholder="Reactive input" />
+  <p>${name}</p>
+  `);
+  });
+</script>
+{% endset %}
+
+
+{% highlight "html" %}
+{{ js | safe }}
+{% endhighlight %}
+
+{{ js | safe }}
