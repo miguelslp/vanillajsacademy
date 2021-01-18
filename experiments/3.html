@@ -4,6 +4,8 @@ title: "reefjs"
 {% set html %}
 <div id="app"></div>
 <div id="textInput"></div>
+<div id="textInput2"></div>
+<div id="p"></div>
 <a href="https://reefjs.com/getting-started/">Link to reefjs</a>
 {% endset %}
 
@@ -49,8 +51,37 @@ title: "reefjs"
   textInput.render();
 
   document.querySelector('input').addEventListener('input', function () {
-    textInput.data.value = event.target.value;  
+    textInput.data.value = event.target.value;
   })
+
+  var store = new Reef.Store({
+    data: {
+      otherValue: 'A',
+    }
+  });
+
+  var textInput2 = new Reef('#textInput2', {
+    store: store,
+    template: function () {
+      return `<input id="input2" type="text" value="${store.data.otherValue}" />`;
+    }
+  });
+
+  var paragraph = new Reef('#p', {
+    store: store,
+    template: function () {
+      return `<p>${store.data.otherValue}</p>`;
+    }
+  });
+
+  textInput2.render();
+  paragraph.render();
+  document.querySelector('#input2').addEventListener('input', function () {
+    console.log(event.target.value);
+    store.data.otherValue = event.target.value;
+  })
+
+
 </script>
 {% endset %}
 
