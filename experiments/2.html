@@ -56,6 +56,27 @@ title: "µland"
   <strong>The time is:</strong> <span>${time}</span>`;
   })
 
+  const CounterDisplay = Component(() => {
+    let [counter, setCounter] = useState(0);
+
+    const incCounter = () => {
+      setCounter(counter => counter + 1);
+    };
+
+    useEffect(() => {
+      setInterval(() => {
+        incCounter();
+      }, 200);
+    }, []);
+
+    return html`
+      <div className="App">
+        <h1>${counter}</h1>
+        <button onClick=${incCounter}>Inc</button>
+      </div>
+    `;
+  });
+
   render(document.querySelector('#app'), () => html`
   <div>
     ${Clock()}
@@ -64,6 +85,7 @@ title: "µland"
     ${Counter(0)} ${Counter(1)}
     <br>
     ${TextInput()}
+    ${CounterDisplay()}
   </div>
 `);
 </script>
