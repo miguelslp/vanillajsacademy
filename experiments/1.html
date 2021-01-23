@@ -37,7 +37,7 @@ title: "µhtml + hooked-elements"
   // }
 
   // OtherInput();
-    define('my-counter', function (element) {
+    define('my-counter', element => {
       const [count, update] = useState(0);
       const size = element.getAttribute('size');
       render(element, html`
