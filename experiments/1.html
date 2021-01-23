@@ -2,16 +2,17 @@
 title: "µhtml + hooked-elements"
 ---
 {% set html %}
-<my-counter>Loading...</my-counter>
-<my-counter></my-counter>
-<my-clock></my-clock>
+<div><my-counter size="small">Loading...</my-counter>
+<my-counter size="big"></my-counter>
+</div>
+<!-- <my-clock></my-clock>
 <my-input></my-input>
 <div id="otherInput"></div>
-<br>
+<br> -->
 <a href="https://github.com/WebReflection/uhtml">Link to µhtml</a>
 <br>
 <a href="https://github.com/WebReflection/hooked-elements">Link to hooked-elements</a>
-<div class="buttons"></div>
+<!-- <div class="buttons"></div> -->
 {% endset %}
 
 <div class="htmlBox">
@@ -36,63 +37,65 @@ title: "µhtml + hooked-elements"
   // }
 
   // OtherInput();
-
-  define('my-counter', element => {
-    const [count, update] = useState(0);
-    render(element, html`
+    define('my-counter', function (element) {
+      const [count, update] = useState(0);
+      const size = element.getAttribute('size');
+      render(element, html`
     <button class="large btn" onclick=${() => update(count - 1)}>-</button>
-    <span class="large value">${count}</span>
+    <span class="large value">${count} ${size}</span>
     <button class="large btn" onclick=${() => update(count + 1)}>+</button>
   `);
-  });
-
-  define('my-clock', element => {
-    const [time, setTime] = useState();
-
-    useEffect(() => {
-      setInterval(() => {
-        setTime(useState.time = new Date().toLocaleTimeString())
-      }, 1000);
     })
+  
+  // withProps("B");
+// };
+//   define('my-clock', element => {
+//     const [time, setTime] = useState();
 
-    render(element, html`
-    <strong>${hey} The time is:</strong> <span>${time}</span>
-  `);
-  });
+//     useEffect(() => {
+//       setInterval(() => {
+//         setTime(useState.time = new Date().toLocaleTimeString())
+//       }, 1000);
+//     })
 
-  define('my-input', element => {
-    const [name, setName] = useState("");
-    const updateName = (event) => {
-      setName(event.target.value);
-    };
-    render(element, html`
-  <input type="text" value=${name} oninput=${updateName} placeholder="Reactive input" />
-  <p>${name}</p>
-  `);
-  });
+//     render(element, html`
+//     <strong>${hey} The time is:</strong> <span>${time}</span>
+//   `);
+//   });
 
-  // an essential Button component example
-const Button = (text, className) => html`
-  <button class=${className}>${text}</button>
-`;
+//   define('my-input', element => {
+//     const [name, setName] = useState("");
+//     const updateName = (event) => {
+//       setName(event.target.value);
+//     };
+//     render(element, html`
+//   <input type="text" value=${name} oninput=${updateName} placeholder="Reactive input" />
+//   <p>${name}</p>
+//   `);
+//   });
 
-// render as many buttons as needed
-render(document.querySelector('.buttons'), html`
-  Let's put some button live:
-  ${Button('first', 'first')} <br>
-  ${Button('second', '')}     <br>
-  ${Button('third', 'last')}
-`);
+//   // an essential Button component example
+// const Button = (text, className) => html`
+//   <button class=${className}>${text}</button>
+// `;
 
-const Clicking = (click) => html`
-  <button id="click" data-click>${click}</button>`;
+// // render as many buttons as needed
+// render(document.querySelector('.buttons'), html`
+//   Let's put some button live:
+//   ${Button('first', 'first')} <br>
+//   ${Button('second', '')}     <br>
+//   ${Button('third', 'last')}
+// `);
 
-document.addEventListener('click', function () {
-  if (event.target.hasAttribute('data-click')) {
-    render(document.querySelector('.#click'), html`
-      ${Clicking}
-`);
-}
+// const Clicking = (click) => html`
+//   <button id="click" data-click>${click}</button>`;
+
+// document.addEventListener('click', function () {
+//   if (event.target.hasAttribute('data-click')) {
+//     render(document.querySelector('.#click'), html`
+//       ${Clicking}
+// `);
+// }
 
 </script>
 {% endset %}
