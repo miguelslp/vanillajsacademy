@@ -21,11 +21,12 @@ lesson: 53
   // define a localStorage id
   var storageID = 'pirateCache';
 
+  // sanitize html from API
   var sanitizeHTML = function (str) {
-			var temp = document.createElement('div');
-			temp.textContent = str;
-			return temp.innerHTML;
-		};
+    var temp = document.createElement('div');
+    temp.textContent = str;
+    return temp.innerHTML;
+  };
 
   // get articles from the cache if still valid, or from the API if not
   var fetchArticles = function () {
@@ -73,7 +74,7 @@ lesson: 53
         '<p><em>By ' + sanitizeHTML(article.author) + ' on ' + sanitizeHTML(article.pubdate) + '</em></p>' +
         sanitizeHTML(article.article) +
         '</article>';
-      
+
       return html;
     }).join('') + '<p><em>Articles from <a href="' + sanitizeHTML(data.attribution.url) + '">' + sanitizeHTML(data.attribution.name) + '</a></em></p>';
   };
@@ -85,7 +86,7 @@ lesson: 53
 
   // save article data to localStorage
   var saveData = function (data) {
-    
+
     // create a cache object with a timestamp
     var cache = {
       data: data,
@@ -98,7 +99,7 @@ lesson: 53
 
   // get API data from localStorage
   var getData = function () {
-    
+
     // get saved daa from localStorage
     var saved = localStorage.getItem(storageID);
     if (!saved) return;
@@ -116,7 +117,7 @@ lesson: 53
 
     // check that there is data, and a timestamp key
     if (!saved || !saved.data || !saved.timestamp) return false;
-  
+
     // get the difference between the timestamp and current time
     var difference = new Date().getTime() - saved.timestamp;
 
