@@ -39,18 +39,13 @@ lesson: 49
     var id = getID(event.target);
     if (!id) return;
 
-    var saved = localStorage.getItem(storagePrefix);
-    saved = saved ? JSON.parse(saved) : {};
-
-    saved[id] = event.target.value;
-
-    localStorage.setItem(storagePrefix, JSON.stringify(saved));
+    localStorage.setItem(storagePrefix + id,event.target.value);
   };
 
   var submitHandler = function (event) {
     if (event.target.id !== 'save-me') return;
 
-    localStorage.removeItem(storagePrefix)
+    clearData();
   }
 
   var getID = function (field) {
@@ -66,11 +61,6 @@ lesson: 49
 
   var loadData = function () {
 
-    // Get localStorage data
-    var saved = localStorage.getItem(storagePrefix);
-    if (!saved) return;
-    saved = JSON.parse(saved);
-
     // Get all of the form fields
     var fields = document.querySelectorAll('#save-me input, #save-me textarea');
 
@@ -82,6 +72,7 @@ lesson: 49
       if (!id) return;
 
       // If there's no saved data in localStorage, skip it
+      var saved = localStorage.getItem(storagePrefix + id);
       if (!saved[id]) return;
 
       // Set the field value to the saved data in localStorage
@@ -90,6 +81,24 @@ lesson: 49
     });
 
   };
+
+  var clearData = function () {
+    
+    // Get all of the form fields
+    var fields = document.querySelectorAll('#save-me input, #save-me textarea');
+
+    // Loop through each field and load any saved data in localStorage
+    Array.prototype.slice.call(fields).forEarch(function (fields) {
+      
+      // if the field has no usable id, skip it
+      var id = getID(field);
+      if(!id) return;
+
+      // remove the item from localStorage
+      localStorage.removeItem(storagePrefix + id);
+
+    })
+  }
 
   loadData();
   document.addEventListener('input', inputHandler);

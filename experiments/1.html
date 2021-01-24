@@ -12,6 +12,7 @@ title: "µhtml + hooked-elements"
 <br>
 <a href="https://github.com/WebReflection/hooked-elements">Link to hooked-elements</a>
 <div class="buttons"></div>
+<div class="button"></div>
 {% endset %}
 
 <div class="htmlBox">
@@ -26,16 +27,6 @@ title: "µhtml + hooked-elements"
 <script type="module">
   import { render, html } from 'https://unpkg.com/uhtml?module';
   import { define, useState, useEffect } from 'https://unpkg.com/hooked-elements?module';
-
-  // const OtherInput = () => {
-  //   const text = "";
-  //   return function updateInput(text) {
-  //     return render(document.querySelector('#otherInput'), html`
-  //     <input id="" type="text" value="" oninput=${() => updateInput(text)} placeholder="other input"/>`);
-  //   }
-  // }
-
-  // OtherInput();
 
   define('my-counter', element => {
     const [count, update] = useState(0);
@@ -71,28 +62,29 @@ title: "µhtml + hooked-elements"
   `);
   });
 
-  // an essential Button component example
-const Button = (text, className) => html`
-  <button class=${className}>${text}</button>
-`;
+//   // an essential Button component example
+//   const Button = (text, className) => html`
+//   <button class=${className}>${text}</button>
+// `;
 
-// render as many buttons as needed
-render(document.querySelector('.buttons'), html`
-  Let's put some button live:
-  ${Button('first', 'first')} <br>
-  ${Button('second', '')}     <br>
-  ${Button('third', 'last')}
-`);
+//   // render as many buttons as needed
+//   render(document.querySelector('.buttons'), html`
+//   Let's put some button live:
+//   ${Button('first', 'first')} <br>
+//   ${Button('second', '')}     <br>
+//   ${Button('third', 'last')}
+// `);
 
-const Clicking = (click) => html`
+  const Clicking = (click) => html`
   <button id="click" data-click>${click}</button>`;
 
-document.addEventListener('click', function () {
-  if (event.target.hasAttribute('data-click')) {
-    render(document.querySelector('.#click'), html`
+  document.addEventListener('click', function () {
+    if (event.target.hasAttribute('data-click')) {
+      render(document.querySelector('.#click'), html`
       ${Clicking}
-`);
-}
+`)
+    }
+  });
 
 </script>
 {% endset %}
