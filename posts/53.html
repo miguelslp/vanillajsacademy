@@ -1,0 +1,141 @@
+---
+title: "API cache"
+date: 2021-01-24
+lesson: 53
+---
+<style>
+
+</style>
+<!-- Setting the html code -->
+{% set html %}
+<div id="app">
+  Loading...
+</div>
+{% endset %}
+<!-- Setting the js code -->
+{% set js %}
+<script>
+  // get the app element
+  var app = document.querySelector('#app');
+
+  // define a localStorage id
+  var storageID = 'pirateCache';
+
+  // sanitize html from API
+  var sanitizeHTML = function (str) {
+    var temp = document.createElement('div');
+    temp.textContent = str;
+    return temp.innerHTML;
+  };
+
+  // get articles from the cache if still valid, or from the API if not
+  var fetchArticles = function () {
+
+    // check for valid cached data
+    // if it exists, use it
+    var saved = getData();
+    if (saved) {
+      renderNews(saved);
+      console.log('loaded from cache');
+      return;
+    }
+
+    // fetch articles from the API
+    fetch('https://vanillajsacademy.com/api/pirates.json').then(function (response) {
+      if (response.ok) {
+        return response.json();
+      } else {
+        return Promise.reject(response);
+      }
+    }).then(function (data) {
+      renderNews(data);
+      saveData(data);
+      console.log('fetched from API');
+    }).catch(function () {
+      renderNoArticles();
+    });
+  };
+
+  // render articles into the ui
+  var renderNews = function (data) {
+
+    // if there are no articles, render a message into the UI
+    if (data.articles.length < 1) {
+      renderNoArticles();
+      return;
+    }
+
+    // otherwise, render the UI
+    app.innerHTML = data.articles.map(function (article) {
+
+      // create html
+      var html = '<article>' +
+        '<h2>' + sanitizeHTML(article.title) + '</h2>' +
+        '<p><em>By ' + sanitizeHTML(article.author) + ' on ' + sanitizeHTML(article.pubdate) + '</em></p>' +
+        sanitizeHTML(article.article) +
+        '</article>';
+
+      return html;
+    }).join('') + '<p><em>Articles from <a href="' + sanitizeHTML(data.attribution.url) + '">' + sanitizeHTML(data.attribution.name) + '</a></em></p>';
+  };
+
+  // render a message when there are no articles to share
+  var renderNoArticles = function () {
+    app.innerHTML = '<p>There be no pirate news afoot, matey. Check back later.</p>';
+  };
+
+  // save article data to localStorage
+  var saveData = function (data) {
+
+    // create a cache object with a timestamp
+    var cache = {
+      data: data,
+      timestamp: new Date().getTime()
+    };
+
+    // stringify it and save it to localstorage
+    localStorage.setItem(storageID, JSON.stringify(cache));
+  };
+
+  // get API data from localStorage
+  var getData = function () {
+
+    // get saved daa from localStorage
+    var saved = localStorage.getItem(storageID);
+    if (!saved) return;
+    saved = JSON.parse(saved);
+
+    // if data  has not expired, return it
+    // use cached data from 30 seconds
+    if (isDataValid(saved, 1000 * 30)) {
+      return saved.data;
+    }
+  }
+
+  // check if the data is valid
+  var isDataValid = function (saved, goodFor) {
+
+    // check that there is data, and a timestamp key
+    if (!saved || !saved.data || !saved.timestamp) return false;
+
+    // get the difference between the timestamp and current time
+    var difference = new Date().getTime() - saved.timestamp;
+
+    return difference < goodFor;
+  }
+
+
+  fetchArticles();
+</script>
+{% endset %}
+
+<!-- Rendering the html -->
+<div class="htmlBox">
+  {{ html | safe }}
+</div>
+
+<!-- Rendering the html and js as syntax highlight -->
+{% highlight "html" %} {{ html | safe }} {{ js | safe }} {% endhighlight %}
+
+<!-- Inserting the js as a script -->
+{{ js | safe }}

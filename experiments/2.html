@@ -26,14 +26,24 @@ title: "µland"
   </button>`;
   });
 
-  const TextInput = Component(() => {
+  const TextInput = Component((text) => {
     const [name, setName] = useState("");
     const updateName = (event) => {
       setName(event.target.value);
     };
+    const clearName = () => {
+      setName('');
+      document.querySelector('#textinput').value = '';
+    };
+    const fillName = () => {
+      setName(text);
+      document.querySelector('#textinput').value = text;
+    };
     return html`
-  <input type="text" value=${name} oninput=${updateName} placeholder="Reactive input" />
+  <input id="textinput" type="text" value=${name} onInput=${updateName} placeholder="Reactive input" />
   <p>${name}</p>
+  <button onclick=${clearName}>Clear</button>
+  <button onclick=${fillName}>${text}</button>
   `;
   })
 
@@ -84,7 +94,7 @@ title: "µland"
     Some counters.
     ${Counter(0)} ${Counter(1)}
     <br>
-    ${TextInput()}
+    ${TextInput('something')}
     ${CounterDisplay()}
   </div>
 `);
