@@ -2,13 +2,17 @@
 title: "µhtml + hooked-elements"
 ---
 {% set html %}
-<div><my-counter size="small">Loading...</my-counter>
-<my-counter size="big"></my-counter>
+<div>
+  <my-counter data-size="small">Loading...</my-counter>
+  <my-counter data-size="big"></my-counter>
 </div>
-<!-- <my-clock></my-clock>
-<my-input></my-input>
-<div id="otherInput"></div>
-<br> -->
+<div>
+  <my-clock></my-clock>
+</div>
+<div>
+  <my-input></my-input>
+</div>
+
 <a href="https://github.com/WebReflection/uhtml">Link to µhtml</a>
 <br>
 <a href="https://github.com/WebReflection/hooked-elements">Link to hooked-elements</a>
@@ -25,83 +29,54 @@ title: "µhtml + hooked-elements"
 
 {% set js %}
 <script type="module">
-  import { render, html } from 'https://unpkg.com/uhtml?module';
-  import { define, useState, useEffect } from 'https://unpkg.com/hooked-elements?module';
+  import { render, html } from 'https://cdn.esm.sh/v15/uhtml@2.3.1/esnext/uhtml.js';
+  import { define, useState, useEffect } from 'https://cdn.esm.sh/v15/hooked-elements@2.2.1/esnext/hooked-elements.js';
 
-  // const OtherInput = () => {
-  //   const text = "";
-  //   return function updateInput(text) {
-  //     return render(document.querySelector('#otherInput'), html`
-  //     <input id="" type="text" value="" oninput=${() => updateInput(text)} placeholder="other input"/>`);
-  //   }
-  // }
+  let store = {
+    name: "button",
+    age: 331
+  }
 
-  // OtherInput();
-    define('my-counter', element => {
-      const [count, update] = useState(0);
-      const size = element.getAttribute('size');
-      render(element, html`
-    <button class="large btn" onclick=${() => update(count - 1)}>-</button>
+  define('my-counter', element => {
+    const [count, update] = useState(0);
+    const size = element.getAttribute('data-size');
+    render(element, html`
+    <button class="large btn" onclick=${() => update(count - 1)}>- ${store.name}</button>
     <span class="large value">${count} ${size}</span>
     <button class="large btn" onclick=${() => update(count + 1)}>+</button>
   `);
+  })
+
+  define('my-clock', element => {
+    const [time, setTime] = useState();
+
+    useEffect(() => {
+      setInterval(() => {
+        setTime(useState.time = new Date().toLocaleTimeString())
+      }, 1000);
     })
-  
-  // withProps("B");
-// };
-//   define('my-clock', element => {
-//     const [time, setTime] = useState();
 
-//     useEffect(() => {
-//       setInterval(() => {
-//         setTime(useState.time = new Date().toLocaleTimeString())
-//       }, 1000);
-//     })
+    render(element, html`
+    <strong>The time is:</strong> <span>${time}</span>
+  `);
+  });
 
-//     render(element, html`
-//     <strong>${hey} The time is:</strong> <span>${time}</span>
-//   `);
-//   });
-
-//   define('my-input', element => {
-//     const [name, setName] = useState("");
-//     const updateName = (event) => {
-//       setName(event.target.value);
-//     };
-//     render(element, html`
-//   <input type="text" value=${name} oninput=${updateName} placeholder="Reactive input" />
-//   <p>${name}</p>
-//   `);
-//   });
-
-//   // an essential Button component example
-// const Button = (text, className) => html`
-//   <button class=${className}>${text}</button>
-// `;
-
-// // render as many buttons as needed
-// render(document.querySelector('.buttons'), html`
-//   Let's put some button live:
-//   ${Button('first', 'first')} <br>
-//   ${Button('second', '')}     <br>
-//   ${Button('third', 'last')}
-// `);
-
-// const Clicking = (click) => html`
-//   <button id="click" data-click>${click}</button>`;
-
-// document.addEventListener('click', function () {
-//   if (event.target.hasAttribute('data-click')) {
-//     render(document.querySelector('.#click'), html`
-//       ${Clicking}
-// `);
-// }
+  define('my-input', element => {
+    const [name, setName] = useState("");
+    const updateName = (event) => {
+      setName(event.target.value);
+    };
+    render(element, html`
+  <input type="text" value=${name} oninput=${updateName} placeholder="Reactive input" />
+  <p>${name}</p>
+  `);
+  });
 
 </script>
 {% endset %}
 
 
-{% highlight "html" %}
+{% highlight "html 1,2,9-11 3-5,15" %}
 {{ js | safe }}
 {% endhighlight %}
 
