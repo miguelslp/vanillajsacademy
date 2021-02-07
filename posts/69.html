@@ -127,9 +127,11 @@ lesson: 69
     return props.places
       .map(function (place) {
         var html =
-          '<div class="place" ' +
+          '<div class="place' +
+          " " +
           getHidden(place, props) +
-          ">" +
+          '"' +
+          +">" +
           "<div>" +
           '<img alt="" src="' +
           place.img +
