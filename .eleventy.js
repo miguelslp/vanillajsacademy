@@ -8,6 +8,8 @@ const markdownItAnchor = require("markdown-it-anchor");
 const markdownShortcode = require("eleventy-plugin-markdown-shortcode");
 
 module.exports = function(eleventyConfig) {
+  eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
+
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
