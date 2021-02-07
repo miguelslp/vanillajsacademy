@@ -1,10 +1,10 @@
 :root {
-  --red: #C5004A;
-  --darkred: #7F0036;
+  --red: #c5004a;
+  --darkred: #7f0036;
   --lightgray: #e0e0e0;
-  --gray: #C0C0C0;
+  --gray: #c0c0c0;
   --darkgray: #333;
-  --navy: #17050F;
+  --navy: #17050f;
   --blue: #082840;
   --white: #fff;
 }
@@ -32,18 +32,20 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Source Sans Pro Regular', system-ui, sans-serif;
+  font-family: "Source Sans Pro Regular", system-ui, sans-serif;
   color: var(--darkgray);
   background-color: var(--white);
   margin: 1em auto;
   scroll-behavior: smooth;
 }
 @media screen and (prefers-reduced-motion: reduce) {
-  html, body {
+  html,
+  body {
     scroll-behavior: auto;
-}}
+  }
+}
 h1 {
-  font-family: 'Source Sans Pro Bold', system-ui, sans-serif;
+  font-family: "Source Sans Pro Bold", system-ui, sans-serif;
 }
 /* anchor toc exercise: */
 h2:target {
@@ -94,6 +96,9 @@ header:after {
   display: table;
   clear: both;
 }
+footer {
+  padding: 1em 2rem 0;
+}
 table {
   margin: 1em 0;
 }
@@ -104,7 +109,10 @@ table th {
 
 pre,
 code {
-  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono",
+    "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono",
+    "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L",
+    "Courier New", Courier, monospace;
   line-height: 1.5;
   background-color: var(--lightgray);
   padding: 0.1em 0.2em;
@@ -125,15 +133,15 @@ pre {
   -ms-hyphens: none;
   hyphens: none;
   padding: 1em;
-  margin: .5em 0;
-  background-color:var(--lightgray);
+  margin: 0.5em 0;
+  background-color: var(--lightgray);
   overflow: auto;
 }
 
 button {
-  font-family: 'Source Sans Pro Regular', system-ui, sans-serif;
+  font-family: "Source Sans Pro Regular", system-ui, sans-serif;
   font-size: 1rem;
-  border: 1px solid var(--navy);  
+  border: 1px solid var(--navy);
   border-radius: 0.5em;
   background-color: var(--white);
   padding: 0.5rem 1rem;
@@ -148,7 +156,7 @@ button:active {
 }
 
 button:focus {
-  border: 1px solid var(--blue);  
+  border: 1px solid var(--blue);
 }
 
 ul {
@@ -200,7 +208,7 @@ hr {
 }
 .highlight-line-active {
   background-color: #444;
-  background-color: hsla(0, 0%, 27%, .8);
+  background-color: hsla(0, 0%, 27%, 0.8);
 }
 .highlight-line-add {
   background-color: #45844b;
@@ -254,14 +262,14 @@ hr {
   line-height: 100%;
   text-align: right;
 } */
-.postlist-item-number {  
+.postlist-item-number {
   display: inline-block;
   pointer-events: none;
   line-height: 100%;
   text-align: right;
 }
 .postlist-date,
-.postlist-item:before, 
+.postlist-item:before,
 .postlist-item-number {
   font-size: 0.8125em; /* 13px /16 */
   color: var(--darkgray);
@@ -279,9 +287,8 @@ hr {
 .tmpl-home .postlist-link {
   font-size: 1.1875em; /* 19px /16 */
   font-weight: 700;
-  font-family: 'Source Sans Pro Bold', system-ui, sans-serif;
+  font-family: "Source Sans Pro Bold", system-ui, sans-serif;
 }
-
 
 /* Tags */
 .post-tag {
@@ -306,7 +313,7 @@ a[href].post-tag:visited {
   font-family: sans-serif;
   text-decoration: none;
   font-style: normal;
-  margin-left: .1em;
+  margin-left: 0.1em;
 }
 a[href].direct-link,
 a[href].direct-link:visited {
@@ -332,7 +339,6 @@ input {
   margin-bottom: 0;
   margin-right: 0.25em;
 }
-
 
 .icon {
   width: 0.75em;
