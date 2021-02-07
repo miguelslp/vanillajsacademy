@@ -1,0 +1,175 @@
+---
+title: "Places - Favorites"
+date: 2020-02-07
+lesson: 67
+---
+
+<style>
+  /**
+ * Grid Layout
+ */
+  @media (min-width: 40em) {
+    .place {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      grid-template-rows: 1fr;
+      gap: 8rem 1rem;
+    }
+  }
+
+  /**
+ * Responsive Images
+ */
+  img {
+    height: auto;
+    max-width: 100%;
+  }
+
+  button {
+    background-color: #f7f7f7;
+    border: 1px solid #e5e5e5;
+    color: #272727;
+    font-size: 1.5em;
+    padding: 0 0.5em;
+  }
+
+  button[aria-pressed="true"] {
+    background-color: #de391f;
+    border-color: #de391f;
+    color: #ffffff;
+  }
+</style>
+<!-- Setting the html code -->
+{% set html %}
+<p>Explore cool, quirky places in your own backyard.</p>
+
+<div id="app">Loading...</div>
+{% endset %}
+<!-- Setting the js code -->
+{% set js %}
+<script src="https://cdn.jsdelivr.net/npm/reefjs@8/dist/reef.min.js"></script>
+<script>
+  // Get place data from the API and update app state
+  var getPlaces = function () {
+    fetch("https://vanillajsacademy.com/api/places.json")
+      .then(function (response) {
+        if (response.ok) {
+          return response.json();
+        }
+        return Promise.reject(response);
+      })
+      .then(function (data) {
+        app.data.faves = getFaves();
+        app.data.places = data;
+      })
+      .catch(function (err) {
+        console.warn(err);
+        app.data.places = null;
+      });
+  };
+
+  // The app component
+  var app = new Reef("#app", {
+    data: {},
+    template: function (data) {
+      // If there are places, render them
+      if (data.places && data.places.length) {
+        return getPlacesHTML(data);
+      }
+
+      // Otherwise, show an error
+      return getNoPlacesHTML();
+    },
+  });
+
+  // Get the message to dispay if there is no palce data
+  var getNoPlacesHTML = function () {
+    return `<p><em>Unable to find any places right now. Please try again later. Sorry!</em></p>`;
+  };
+
+  // Create HTML for each of the palces from the app data
+  var getPlacesHTML = function (props) {
+    return props.places
+      .map(function (place) {
+        var html =
+          '<div class="place">' +
+          "<div>" +
+          '<img alt="" src="' +
+          place.img +
+          '">' +
+          "</div>" +
+          "<div>" +
+          "<h2>" +
+          place.place +
+          "</h2>" +
+          "<p>" +
+          place.description +
+          "</p>" +
+          "<p><em>" +
+          place.location +
+          '</em><br><a href="' +
+          place.url +
+          '">' +
+          place.url +
+          "</a></p>" +
+          '<p><button data-fave="' +
+          place.id +
+          '" aria-label="Save ' +
+          place.place +
+          '" aria-pressed="' +
+          props.faves[place.id] +
+          '">♥</button></p>' +
+          "</div>" +
+          "</div>";
+        return html;
+      })
+      .join("");
+  };
+
+  // Handle click events
+  var clickHandler = function (event) {
+    // Only run on fave buttons
+    var place = event.target.getAttribute("data-fave");
+    if (!place) return;
+
+    // If place is already saved, remove it
+    // Other, save it
+    app.data.faves[place] = app.data.faves[place] ? false : true;
+  };
+
+  // localStorage
+  var favesID = "exploreFaves";
+
+  // Save favorite places to localStorage
+  var saveFaves = function (faves) {
+    localStorage.setItem(favesID, JSON.stringify(faves));
+  };
+
+  // Handle render events
+  var renderHandler = function (event) {
+    // Save favorites to localStorage on render
+    saveFaves(app.data.faves);
+  };
+
+  // Get favorite places from localStorage
+  var getFaves = function () {
+    var faves = localStorage.getItem(favesID);
+    var favesObj = faves ? JSON.parse(faves) : {};
+    return favesObj;
+  };
+
+  // Inits
+  getPlaces();
+  document.addEventListener("click", clickHandler);
+  document.addEventListener("reef:render", renderHandler);
+</script>
+{% endset %}
+
+<!-- Rendering the html -->
+<div class="htmlBox">{{ html | safe }}</div>
+
+<!-- Rendering the html and js as syntax highlight -->
+{% highlight "html" %} {{ html | safe }} {{ js | safe }} {% endhighlight %}
+
+<!-- Inserting the js as a script -->
+{{ js | safe }}

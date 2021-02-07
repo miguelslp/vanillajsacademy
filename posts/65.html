@@ -1,0 +1,103 @@
+---
+title: "Places"
+date: 2020-02-07
+lesson: 65
+---
+<style>
+/**
+ * Grid Layout
+ */
+ @media (min-width: 40em) {
+	.place {
+		display: grid;
+		grid-template-columns: 1fr 2fr;
+		grid-template-rows: 1fr;
+		grid-column-gap: 2em;
+	}
+}
+
+/**
+ * Responsive Images
+ */
+img {
+	height: auto;
+	max-width: 100%;
+}
+</style>
+<!-- Setting the html code -->
+{% set html %}
+<p>Explore cool, quirky places in your own backyard.</p>
+
+<div id="app">Loading...</div>
+{% endset %}
+<!-- Setting the js code -->
+{% set js %}
+<script src="https://cdn.jsdelivr.net/npm/reefjs@8/dist/reef.min.js"></script>
+<script>
+  // Get place data from the API and update app state
+  var getPlaces = function () {
+    fetch('https://vanillajsacademy.com/api/places.json').then(function (response) {
+      if (response.ok) {
+        return response.json();
+      }
+      return Promise.reject(response);
+    }).then(function (data) {
+      app.data.places = data;
+    }).catch(function (err) {
+      console.warn(err);
+      app.data.places = null;
+    });
+  };
+
+  // The app component
+  var app = new Reef('#app', {
+    data: {},
+    template: function (data) {
+      
+      // If there are places, render them
+      if (data.places && data.places.length) {
+        return getPlacesHTML(data);
+      }
+
+      // Otherwise, show an error
+      return getNoPlacesHTML();
+    }
+  });
+
+  // Get the message to dispay if there is no palce data
+  var getNoPlacesHTML = function () {
+    return `<p><em>Unable to find any places right now. Please try again later. Sorry!</em></p>`;
+  };
+
+  // Create HTML for each of the palces from the app data
+  var getPlacesHTML = function (props) {
+    return props.places.map(function (place) {
+      var html = '<div class="place">' +
+				'<div>' +
+					'<img alt="" src="' + place.img + '">' +
+				'</div>' +
+				'<div>' +
+					'<h2>' + place.place + '</h2>' +
+					'<p>' + place.description + '</p>' +
+					'<p><em>' + place.location + '</em><br><a href="' + place.url + '">' + place.url + '</a></p>' +
+				'</div>' +
+      '</div>';
+      return html;
+    }).join('');
+  };
+
+  // Inits
+  getPlaces();
+</script>
+{% endset %}
+
+<!-- Rendering the html -->
+<div class="htmlBox">
+  {{ html | safe }}
+</div>
+
+<!-- Rendering the html and js as syntax highlight -->
+{% highlight "html" %} {{ html | safe }} {{ js | safe }} {% endhighlight %}
+
+<!-- Inserting the js as a script -->
+{{ js | safe }}
