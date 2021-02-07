@@ -29,7 +29,7 @@
     </main>
 
     <footer>
-      {{ people[0} }}
+      {{ people[0] }}
       {% year %}
     </footer>
 
@@ -37,5 +37,11 @@
 
     {# {% if script === 'uland' %}
     {% endif %} #}
+    <script src="https://unpkg.com/quicklink"></script>
+    <script>
+    window.addEventListener('load', () => {
+       quicklink.listen()
+    });
+    </script>
   </body>
 </html>
