@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Rom</title>
+    <meta name="description" content="Exercises on Vanilla JS Academy 2020">
+    <link rel="stylesheet" href="/vanillajsacademy/css/index.css">
+    <link rel="stylesheet" href="/vanillajsacademy/css/prism-base16-monokai.dark.css">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.xml" type="application/atom+xml" title="miguelslp - Vanilla JS">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.json" type="application/json" title="miguelslp - Vanilla JS">
+  </head>
+  <body>
+    <header>
+      <h1 class="home">
+        <a href="/vanillajsacademy/">miguelslp - Vanilla JS</a>
+      </h1>
+      
+    </header>
+
+    <main  class="tmpl-post" >
+      <h1>Random Rom</h1>
+
+<div class="grid">
+
+
+<div class="htmlBox">
+  
+<blockquote aria-live="polite">Loading quote...</blockquote>
+
+<button>More Ron</button>
+
+
+
+</div>
+
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>blockquote</span> <span class="token attr-name">aria-live</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>polite<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Loading quote...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>blockquote</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">></span></span>More Ron<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
+
+
+
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">async</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><br><br>  <span class="token comment">// Variables</span><br>  <span class="token keyword">let</span> ronQuote <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'blockquote'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token keyword">let</span> ronButton <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'button'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>  <span class="token comment">// Methods</span><br>  <span class="token keyword">function</span> <span class="token function">callRon</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'https://ron-swanson-quotes.herokuapp.com/v2/quotes'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      <span class="token keyword">if</span> <span class="token punctuation">(</span>response<span class="token punctuation">.</span>ok<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        <span class="token keyword">return</span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>        <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      <span class="token keyword">let</span> errorState <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#errorState"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token keyword">if</span> <span class="token punctuation">(</span>errorState<span class="token punctuation">)</span> errorState<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      ronQuote<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br>      &lt;p></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>data<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/p><br>      &lt;footer>— Ron Swanson&lt;/footer></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><br>      <span class="token function">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        console<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">"oh no something went wrong"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">;</span><br>        <span class="token keyword">let</span> errorState <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#errorState"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>errorState<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>          errorState <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>          errorState<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">,</span> <span class="token string">"errorState"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>          errorState<span class="token punctuation">.</span>style<span class="token punctuation">.</span>color <span class="token operator">=</span> <span class="token string">"red"</span><span class="token punctuation">;</span><br>          errorState<span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token string">"There was an error getting a new quote, please try again."</span><br>          ronButton<span class="token punctuation">.</span><span class="token function">after</span><span class="token punctuation">(</span>errorState<span class="token punctuation">)</span><span class="token punctuation">;</span><br>        <span class="token punctuation">}</span><br>      <span class="token punctuation">}</span><span class="token punctuation">)</span><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br>  <span class="token keyword">function</span> <span class="token function">handleInput</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>target <span class="token operator">!==</span> ronButton<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span><br>    <span class="token function">callRon</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>  <span class="token comment">// Listeners and inits</span><br>  <span class="token function">callRon</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> handleInput<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+
+<div class="htmlBox">
+  
+</div>
+
+
+<script async>
+
+  // Variables
+  let ronQuote = document.querySelector('blockquote');
+  let ronButton = document.querySelector('button');
+
+  // Methods
+  function callRon() {
+    fetch('https://ron-swanson-quotes.herokuapp.com/v2/quotes').then(function (response) {
+      if (response.ok) {
+        return response.json();
+      } else {
+        return Promise.reject(response);
+      }
+    }).then(function (data) {
+      let errorState = document.querySelector("#errorState");
+      if (errorState) errorState.remove();
+      ronQuote.innerHTML = `
+      <p>${data[0]}</p>
+      <footer>— Ron Swanson</footer>`;
+    }).
+      catch(function (err) {
+        console.warn("oh no something went wrong", err);
+        let errorState = document.querySelector("#errorState");
+        if (!errorState) {
+          errorState = document.createElement('p');
+          errorState.setAttribute("id", "errorState");
+          errorState.style.color = "red";
+          errorState.textContent = "There was an error getting a new quote, please try again."
+          ronButton.after(errorState);
+        }
+      })
+  };
+  function handleInput(event) {
+    if (event.target !== ronButton) return;
+    callRon();
+  };
+
+  // Listeners and inits
+  callRon();
+  document.addEventListener('click', handleInput);
+
+</script>
+
+</div>
+
+    </main>
+
+    <footer>
+      ©
+      Miguel Pinto
+      2021
+    </footer>
+
+    <!-- Current page: /vanillajsacademy/posts/13/ -->
+
+    
+    
+  </body>
+</html>

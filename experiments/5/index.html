@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>alpine</title>
+    <meta name="description" content="Exercises on Vanilla JS Academy 2020">
+    <link rel="stylesheet" href="/vanillajsacademy/css/index.css">
+    <link rel="stylesheet" href="/vanillajsacademy/css/prism-base16-monokai.dark.css">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.xml" type="application/atom+xml" title="miguelslp - Vanilla JS">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.json" type="application/json" title="miguelslp - Vanilla JS">
+  </head>
+  <body>
+    <header>
+      <h1 class="home">
+        <a href="/vanillajsacademy/">miguelslp - Vanilla JS</a>
+      </h1>
+      
+    </header>
+
+    <main  class="tmpl-post" >
+      <h1>alpine</h1>
+
+<div class="grid">
+
+
+<div class="htmlBox">
+  
+
+<form id="myForm" x-data="createFormComponent()" x-init="() => {makeClock()}">
+  <input id="text" type="text" name="text" x-model="text" />
+  <button @click.prevent="text = ''">Clear</button>
+  <button @click.prevent="text = 'Something'">Something</button>
+  <p x-text="text"></p>
+  <p x-text="time"></p>
+</form>
+
+
+<form id="myForm-2" x-data="createFormComponent('Miguel')" x-init="() => {makeClock()}">
+  <input id="text" type="text" name="text" x-model="text" />
+  <button @click.prevent="text = ''">Clear</button>
+  <button @click.prevent="text = 'Something'">Something</button>
+  <p x-text="text"></p>
+  <p x-text="time"></p>
+</form>
+
+
+
+
+
+</div>
+
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>myForm<span class="token punctuation">"</span></span> <span class="token attr-name">x-data</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>createFormComponent()<span class="token punctuation">"</span></span> <span class="token attr-name">x-init</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>() => {makeClock()}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">x-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click.prevent</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text = <span class="token punctuation">'</span><span class="token punctuation">'</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Clear<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click.prevent</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text = <span class="token punctuation">'</span>Something<span class="token punctuation">'</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Something<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">x-text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">x-text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>time<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span><br><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>myForm-2<span class="token punctuation">"</span></span> <span class="token attr-name">x-data</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>createFormComponent(<span class="token punctuation">'</span>Miguel<span class="token punctuation">'</span>)<span class="token punctuation">"</span></span> <span class="token attr-name">x-init</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>() => {makeClock()}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">x-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click.prevent</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text = <span class="token punctuation">'</span><span class="token punctuation">'</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Clear<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click.prevent</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text = <span class="token punctuation">'</span>Something<span class="token punctuation">'</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Something<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">x-text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">x-text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>time<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span></code></pre>
+
+
+
+
+<pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- &lt;script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer>&lt;/script> --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../../node_modules/alpinejs/dist/alpine.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><br>  <span class="token comment">// (function () {</span><br>  <span class="token comment">//   'use strict';</span><br>  <span class="token comment">//   window.createFormComponent = function () {</span><br>  <span class="token comment">//     return {</span><br>  <span class="token comment">//       text: '',</span><br>  <span class="token comment">//       clock: '',</span><br>  <span class="token comment">//       get time() {</span><br>  <span class="token comment">//         return `The time is ${this.clock}`;</span><br>  <span class="token comment">//       },</span><br>  <span class="token comment">//       makeClock: function () {</span><br>  <span class="token comment">//         setInterval(() => {</span><br>  <span class="token comment">//           this.clock = new Date().toLocaleTimeString();</span><br>  <span class="token comment">//         }, 1000);</span><br>  <span class="token comment">//       }</span><br>  <span class="token comment">//     };</span><br>  <span class="token comment">//   };</span><br>  <span class="token comment">// })();</span><br><br>  <span class="token keyword">function</span> <span class="token function">createFormComponent</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> <span class="token punctuation">{</span><br>      text<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span><br>      clock<span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLocaleTimeString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><br>      <span class="token keyword">get</span> <span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">The time is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>clock<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name <span class="token operator">?</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">of </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span> <span class="token operator">:</span> <span class="token string">''</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><span class="token punctuation">,</span><br>      <span class="token function-variable function">makeClock</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>          <span class="token keyword">this</span><span class="token punctuation">.</span>clock <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLocaleTimeString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>        <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><br>    <span class="token punctuation">}</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+
+
+<!-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> -->
+<script src="../../node_modules/alpinejs/dist/alpine.js"></script>
+<script>
+  // (function () {
+  //   'use strict';
+  //   window.createFormComponent = function () {
+  //     return {
+  //       text: '',
+  //       clock: '',
+  //       get time() {
+  //         return `The time is ${this.clock}`;
+  //       },
+  //       makeClock: function () {
+  //         setInterval(() => {
+  //           this.clock = new Date().toLocaleTimeString();
+  //         }, 1000);
+  //       }
+  //     };
+  //   };
+  // })();
+
+  function createFormComponent(name = '') {
+    return {
+      text: '',
+      clock: new Date().toLocaleTimeString(),
+      get time() {
+        return `The time is ${this.clock} ${name ? `of ${name}` : ''} `;
+      },
+      makeClock: function () {
+        setInterval(() => {
+          this.clock = new Date().toLocaleTimeString();
+        }, 1000);
+      }
+    };
+  };
+
+
+</script>
+
+
+
+</div>
+
+    </main>
+
+    <footer>
+      ©
+      Miguel Pinto
+      2021
+    </footer>
+
+    <!-- Current page: /vanillajsacademy/experiments/5/ -->
+
+    
+    
+  </body>
+</html>

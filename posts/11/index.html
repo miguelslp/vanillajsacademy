@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Announcing the Count</title>
+    <meta name="description" content="Exercises on Vanilla JS Academy 2020">
+    <link rel="stylesheet" href="/vanillajsacademy/css/index.css">
+    <link rel="stylesheet" href="/vanillajsacademy/css/prism-base16-monokai.dark.css">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.xml" type="application/atom+xml" title="miguelslp - Vanilla JS">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.json" type="application/json" title="miguelslp - Vanilla JS">
+  </head>
+  <body>
+    <header>
+      <h1 class="home">
+        <a href="/vanillajsacademy/">miguelslp - Vanilla JS</a>
+      </h1>
+      
+    </header>
+
+    <main  class="tmpl-post" >
+      <h1>Announcing the Count</h1>
+
+<div class="grid">
+
+
+<div class="htmlBox">
+  
+<label for="text">Enter your text below.</label>
+<textarea id="text"></textarea>
+<p aria-live="polite" aria-atomic="true" id="counterParagraph">You've written <strong>0 words</strong> and <strong>0
+    characters</strong>.</p>
+
+</div>
+
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Enter your text below.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>textarea</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>textarea</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">aria-live</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>polite<span class="token punctuation">"</span></span> <span class="token attr-name">aria-atomic</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>counterParagraph<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>You've written <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">></span></span>0 words<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">></span></span> and <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">></span></span>0<br>    characters<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">></span></span>.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
+
+
+
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">async</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><br><br>  <span class="token comment">// Variables</span><br>  <span class="token keyword">let</span> textArea <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'textarea'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token keyword">let</span> counterParagraph <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#counterParagraph'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>  <span class="token comment">// Methods</span><br>  <span class="token keyword">function</span> <span class="token function">handleInput</span><span class="token punctuation">(</span><span class="token parameter">inputElement</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">let</span> newArray <span class="token operator">=</span> inputElement<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\s+</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      <span class="token keyword">return</span> item <span class="token operator">!==</span> <span class="token string">''</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><br>    <span class="token keyword">let</span> wordCount <span class="token operator">=</span> newArray<span class="token punctuation">.</span>length<span class="token punctuation">;</span><br>    <span class="token keyword">let</span> characterCount <span class="token operator">=</span> newArray<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span><br>    counterParagraph<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">You've written &lt;strong></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>wordCount<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> words&lt;/strong> and &lt;strong></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>characterCount<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"><br>    characters&lt;/strong>.</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token comment">// Listeners</span><br>  textArea<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'input'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token function">handleInput</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+
+<div class="htmlBox">
+  
+</div>
+
+
+<script async>
+
+  // Variables
+  let textArea = document.querySelector('textarea');
+  let counterParagraph = document.querySelector('#counterParagraph');
+
+  // Methods
+  function handleInput(inputElement) {
+    let newArray = inputElement.value.split(/\s+/).filter(function (item) {
+      return item !== '';
+    })
+    let wordCount = newArray.length;
+    let characterCount = newArray.join('').length;
+    counterParagraph.innerHTML = `You've written <strong>${wordCount} words</strong> and <strong>${characterCount}
+    characters</strong>.`;
+  }
+
+  // Listeners
+  textArea.addEventListener('input', function () {
+    handleInput(this);
+  });
+
+</script>
+
+</div>
+
+    </main>
+
+    <footer>
+      ©
+      Miguel Pinto
+      2021
+    </footer>
+
+    <!-- Current page: /vanillajsacademy/posts/11/ -->
+
+    
+    
+  </body>
+</html>

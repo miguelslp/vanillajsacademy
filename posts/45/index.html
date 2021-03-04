@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debugging Broken Code</title>
+    <meta name="description" content="Exercises on Vanilla JS Academy 2020">
+    <link rel="stylesheet" href="/vanillajsacademy/css/index.css">
+    <link rel="stylesheet" href="/vanillajsacademy/css/prism-base16-monokai.dark.css">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.xml" type="application/atom+xml" title="miguelslp - Vanilla JS">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.json" type="application/json" title="miguelslp - Vanilla JS">
+  </head>
+  <body>
+    <header>
+      <h1 class="home">
+        <a href="/vanillajsacademy/">miguelslp - Vanilla JS</a>
+      </h1>
+      
+    </header>
+
+    <main  class="tmpl-post" >
+      <h1>Debugging Broken Code</h1>
+
+<div class="grid">
+<style>
+  body {
+    margin: 1em auto;
+    max-width: 40em;
+    width: 88%;
+  }
+
+  /**
+		 * A simple grid layout
+		 */
+  .row {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    text-align: center;
+  }
+
+  .grid {
+    min-height: 6em;
+    padding: 1em;
+  }
+
+  /**
+		 * Make sure images scale
+		 */
+  img {
+    height: auto;
+    max-width: 100%;
+  }
+
+  /**
+		 * Scale image to the full width of the page
+		 */
+  .img-full {
+    width: 100%;
+  }
+
+  /**
+		 * Style buttons to not look like buttons
+		 */
+  [data-monster-id] {
+    background-color: transparent;
+    border: 0;
+  }
+</style>
+<!-- Setting the html code -->
+
+<!-- Setting the js code -->
+
+
+<!-- Rendering the html -->
+<div class="htmlBox">
+  
+<h1>Monsters! - Debug</h1>
+
+<div id="app" aria-live="polite"></div>
+
+<footer>
+  <hr>
+  <p class="text-small text-muted">Icons by <a href="https://thenounproject.com/term/door/311732/">Jamie Dickinson</a>,
+    <a href="https://thenounproject.com/term/monster/184225/">Nicky Knicky</a>, <a
+      href="https://thenounproject.com/term/monster/1510400/">Alvaro Cabrera</a>, <a
+      href="https://thenounproject.com/term/monster/28460/">Eliricon</a>, <a
+      href="https://thenounproject.com/term/monster/82823/">April Yang</a>, <a
+      href="https://thenounproject.com/term/monster/1062009/">tk66</a>, <a
+      href="https://thenounproject.com/term/monster/24990/">Alex WaZa</a>, <a
+      href="https://thenounproject.com/term/monster/37212/">Husein Aziz</a>, <a
+      href="https://thenounproject.com/term/monster/2236082">iconcheese</a>, and <a
+      href="https://thenounproject.com/term/socks/38451/">Yazmin Alanis</a>.</p>
+</footer>
+
+</div>
+
+<!-- Rendering the html and js as syntax highlight -->
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Monsters! - Debug<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span> <span class="token attr-name">aria-live</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>polite<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>footer</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>hr</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text-small text-muted<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Icons by <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://thenounproject.com/term/door/311732/<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Jamie Dickinson<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>,<br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://thenounproject.com/term/monster/184225/<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Nicky Knicky<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>, <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span><br>      <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://thenounproject.com/term/monster/1510400/<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Alvaro Cabrera<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>, <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span><br>      <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://thenounproject.com/term/monster/28460/<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Eliricon<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>, <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span><br>      <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://thenounproject.com/term/monster/82823/<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>April Yang<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>, <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span><br>      <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://thenounproject.com/term/monster/1062009/<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>tk66<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>, <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span><br>      <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://thenounproject.com/term/monster/24990/<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Alex WaZa<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>, <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span><br>      <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://thenounproject.com/term/monster/37212/<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Husein Aziz<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>, <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span><br>      <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://thenounproject.com/term/monster/2236082<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>iconcheese<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>, and <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span><br>      <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://thenounproject.com/term/socks/38451/<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Yazmin Alanis<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>footer</span><span class="token punctuation">></span></span><br> <br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><br>  <span class="token comment">//</span><br>  <span class="token comment">// Variables</span><br>  <span class="token comment">//</span><br><br>  <span class="token comment">// The monsters and socks</span><br>  <span class="token keyword">var</span> monsters <span class="token operator">=</span> <span class="token punctuation">[</span><br>    <span class="token string">'monster1'</span><span class="token punctuation">,</span><br>    <span class="token string">'monster2'</span><span class="token punctuation">,</span><br>    <span class="token string">'monster3'</span><span class="token punctuation">,</span><br>    <span class="token string">'monster4'</span><span class="token punctuation">,</span><br>    <span class="token string">'monster5'</span><span class="token punctuation">,</span><br>    <span class="token string">'monster6'</span><span class="token punctuation">,</span><br>    <span class="token string">'monster7'</span><span class="token punctuation">,</span><br>    <span class="token string">'monster8'</span><span class="token punctuation">,</span><br>    <span class="token string">'monster9'</span><span class="token punctuation">,</span><br>    <span class="token string">'monster10'</span><span class="token punctuation">,</span><br>    <span class="token string">'monster11'</span><span class="token punctuation">,</span><br>    <span class="token string">'sock'</span><br>  <span class="token punctuation">]</span><span class="token punctuation">;</span><br><br>  <span class="token comment">// Get the #app element</span><br>  <span class="token keyword">var</span> app <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>  <span class="token comment">// The number of monsters who have been found</span><br>  <span class="token keyword">var</span> found<span class="token punctuation">;</span><br>    <span class="token comment">// 👆 was count instead of found</span><br><br><br>  <span class="token comment">//</span><br>  <span class="token comment">// Methods</span><br>  <span class="token comment">//</span><br><br>  <span class="token comment">/**<br>   * Randomly shuffle an array<br>   * https://stackoverflow.com/a/2450976/1293256<br>   * @param  {Array} array The array to shuffle<br>   * @return {String}      The first item in the shuffled array<br>   */</span><br>  <span class="token keyword">var</span> <span class="token function-variable function">shuffle</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">array</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br><br>    <span class="token keyword">var</span> currentIndex <span class="token operator">=</span> array<span class="token punctuation">.</span>length<span class="token punctuation">;</span><br>    <span class="token keyword">var</span> temporaryValue<span class="token punctuation">,</span> randomIndex<span class="token punctuation">;</span><br><br>    <span class="token comment">// While there remain elements to shuffle...</span><br>    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">0</span> <span class="token operator">!==</span> currentIndex<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      <span class="token comment">// Pick a remaining element...</span><br>      randomIndex <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> currentIndex<span class="token punctuation">)</span><span class="token punctuation">;</span><br>      currentIndex <span class="token operator">-=</span> <span class="token number">1</span><span class="token punctuation">;</span><br><br>      <span class="token comment">// And swap it with the current element.</span><br>      temporaryValue <span class="token operator">=</span> array<span class="token punctuation">[</span>currentIndex<span class="token punctuation">]</span><span class="token punctuation">;</span><br>      array<span class="token punctuation">[</span>currentIndex<span class="token punctuation">]</span> <span class="token operator">=</span> array<span class="token punctuation">[</span>randomIndex<span class="token punctuation">]</span><span class="token punctuation">;</span><br>      array<span class="token punctuation">[</span>randomIndex<span class="token punctuation">]</span> <span class="token operator">=</span> temporaryValue<span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><br><br>    <span class="token keyword">return</span> array<span class="token punctuation">;</span><br><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>  <span class="token comment">/**<br>   * Render the grid of monsters onto the game board<br>   */</span><br>  <span class="token keyword">var</span> <span class="token function-variable function">renderMonsters</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br><br>    <span class="token comment">// Reset the number of monsters who have been found</span><br>    found <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// Shuffle the monsters array</span><br>    <span class="token function">shuffle</span><span class="token punctuation">(</span>monsters<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// Create the HTML and inject it into the DOM</span><br>    <span class="token comment">// A button element is focusable and conveys to screen readers that it can be clicked</span><br>    <span class="token comment">// The data-monster-id stores the index of the monster in our array</span><br>    app<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span><br>      <span class="token string">'&lt;p>Click a door to reveal a monster. Try not to find the sock.&lt;/p>'</span> <span class="token operator">+</span><br>      <span class="token string">'&lt;div class="row">'</span> <span class="token operator">+</span><br>      monsters<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">monster<span class="token punctuation">,</span> index</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        <span class="token keyword">var</span> html <span class="token operator">=</span><br>          <span class="token string">'&lt;div class="grid">'</span> <span class="token operator">+</span><br>          <span class="token string">'&lt;button data-monster-id="'</span> <span class="token operator">+</span> index <span class="token operator">+</span> <span class="token string">'">'</span> <span class="token operator">+</span><br>          <span class="token string">'&lt;img alt="Click the door to see what\'s behind it" src="door.svg">'</span> <span class="token operator">+</span><br>          <span class="token string">'&lt;/button>'</span> <span class="token operator">+</span><br>          <span class="token string">'&lt;/div>'</span><span class="token punctuation">;</span><br>        <span class="token keyword">return</span> html<span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span> <span class="token operator">+</span><br>      <span class="token string">'&lt;/div>'</span><span class="token punctuation">;</span><br><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>  <span class="token comment">/**<br>   * Render a new UI when the player loses<br>   */</span><br>  <span class="token keyword">var</span> <span class="token function-variable function">renderLost</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    app<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span><br>      <span class="token string">'&lt;img class="img-full" alt="" src="https://media.giphy.com/media/13zUNhE9WZspMc/giphy.gif">'</span> <span class="token operator">+</span><br>      <span class="token string">'&lt;h2>Oops, you found a sock!&lt;/h2>'</span> <span class="token operator">+</span><br>      <span class="token string">'&lt;p>'</span> <span class="token operator">+</span><br>      <span class="token string">'&lt;button class="btn" data-monster-play-again>Play Again&lt;/button>'</span> <span class="token operator">+</span><br>      <span class="token string">'&lt;/p>'</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>  <span class="token comment">/**<br>   * Render a new UI when the player wins<br>   */</span><br>  <span class="token keyword">var</span> <span class="token function-variable function">renderWon</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    app<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span><br>      <span class="token string">'&lt;img class="img-full" alt="" src="https://media.giphy.com/media/1242bJFCbb3FxC/giphy.gif">'</span> <span class="token operator">+</span><br>      <span class="token string">'&lt;h2>You won!&lt;/h2>'</span> <span class="token operator">+</span><br>      <span class="token string">'&lt;p>You found all of the monsters. Congrats!&lt;/p>'</span> <span class="token operator">+</span><br>      <span class="token string">'&lt;p>'</span> <span class="token operator">+</span><br>      <span class="token string">'&lt;button data-monster-play-again>Play Again&lt;/button>'</span> <span class="token operator">+</span><br>      <span class="token string">'&lt;/p>'</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>  <span class="token comment">/**<br>   * Handle click events<br>   * @param  {Event} event The event object<br>   */</span><br>  <span class="token keyword">var</span> <span class="token function-variable function">clickHandler</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br><br>    <span class="token comment">// If a "play again" button was clicked, reset the UI and end the callback function</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>target<span class="token punctuation">.</span><span class="token function">hasAttribute</span><span class="token punctuation">(</span><span class="token string">'data-monster-play-again'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token comment">// 👆 does not need [] on the selector</span><br>      <span class="token function">renderMonsters</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token keyword">return</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><br><br>    <span class="token comment">// Check if clicked element or it's parent has a [data-monster-id] attribute</span><br>    <span class="token comment">// If not, it's not a monster</span><br>    <span class="token comment">// return and stop running our callback function</span><br>    <span class="token keyword">var</span> monster <span class="token operator">=</span> event<span class="token punctuation">.</span>target<span class="token punctuation">.</span><span class="token function">closest</span><span class="token punctuation">(</span><span class="token string">'[data-monster-id]'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token comment">// 👆 lacked [] on the selector</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>monster<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// Get the monster's index in the array</span><br>    <span class="token keyword">var</span> id <span class="token operator">=</span> monster<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">'data-monster-id'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// If the door reveals a sock, render the lost UI</span><br>    <span class="token comment">// Then, end the callback function</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span>monsters<span class="token punctuation">[</span>id<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'sock'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token comment">// 👆 should be === instead of =</span><br>    <span class="token comment">// 👆 should be sock isntead of socks</span><br>      <span class="token function">renderLost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token keyword">return</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><br><br>    <span class="token comment">// Update the HTML for the button's parent element</span><br>    <span class="token comment">// This will replace the button so that the content can't be clicked again</span><br>    <span class="token comment">// We'll use the id to get the monster from our shuffled array</span><br>    monster<span class="token punctuation">.</span>parentNode<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">'&lt;img alt="'</span> <span class="token operator">+</span> monsters<span class="token punctuation">[</span>id<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'" src="'</span> <span class="token operator">+</span> monsters<span class="token punctuation">[</span>id<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'.svg">'</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// Increase the number of monsters who have been found by 1</span><br>    found<span class="token operator">++</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// If the number of monsters found is equal to the total number (-1 for the sock)</span><br>    <span class="token comment">// then all monsters have been found and we can render the win UI</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span>found <span class="token operator">===</span> <span class="token punctuation">(</span>monsters<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      <span class="token function">renderWon</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><br><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br><br>  <span class="token comment">//</span><br>  <span class="token comment">// Inits &amp; Event Listeners</span><br>  <span class="token comment">//</span><br><br>  <span class="token comment">// Render the initial game board</span><br>  <span class="token function">renderMonsters</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>  <span class="token comment">// Listen for click events</span><br>  document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> clickHandler<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+
+<!-- Inserting the js as a script -->
+
+<script>
+  //
+  // Variables
+  //
+
+  // The monsters and socks
+  var monsters = [
+    'monster1',
+    'monster2',
+    'monster3',
+    'monster4',
+    'monster5',
+    'monster6',
+    'monster7',
+    'monster8',
+    'monster9',
+    'monster10',
+    'monster11',
+    'sock'
+  ];
+
+  // Get the #app element
+  var app = document.querySelector('#app');
+
+  // The number of monsters who have been found
+  var found;
+    // 👆 was count instead of found
+
+
+  //
+  // Methods
+  //
+
+  /**
+   * Randomly shuffle an array
+   * https://stackoverflow.com/a/2450976/1293256
+   * @param  {Array} array The array to shuffle
+   * @return {String}      The first item in the shuffled array
+   */
+  var shuffle = function (array) {
+
+    var currentIndex = array.length;
+    var temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+
+  };
+
+  /**
+   * Render the grid of monsters onto the game board
+   */
+  var renderMonsters = function () {
+
+    // Reset the number of monsters who have been found
+    found = 0;
+
+    // Shuffle the monsters array
+    shuffle(monsters);
+
+    // Create the HTML and inject it into the DOM
+    // A button element is focusable and conveys to screen readers that it can be clicked
+    // The data-monster-id stores the index of the monster in our array
+    app.innerHTML =
+      '<p>Click a door to reveal a monster. Try not to find the sock.</p>' +
+      '<div class="row">' +
+      monsters.map(function (monster, index) {
+        var html =
+          '<div class="grid">' +
+          '<button data-monster-id="' + index + '">' +
+          '<img alt="Click the door to see what\'s behind it" src="door.svg">' +
+          '</button>' +
+          '</div>';
+        return html;
+      }).join('') +
+      '</div>';
+
+  };
+
+  /**
+   * Render a new UI when the player loses
+   */
+  var renderLost = function () {
+    app.innerHTML =
+      '<img class="img-full" alt="" src="https://media.giphy.com/media/13zUNhE9WZspMc/giphy.gif">' +
+      '<h2>Oops, you found a sock!</h2>' +
+      '<p>' +
+      '<button class="btn" data-monster-play-again>Play Again</button>' +
+      '</p>';
+  };
+
+  /**
+   * Render a new UI when the player wins
+   */
+  var renderWon = function () {
+    app.innerHTML =
+      '<img class="img-full" alt="" src="https://media.giphy.com/media/1242bJFCbb3FxC/giphy.gif">' +
+      '<h2>You won!</h2>' +
+      '<p>You found all of the monsters. Congrats!</p>' +
+      '<p>' +
+      '<button data-monster-play-again>Play Again</button>' +
+      '</p>';
+  };
+
+  /**
+   * Handle click events
+   * @param  {Event} event The event object
+   */
+  var clickHandler = function (event) {
+
+    // If a "play again" button was clicked, reset the UI and end the callback function
+    if (event.target.hasAttribute('data-monster-play-again')) {
+    // 👆 does not need [] on the selector
+      renderMonsters();
+      return;
+    }
+
+    // Check if clicked element or it's parent has a [data-monster-id] attribute
+    // If not, it's not a monster
+    // return and stop running our callback function
+    var monster = event.target.closest('[data-monster-id]');
+    // 👆 lacked [] on the selector
+    if (!monster) return;
+
+    // Get the monster's index in the array
+    var id = monster.getAttribute('data-monster-id');
+
+    // If the door reveals a sock, render the lost UI
+    // Then, end the callback function
+    if (monsters[id] === 'sock') {
+    // 👆 should be === instead of =
+    // 👆 should be sock isntead of socks
+      renderLost();
+      return;
+    }
+
+    // Update the HTML for the button's parent element
+    // This will replace the button so that the content can't be clicked again
+    // We'll use the id to get the monster from our shuffled array
+    monster.parentNode.innerHTML = '<img alt="' + monsters[id] + '" src="' + monsters[id] + '.svg">';
+
+    // Increase the number of monsters who have been found by 1
+    found++;
+
+    // If the number of monsters found is equal to the total number (-1 for the sock)
+    // then all monsters have been found and we can render the win UI
+    if (found === (monsters.length - 1)) {
+      renderWon();
+    }
+
+  };
+
+
+  //
+  // Inits & Event Listeners
+  //
+
+  // Render the initial game board
+  renderMonsters();
+
+  // Listen for click events
+  document.addEventListener('click', clickHandler, false);
+
+</script>
+
+</div>
+
+    </main>
+
+    <footer>
+      ©
+      Miguel Pinto
+      2021
+    </footer>
+
+    <!-- Current page: /vanillajsacademy/posts/45/ -->
+
+    
+    
+  </body>
+</html>

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanitizing the NYT API Data</title>
+    <meta name="description" content="Exercises on Vanilla JS Academy 2020">
+    <link rel="stylesheet" href="/vanillajsacademy/css/index.css">
+    <link rel="stylesheet" href="/vanillajsacademy/css/prism-base16-monokai.dark.css">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.xml" type="application/atom+xml" title="miguelslp - Vanilla JS">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.json" type="application/json" title="miguelslp - Vanilla JS">
+  </head>
+  <body>
+    <header>
+      <h1 class="home">
+        <a href="/vanillajsacademy/">miguelslp - Vanilla JS</a>
+      </h1>
+      
+    </header>
+
+    <main  class="tmpl-post" >
+      <h1>Sanitizing the NYT API Data</h1>
+
+<div class="grid">
+
+<!-- Setting the html code -->
+
+
+<!-- Setting the js code -->
+
+
+<!-- Rendering the html -->
+<div class="htmlBox">
+<div id="app">
+  <span id="placeholder">Loading latest stories...</span>
+</div>
+</div>
+
+<!-- Rendering the html and js as syntax highlight -->
+<pre class="language-html"><code class="language-html"><span class="highlight-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></span><br><span class="highlight-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>placeholder<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Loading latest stories...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span></span><br><span class="highlight-line"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></span><br><span class="highlight-line"> </span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">async</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><br><span class="highlight-line">  <span class="token comment">// Variables</span></span><br><span class="highlight-line">  <span class="token keyword">let</span> elem <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#app"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line">  <span class="token keyword">let</span> apiKey <span class="token operator">=</span> <span class="token string">"V4DAxXaiDzvGkumnpxfO4LpmCd7dM9om"</span><span class="token punctuation">;</span></span><br><span class="highlight-line">  <span class="token keyword">let</span> sections <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"automobiles"</span><span class="token punctuation">,</span> <span class="token string">"books"</span><span class="token punctuation">,</span> <span class="token string">"health"</span><span class="token punctuation">,</span> <span class="token string">"travel"</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span><br><span class="highlight-line">  <span class="token keyword">let</span> numberOfArticles <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span></span><br><span class="highlight-line"></span><br><span class="highlight-line">  <span class="token comment">// Methods</span></span><br><span class="highlight-line">  <span class="token comment">// ---Get the arrays and call updateDOM</span></span><br><span class="highlight-line">  <span class="token keyword">function</span> <span class="token function">callNYT</span><span class="token punctuation">(</span><span class="token parameter">section</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span><br><span class="highlight-line">    <span class="token function">fetch</span><span class="token punctuation">(</span></span><br><span class="highlight-line">      <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">https://api.nytimes.com/svc/topstories/v2/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>section<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.json?api-key=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>apiKey<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span></span><br><span class="highlight-line">    <span class="token punctuation">)</span></span><br><span class="highlight-line">      <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token operator">=></span> response<span class="token punctuation">.</span>ok <span class="token operator">?</span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">)</span></span><br><span class="highlight-line">      <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">array</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">updateDOM</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span><span class="token punctuation">)</span></span><br><span class="highlight-line">      <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">errorState</span><span class="token punctuation">(</span>error<span class="token punctuation">,</span> section<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line">  <span class="token punctuation">}</span></span><br><span class="highlight-line"></span><br><span class="highlight-line">  <span class="token comment">// ---Helper function to insert the newest 5 as list items in the DOM</span></span><br><mark class="highlight-line highlight-line-active">  <span class="token keyword">function</span> <span class="token function">updateDOM</span><span class="token punctuation">(</span><span class="token parameter">array</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></mark><br><span class="highlight-line">    <span class="token keyword">let</span> latestArticles <span class="token operator">=</span> array<span class="token punctuation">.</span>results<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> numberOfArticles<span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line">    <span class="token keyword">let</span> stories <span class="token operator">=</span> latestArticles</span><br><span class="highlight-line">      <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">story</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span><br><span class="highlight-line">        <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;article>&lt;a href="</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">sanitizeHTML</span><span class="token punctuation">(</span>story<span class="token punctuation">.</span>short_url<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">"></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">sanitizeHTML</span><span class="token punctuation">(</span>story<span class="token punctuation">.</span>title<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/a>&lt;/article></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span></span><br><span class="highlight-line">      <span class="token punctuation">}</span><span class="token punctuation">)</span></span><br><span class="highlight-line">      <span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line">    <span class="token keyword">let</span> placeholder <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#placeholder"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>placeholder<span class="token punctuation">)</span> placeholder<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line">    elem<span class="token punctuation">.</span>innerHTML <span class="token operator">+=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;h2></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">sanitizeHTML</span><span class="token punctuation">(</span>array<span class="token punctuation">.</span>section<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/h2></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>stories<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span></span><br><span class="highlight-line">  <span class="token punctuation">}</span></span><br><span class="highlight-line"></span><br><span class="highlight-line">  <span class="token comment">// ---Sanitizing function</span></span><br><mark class="highlight-line highlight-line-active">  <span class="token keyword">function</span> <span class="token function">sanitizeHTML</span><span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></mark><br><span class="highlight-line">    <span class="token keyword">return</span> str<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">[^\w. ]</span><span class="token regex-delimiter">/</span><span class="token regex-flags">gi</span></span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">c</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span><br><span class="highlight-line">      <span class="token keyword">return</span> <span class="token string">"&amp;#"</span> <span class="token operator">+</span> c<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">";"</span><span class="token punctuation">;</span></span><br><span class="highlight-line">    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line">  <span class="token punctuation">}</span></span><br><span class="highlight-line"></span><br><span class="highlight-line">  <span class="token comment">// ---Error message UI</span></span><br><span class="highlight-line">  <span class="token keyword">function</span> <span class="token function">errorState</span><span class="token punctuation">(</span><span class="token parameter">error<span class="token punctuation">,</span> section</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span><br><span class="highlight-line">    console<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">"Oh no something went wrong"</span><span class="token punctuation">,</span> error<span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line">    <span class="token keyword">let</span> placeholder <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#placeholder"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>placeholder<span class="token punctuation">)</span> placeholder<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line">    <span class="token keyword">let</span> errorState <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#errorState"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line">    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>errorState<span class="token punctuation">)</span> <span class="token punctuation">{</span></span><br><span class="highlight-line">      errorState <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line">      errorState<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">,</span> <span class="token string">"errorState"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line">      errorState<span class="token punctuation">.</span>textContent <span class="token operator">=</span></span><br><span class="highlight-line">        <span class="token string">"Sorry, something went wrong gathering stories on"</span><span class="token punctuation">;</span></span><br><span class="highlight-line">      app<span class="token punctuation">.</span><span class="token function">after</span><span class="token punctuation">(</span>errorState<span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line">    <span class="token punctuation">}</span></span><br>    errorState<span class="token punctuation">.</span>innerHTML <span class="token operator">+=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br><span class="highlight-line">        &lt;code> </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>section<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/code></span><br>        </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span><br><span class="highlight-line">  <span class="token punctuation">}</span></span><br><span class="highlight-line"></span><br><span class="highlight-line">  <span class="token comment">// Inits</span></span><br><span class="highlight-line">  sections<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">section</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">callNYT</span><span class="token punctuation">(</span>section<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+
+<!-- Inserting the js as a script -->
+
+<script async>
+  // Variables
+  let elem = document.querySelector("#app");
+  let apiKey = "V4DAxXaiDzvGkumnpxfO4LpmCd7dM9om";
+  let sections = ["automobiles", "books", "health", "travel"];
+  let numberOfArticles = 2;
+
+  // Methods
+  // ---Get the arrays and call updateDOM
+  function callNYT(section) {
+    fetch(
+      `https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${apiKey}`
+    )
+      .then((response) => response.ok ? response.json() : Promise.reject(response))
+      .then((array) => updateDOM(array))
+      .catch((error) => errorState(error, section));
+  }
+
+  // ---Helper function to insert the newest 5 as list items in the DOM
+  function updateDOM(array) {
+    let latestArticles = array.results.slice(0, numberOfArticles);
+    let stories = latestArticles
+      .map(function (story) {
+        return `<article><a href="${sanitizeHTML(story.short_url)}">${sanitizeHTML(story.title)}</a></article>`;
+      })
+      .join("");
+    let placeholder = document.querySelector("#placeholder");
+    if (placeholder) placeholder.remove();
+    elem.innerHTML += `<h2>${sanitizeHTML(array.section)}</h2>${stories}`;
+  }
+
+  // ---Sanitizing function
+  function sanitizeHTML(str) {
+    return str.replace(/[^\w. ]/gi, function (c) {
+      return "&#" + c.charCodeAt(0) + ";";
+    });
+  }
+
+  // ---Error message UI
+  function errorState(error, section) {
+    console.warn("Oh no something went wrong", error);
+    let placeholder = document.querySelector("#placeholder");
+    if (placeholder) placeholder.remove();
+    let errorState = document.querySelector("#errorState");
+    if (!errorState) {
+      errorState = document.createElement("p");
+      errorState.setAttribute("id", "errorState");
+      errorState.textContent =
+        "Sorry, something went wrong gathering stories on";
+      app.after(errorState);
+    }
+    errorState.innerHTML += `
+        <code> ${section}</code>
+        `;
+  }
+
+  // Inits
+  sections.forEach((section) => callNYT(section));
+</script>
+
+</div>
+
+    </main>
+
+    <footer>
+      ©
+      Miguel Pinto
+      2021
+    </footer>
+
+    <!-- Current page: /vanillajsacademy/posts/21/ -->
+
+    
+    
+  </body>
+</html>

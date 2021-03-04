@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>µhtml + hooked-elements</title>
+    <meta name="description" content="Exercises on Vanilla JS Academy 2020">
+    <link rel="stylesheet" href="/vanillajsacademy/css/index.css">
+    <link rel="stylesheet" href="/vanillajsacademy/css/prism-base16-monokai.dark.css">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.xml" type="application/atom+xml" title="miguelslp - Vanilla JS">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.json" type="application/json" title="miguelslp - Vanilla JS">
+  </head>
+  <body>
+    <header>
+      <h1 class="home">
+        <a href="/vanillajsacademy/">miguelslp - Vanilla JS</a>
+      </h1>
+      
+    </header>
+
+    <main  class="tmpl-post" >
+      <h1>µhtml + hooked-elements</h1>
+
+<div class="grid">
+
+
+<div class="htmlBox">
+  
+<div>
+  <my-counter data-size="small">Loading...</my-counter>
+  <my-counter data-size="big"></my-counter>
+</div>
+<div>
+  <my-clock></my-clock>
+</div>
+<div>
+  <my-input></my-input>
+</div>
+
+<a href="https://github.com/WebReflection/uhtml">Link to µhtml</a>
+<br>
+<a href="https://github.com/WebReflection/hooked-elements">Link to hooked-elements</a>
+<!-- <div class="buttons"></div> -->
+
+</div>
+
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>my-counter</span> <span class="token attr-name">data-size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>small<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Loading...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>my-counter</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>my-counter</span> <span class="token attr-name">data-size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>big<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>my-counter</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>my-clock</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>my-clock</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>my-input</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>my-input</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://github.com/WebReflection/uhtml<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Link to µhtml<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://github.com/WebReflection/hooked-elements<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Link to hooked-elements<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br><span class="token comment">&lt;!-- &lt;div class="buttons">&lt;/div> --></span></code></pre>
+
+
+
+
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><br><ins class="highlight-line highlight-line-add">  <span class="token keyword">import</span> <span class="token punctuation">{</span> render<span class="token punctuation">,</span> html <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'https://cdn.esm.sh/v15/uhtml@2.3.1/esnext/uhtml.js'</span><span class="token punctuation">;</span></ins><br><ins class="highlight-line highlight-line-add">  <span class="token keyword">import</span> <span class="token punctuation">{</span> define<span class="token punctuation">,</span> useState<span class="token punctuation">,</span> useEffect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'https://cdn.esm.sh/v15/hooked-elements@2.2.1/esnext/hooked-elements.js'</span><span class="token punctuation">;</span></ins><br><del class="highlight-line highlight-line-remove"></del><br><del class="highlight-line highlight-line-remove">  <span class="token keyword">let</span> store <span class="token operator">=</span> <span class="token punctuation">{</span></del><br><del class="highlight-line highlight-line-remove">    name<span class="token operator">:</span> <span class="token string">"button"</span><span class="token punctuation">,</span></del><br><span class="highlight-line">    age<span class="token operator">:</span> <span class="token number">331</span></span><br><span class="highlight-line">  <span class="token punctuation">}</span></span><br><span class="highlight-line"></span><br><ins class="highlight-line highlight-line-add">  <span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'my-counter'</span><span class="token punctuation">,</span> <span class="token parameter">element</span> <span class="token operator">=></span> <span class="token punctuation">{</span></ins><br><ins class="highlight-line highlight-line-add">    <span class="token keyword">const</span> <span class="token punctuation">[</span>count<span class="token punctuation">,</span> update<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></ins><br><ins class="highlight-line highlight-line-add">    <span class="token keyword">const</span> size <span class="token operator">=</span> element<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">'data-size'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></ins><br>    <span class="token function">render</span><span class="token punctuation">(</span>element<span class="token punctuation">,</span> html<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br><span class="highlight-line">    &lt;button class="large btn" onclick=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">update</span><span class="token punctuation">(</span>count <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">>- </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>store<span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/button></span><br><span class="highlight-line">    &lt;span class="large value"></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>count<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>size<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/span></span><br><del class="highlight-line highlight-line-remove">    &lt;button class="large btn" onclick=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">update</span><span class="token punctuation">(</span>count <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">>+&lt;/button></del><br>  </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="highlight-line">  <span class="token punctuation">}</span><span class="token punctuation">)</span></span><br><span class="highlight-line"></span><br><span class="highlight-line">  <span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'my-clock'</span><span class="token punctuation">,</span> <span class="token parameter">element</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span><br><span class="highlight-line">    <span class="token keyword">const</span> <span class="token punctuation">[</span>time<span class="token punctuation">,</span> setTime<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line"></span><br><span class="highlight-line">    <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span><br><span class="highlight-line">      <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span><br><span class="highlight-line">        <span class="token function">setTime</span><span class="token punctuation">(</span>useState<span class="token punctuation">.</span>time <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLocaleTimeString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></span><br><span class="highlight-line">      <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line">    <span class="token punctuation">}</span><span class="token punctuation">)</span></span><br><span class="highlight-line"></span><br>    <span class="token function">render</span><span class="token punctuation">(</span>element<span class="token punctuation">,</span> html<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br><span class="highlight-line">    &lt;strong>The time is:&lt;/strong> &lt;span></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>time<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/span></span><br>  </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="highlight-line">  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line"></span><br><span class="highlight-line">  <span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'my-input'</span><span class="token punctuation">,</span> <span class="token parameter">element</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span><br><span class="highlight-line">    <span class="token keyword">const</span> <span class="token punctuation">[</span>name<span class="token punctuation">,</span> setName<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line">    <span class="token keyword">const</span> <span class="token function-variable function">updateName</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span><br><span class="highlight-line">      <span class="token function">setName</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line">    <span class="token punctuation">}</span><span class="token punctuation">;</span></span><br>    <span class="token function">render</span><span class="token punctuation">(</span>element<span class="token punctuation">,</span> html<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br><span class="highlight-line">  &lt;input type="text" value=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> oninput=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>updateName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> placeholder="Reactive input" /></span><br><span class="highlight-line">  &lt;p></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/p></span><br>  </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="highlight-line">  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><br><span class="highlight-line"></span><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+
+
+<script type="module">
+  import { render, html } from 'https://cdn.esm.sh/v15/uhtml@2.3.1/esnext/uhtml.js';
+  import { define, useState, useEffect } from 'https://cdn.esm.sh/v15/hooked-elements@2.2.1/esnext/hooked-elements.js';
+
+  let store = {
+    name: "button",
+    age: 331
+  }
+
+  define('my-counter', element => {
+    const [count, update] = useState(0);
+    const size = element.getAttribute('data-size');
+    render(element, html`
+    <button class="large btn" onclick=${() => update(count - 1)}>- ${store.name}</button>
+    <span class="large value">${count} ${size}</span>
+    <button class="large btn" onclick=${() => update(count + 1)}>+</button>
+  `);
+  })
+
+  define('my-clock', element => {
+    const [time, setTime] = useState();
+
+    useEffect(() => {
+      setInterval(() => {
+        setTime(useState.time = new Date().toLocaleTimeString())
+      }, 1000);
+    })
+
+    render(element, html`
+    <strong>The time is:</strong> <span>${time}</span>
+  `);
+  });
+
+  define('my-input', element => {
+    const [name, setName] = useState("");
+    const updateName = (event) => {
+      setName(event.target.value);
+    };
+    render(element, html`
+  <input type="text" value=${name} oninput=${updateName} placeholder="Reactive input" />
+  <p>${name}</p>
+  `);
+  });
+
+</script>
+
+</div>
+
+    </main>
+
+    <footer>
+      ©
+      Miguel Pinto
+      2021
+    </footer>
+
+    <!-- Current page: /vanillajsacademy/experiments/1/ -->
+
+    
+    
+  </body>
+</html>

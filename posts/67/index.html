@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Places - Favorites</title>
+    <meta name="description" content="Exercises on Vanilla JS Academy 2020">
+    <link rel="stylesheet" href="/vanillajsacademy/css/index.css">
+    <link rel="stylesheet" href="/vanillajsacademy/css/prism-base16-monokai.dark.css">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.xml" type="application/atom+xml" title="miguelslp - Vanilla JS">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.json" type="application/json" title="miguelslp - Vanilla JS">
+  </head>
+  <body>
+    <header>
+      <h1 class="home">
+        <a href="/vanillajsacademy/">miguelslp - Vanilla JS</a>
+      </h1>
+      
+    </header>
+
+    <main  class="tmpl-post" >
+      <h1>Places - Favorites</h1>
+
+<div class="grid">
+
+<style>
+  /**
+ * Grid Layout
+ */
+  @media (min-width: 40em) {
+    .place {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      grid-template-rows: 1fr;
+      gap: 8rem 1rem;
+    }
+  }
+
+  /**
+ * Responsive Images
+ */
+  img {
+    height: auto;
+    max-width: 100%;
+  }
+
+  button {
+    background-color: #f7f7f7;
+    border: 1px solid #e5e5e5;
+    color: #272727;
+    font-size: 1.5em;
+    padding: 0 0.5em;
+  }
+
+  button[aria-pressed="true"] {
+    background-color: #de391f;
+    border-color: #de391f;
+    color: #ffffff;
+  }
+</style>
+<!-- Setting the html code -->
+
+<!-- Setting the js code -->
+
+
+<!-- Rendering the html -->
+<div class="htmlBox">
+<p>Explore cool, quirky places in your own backyard.</p>
+
+<div id="app">Loading...</div>
+</div>
+
+<!-- Rendering the html and js as syntax highlight -->
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Explore cool, quirky places in your own backyard.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Loading...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br> <br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/reefjs@8/dist/reef.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><br>  <span class="token comment">// Get place data from the API and update app state</span><br>  <span class="token keyword">var</span> <span class="token function-variable function">getPlaces</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">"https://vanillajsacademy.com/api/places.json"</span><span class="token punctuation">)</span><br>      <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        <span class="token keyword">if</span> <span class="token punctuation">(</span>response<span class="token punctuation">.</span>ok<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>          <span class="token keyword">return</span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>        <span class="token punctuation">}</span><br>        <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><span class="token punctuation">)</span><br>      <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        app<span class="token punctuation">.</span>data<span class="token punctuation">.</span>faves <span class="token operator">=</span> <span class="token function">getFaves</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>        app<span class="token punctuation">.</span>data<span class="token punctuation">.</span>places <span class="token operator">=</span> data<span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><span class="token punctuation">)</span><br>      <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        console<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span><br>        app<span class="token punctuation">.</span>data<span class="token punctuation">.</span>places <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>  <span class="token comment">// The app component</span><br>  <span class="token keyword">var</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Reef</span><span class="token punctuation">(</span><span class="token string">"#app"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><br>    data<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token function-variable function">template</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      <span class="token comment">// If there are places, render them</span><br>      <span class="token keyword">if</span> <span class="token punctuation">(</span>data<span class="token punctuation">.</span>places <span class="token operator">&amp;&amp;</span> data<span class="token punctuation">.</span>places<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        <span class="token keyword">return</span> <span class="token function">getPlacesHTML</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><br><br>      <span class="token comment">// Otherwise, show an error</span><br>      <span class="token keyword">return</span> <span class="token function">getNoPlacesHTML</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>  <span class="token comment">// Get the message to dispay if there is no palce data</span><br>  <span class="token keyword">var</span> <span class="token function-variable function">getNoPlacesHTML</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;p>&lt;em>Unable to find any places right now. Please try again later. Sorry!&lt;/em>&lt;/p></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>  <span class="token comment">// Create HTML for each of the palces from the app data</span><br>  <span class="token keyword">var</span> <span class="token function-variable function">getPlacesHTML</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> props<span class="token punctuation">.</span>places<br>      <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">place</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        <span class="token keyword">var</span> html <span class="token operator">=</span><br>          <span class="token string">'&lt;div class="place">'</span> <span class="token operator">+</span><br>          <span class="token string">"&lt;div>"</span> <span class="token operator">+</span><br>          <span class="token string">'&lt;img alt="" src="'</span> <span class="token operator">+</span><br>          place<span class="token punctuation">.</span>img <span class="token operator">+</span><br>          <span class="token string">'">'</span> <span class="token operator">+</span><br>          <span class="token string">"&lt;/div>"</span> <span class="token operator">+</span><br>          <span class="token string">"&lt;div>"</span> <span class="token operator">+</span><br>          <span class="token string">"&lt;h2>"</span> <span class="token operator">+</span><br>          place<span class="token punctuation">.</span>place <span class="token operator">+</span><br>          <span class="token string">"&lt;/h2>"</span> <span class="token operator">+</span><br>          <span class="token string">"&lt;p>"</span> <span class="token operator">+</span><br>          place<span class="token punctuation">.</span>description <span class="token operator">+</span><br>          <span class="token string">"&lt;/p>"</span> <span class="token operator">+</span><br>          <span class="token string">"&lt;p>&lt;em>"</span> <span class="token operator">+</span><br>          place<span class="token punctuation">.</span>location <span class="token operator">+</span><br>          <span class="token string">'&lt;/em>&lt;br>&lt;a href="'</span> <span class="token operator">+</span><br>          place<span class="token punctuation">.</span>url <span class="token operator">+</span><br>          <span class="token string">'">'</span> <span class="token operator">+</span><br>          place<span class="token punctuation">.</span>url <span class="token operator">+</span><br>          <span class="token string">"&lt;/a>&lt;/p>"</span> <span class="token operator">+</span><br>          <span class="token string">'&lt;p>&lt;button data-fave="'</span> <span class="token operator">+</span><br>          place<span class="token punctuation">.</span>id <span class="token operator">+</span><br>          <span class="token string">'" aria-label="Save '</span> <span class="token operator">+</span><br>          place<span class="token punctuation">.</span>place <span class="token operator">+</span><br>          <span class="token string">'" aria-pressed="'</span> <span class="token operator">+</span><br>          props<span class="token punctuation">.</span>faves<span class="token punctuation">[</span>place<span class="token punctuation">.</span>id<span class="token punctuation">]</span> <span class="token operator">+</span><br>          <span class="token string">'">♥&lt;/button>&lt;/p>'</span> <span class="token operator">+</span><br>          <span class="token string">"&lt;/div>"</span> <span class="token operator">+</span><br>          <span class="token string">"&lt;/div>"</span><span class="token punctuation">;</span><br>        <span class="token keyword">return</span> html<span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><span class="token punctuation">)</span><br>      <span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>  <span class="token comment">// Handle click events</span><br>  <span class="token keyword">var</span> <span class="token function-variable function">clickHandler</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token comment">// Only run on fave buttons</span><br>    <span class="token keyword">var</span> place <span class="token operator">=</span> event<span class="token punctuation">.</span>target<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"data-fave"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>place<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// If place is already saved, remove it</span><br>    <span class="token comment">// Other, save it</span><br>    app<span class="token punctuation">.</span>data<span class="token punctuation">.</span>faves<span class="token punctuation">[</span>place<span class="token punctuation">]</span> <span class="token operator">=</span> app<span class="token punctuation">.</span>data<span class="token punctuation">.</span>faves<span class="token punctuation">[</span>place<span class="token punctuation">]</span> <span class="token operator">?</span> <span class="token boolean">false</span> <span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>  <span class="token comment">// localStorage</span><br>  <span class="token keyword">var</span> favesID <span class="token operator">=</span> <span class="token string">"exploreFaves"</span><span class="token punctuation">;</span><br><br>  <span class="token comment">// Save favorite places to localStorage</span><br>  <span class="token keyword">var</span> <span class="token function-variable function">saveFaves</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">faves</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span>favesID<span class="token punctuation">,</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>faves<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>  <span class="token comment">// Handle render events</span><br>  <span class="token keyword">var</span> <span class="token function-variable function">renderHandler</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token comment">// Save favorites to localStorage on render</span><br>    <span class="token function">saveFaves</span><span class="token punctuation">(</span>app<span class="token punctuation">.</span>data<span class="token punctuation">.</span>faves<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>  <span class="token comment">// Get favorite places from localStorage</span><br>  <span class="token keyword">var</span> <span class="token function-variable function">getFaves</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">var</span> faves <span class="token operator">=</span> localStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span>favesID<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">var</span> favesObj <span class="token operator">=</span> faves <span class="token operator">?</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>faves<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> favesObj<span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>  <span class="token comment">// Inits</span><br>  <span class="token function">getPlaces</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> clickHandler<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"reef:render"</span><span class="token punctuation">,</span> renderHandler<span class="token punctuation">)</span><span class="token punctuation">;</span><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+
+<!-- Inserting the js as a script -->
+
+<script src="https://cdn.jsdelivr.net/npm/reefjs@8/dist/reef.min.js"></script>
+<script>
+  // Get place data from the API and update app state
+  var getPlaces = function () {
+    fetch("https://vanillajsacademy.com/api/places.json")
+      .then(function (response) {
+        if (response.ok) {
+          return response.json();
+        }
+        return Promise.reject(response);
+      })
+      .then(function (data) {
+        app.data.faves = getFaves();
+        app.data.places = data;
+      })
+      .catch(function (err) {
+        console.warn(err);
+        app.data.places = null;
+      });
+  };
+
+  // The app component
+  var app = new Reef("#app", {
+    data: {},
+    template: function (data) {
+      // If there are places, render them
+      if (data.places && data.places.length) {
+        return getPlacesHTML(data);
+      }
+
+      // Otherwise, show an error
+      return getNoPlacesHTML();
+    },
+  });
+
+  // Get the message to dispay if there is no palce data
+  var getNoPlacesHTML = function () {
+    return `<p><em>Unable to find any places right now. Please try again later. Sorry!</em></p>`;
+  };
+
+  // Create HTML for each of the palces from the app data
+  var getPlacesHTML = function (props) {
+    return props.places
+      .map(function (place) {
+        var html =
+          '<div class="place">' +
+          "<div>" +
+          '<img alt="" src="' +
+          place.img +
+          '">' +
+          "</div>" +
+          "<div>" +
+          "<h2>" +
+          place.place +
+          "</h2>" +
+          "<p>" +
+          place.description +
+          "</p>" +
+          "<p><em>" +
+          place.location +
+          '</em><br><a href="' +
+          place.url +
+          '">' +
+          place.url +
+          "</a></p>" +
+          '<p><button data-fave="' +
+          place.id +
+          '" aria-label="Save ' +
+          place.place +
+          '" aria-pressed="' +
+          props.faves[place.id] +
+          '">♥</button></p>' +
+          "</div>" +
+          "</div>";
+        return html;
+      })
+      .join("");
+  };
+
+  // Handle click events
+  var clickHandler = function (event) {
+    // Only run on fave buttons
+    var place = event.target.getAttribute("data-fave");
+    if (!place) return;
+
+    // If place is already saved, remove it
+    // Other, save it
+    app.data.faves[place] = app.data.faves[place] ? false : true;
+  };
+
+  // localStorage
+  var favesID = "exploreFaves";
+
+  // Save favorite places to localStorage
+  var saveFaves = function (faves) {
+    localStorage.setItem(favesID, JSON.stringify(faves));
+  };
+
+  // Handle render events
+  var renderHandler = function (event) {
+    // Save favorites to localStorage on render
+    saveFaves(app.data.faves);
+  };
+
+  // Get favorite places from localStorage
+  var getFaves = function () {
+    var faves = localStorage.getItem(favesID);
+    var favesObj = faves ? JSON.parse(faves) : {};
+    return favesObj;
+  };
+
+  // Inits
+  getPlaces();
+  document.addEventListener("click", clickHandler);
+  document.addEventListener("reef:render", renderHandler);
+</script>
+
+
+</div>
+
+    </main>
+
+    <footer>
+      ©
+      Miguel Pinto
+      2021
+    </footer>
+
+    <!-- Current page: /vanillajsacademy/posts/67/ -->
+
+    
+    
+  </body>
+</html>

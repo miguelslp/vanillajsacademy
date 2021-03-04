@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation Library with chaining methods</title>
+    <meta name="description" content="Exercises on Vanilla JS Academy 2020">
+    <link rel="stylesheet" href="/vanillajsacademy/css/index.css">
+    <link rel="stylesheet" href="/vanillajsacademy/css/prism-base16-monokai.dark.css">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.xml" type="application/atom+xml" title="miguelslp - Vanilla JS">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.json" type="application/json" title="miguelslp - Vanilla JS">
+  </head>
+  <body>
+    <header>
+      <h1 class="home">
+        <a href="/vanillajsacademy/">miguelslp - Vanilla JS</a>
+      </h1>
+      
+    </header>
+
+    <main  class="tmpl-post" >
+      <h1>DOM Manipulation Library with chaining methods</h1>
+
+<div class="grid">
+<style>
+  .btn-blue {
+    background-color: #0088cc;
+    color: #ffffff;
+  }
+
+  .btn-purple {
+    background-color: rebeccapurple;
+    color: #ffffff;
+  }
+</style>
+<!-- Setting the html code -->
+
+<!-- Setting the js code -->
+
+
+<!-- Rendering the html -->
+<div class="htmlBox">
+  
+<p>
+  <button class="btn-blue" id="button-1">Button 1</button>
+  <button class="btn-blue" id="button-2">Button 2</button>
+  <button class="btn-blue" id="button-3">Button 3</button>
+</p>
+
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+
+</div>
+
+<!-- Rendering the html and js as syntax highlight -->
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>btn-blue<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button-1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Button 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>btn-blue<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button-2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Button 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>btn-blue<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button-3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Button 3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>Item 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>Item 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>Item 3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><br> <br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><br>  <span class="token keyword">var</span> $ <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br><br>    <span class="token keyword">var</span> <span class="token function-variable function">getArray</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">arr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      <span class="token keyword">return</span> methods<span class="token punctuation">.</span>Array<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// The constructor object</span><br>    <span class="token keyword">var</span> <span class="token function-variable function">Constructor</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">selector</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      <span class="token keyword">this</span><span class="token punctuation">.</span>elems <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span>selector<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// Get an immutable copy of the matching elements </span><br>    <span class="token class-name">Constructor</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">items</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      <span class="token keyword">return</span> <span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>elems<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>    <span class="token class-name">Constructor</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">first</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>elems<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>    <span class="token class-name">Constructor</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">last</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>elems<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>elems<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>    <span class="token class-name">Constructor</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">addClass</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">className</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">items</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">elem</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        elem<span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>className<span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>    <span class="token class-name">Constructor</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">removeClass</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">className</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">items</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">elem</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        elem<span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>className<span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// Return the constructor</span><br>    <span class="token keyword">return</span> Constructor<span class="token punctuation">;</span><br><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>  <span class="token comment">// Create new instances</span><br>  <span class="token keyword">var</span> btns <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'button'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token keyword">var</span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'ul'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><br>  <span class="token comment">// $.items()</span><br>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'$.items()'</span><span class="token punctuation">,</span> btns<span class="token punctuation">.</span><span class="token function">items</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'$.items()'</span><span class="token punctuation">,</span> list<span class="token punctuation">.</span><span class="token function">items</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token comment">// $.first()</span><br>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'$.first()'</span><span class="token punctuation">,</span> btns<span class="token punctuation">.</span><span class="token function">first</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token comment">// $.last()</span><br>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'$.last()'</span><span class="token punctuation">,</span> btns<span class="token punctuation">.</span><span class="token function">last</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token comment">// $.addClass()</span><br>btns<span class="token punctuation">.</span><span class="token function">addClass</span><span class="token punctuation">(</span><span class="token string">'btn-purple'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token comment">// $.removeClass()</span><br>btns<span class="token punctuation">.</span><span class="token function">removeClass</span><span class="token punctuation">(</span><span class="token string">'btn-blue'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><br><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+
+<!-- Inserting the js as a script -->
+
+<script>
+  var $ = (function () {
+
+    var getArray = function (arr) {
+      return methods.Array.from(document.querySelectorAll(arr));
+    };
+
+    // The constructor object
+    var Constructor = function (selector) {
+      this.elems = document.querySelectorAll(selector);
+    };
+
+    // Get an immutable copy of the matching elements 
+    Constructor.prototype.items = function () {
+      return Array.prototype.slice.call(this.elems);
+    };
+
+    Constructor.prototype.first = function () {
+      return this.elems[0];
+    };
+
+    Constructor.prototype.last = function () {
+      return this.elems[this.elems.length - 1];
+    };
+
+    Constructor.prototype.addClass = function (className) {
+      this.items().forEach(function (elem) {
+        elem.classList.add(className);
+      });
+      return this;
+    };
+
+    Constructor.prototype.removeClass = function (className) {
+      this.items().forEach(function (elem) {
+        elem.classList.remove(className);
+      });
+      return this;
+    };
+
+    // Return the constructor
+    return Constructor;
+
+  })();
+
+  // Create new instances
+  var btns = new $('button');
+  var list = new $('ul');
+
+
+  // $.items()
+console.log('$.items()', btns.items());
+console.log('$.items()', list.items());
+
+// $.first()
+console.log('$.first()', btns.first());
+
+// $.last()
+console.log('$.last()', btns.last());
+
+// $.addClass()
+btns.addClass('btn-purple');
+
+// $.removeClass()
+btns.removeClass('btn-blue');
+
+
+
+</script>
+
+</div>
+
+    </main>
+
+    <footer>
+      ©
+      Miguel Pinto
+      2021
+    </footer>
+
+    <!-- Current page: /vanillajsacademy/posts/43/ -->
+
+    
+    
+  </body>
+</html>

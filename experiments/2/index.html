@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>µland</title>
+    <meta name="description" content="Exercises on Vanilla JS Academy 2020">
+    <link rel="stylesheet" href="/vanillajsacademy/css/index.css">
+    <link rel="stylesheet" href="/vanillajsacademy/css/prism-base16-monokai.dark.css">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.xml" type="application/atom+xml" title="miguelslp - Vanilla JS">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.json" type="application/json" title="miguelslp - Vanilla JS">
+  </head>
+  <body>
+    <header>
+      <h1 class="home">
+        <a href="/vanillajsacademy/">miguelslp - Vanilla JS</a>
+      </h1>
+      
+    </header>
+
+    <main  class="tmpl-post" >
+      <h1>µland</h1>
+
+<div class="grid">
+
+
+<div class="htmlBox">
+  
+<div id="app" class="clock"></div>
+<a href="https://github.com/WebReflection/uland#readme">Link to µland</a>
+
+</div>
+
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>clock<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://github.com/WebReflection/uland#readme<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Link to µland<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span></code></pre>
+
+
+
+
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><br>  <span class="token keyword">import</span> <span class="token punctuation">{</span> Component<span class="token punctuation">,</span> render<span class="token punctuation">,</span> html<span class="token punctuation">,</span> useState<span class="token punctuation">,</span> useEffect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'https://cdn.esm.sh/v15/uland@0.6.3/esnext/uland.js'</span><span class="token punctuation">;</span><br><br>  <span class="token keyword">const</span> Counter <span class="token operator">=</span> <span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">initialState</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>    <span class="token keyword">const</span> <span class="token punctuation">[</span>count<span class="token punctuation">,</span> setCount<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span>initialState<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> html<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br>  &lt;button onclick=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setCount</span><span class="token punctuation">(</span>count <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">><br>    Count: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>count<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"><br>  &lt;/button></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>  <span class="token keyword">const</span> TextInput <span class="token operator">=</span> <span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">text</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>    <span class="token keyword">const</span> <span class="token punctuation">[</span>name<span class="token punctuation">,</span> setName<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">const</span> <span class="token function-variable function">updateName</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>      <span class="token function">setName</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">;</span><br>    <span class="token keyword">const</span> <span class="token function-variable function">clearName</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>      <span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#textinput'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">;</span><br>    <span class="token keyword">const</span> <span class="token function-variable function">fillName</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>      <span class="token function">setName</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span><br>      document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#textinput'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value <span class="token operator">=</span> text<span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">;</span><br>    <span class="token keyword">return</span> html<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br>  &lt;input id="textinput" type="text" value=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> onInput=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>updateName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> placeholder="Reactive input" /><br>  &lt;p></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/p><br>  &lt;button onclick=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>clearName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">>Clear&lt;/button><br>  &lt;button onclick=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>fillName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>text<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/button><br>  </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><br><br>  <span class="token keyword">const</span> Wrapper <span class="token operator">=</span> <span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>    <span class="token keyword">const</span> styles <span class="token operator">=</span> <span class="token string">"color: red;"</span><br>    <span class="token keyword">return</span> html<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br>  &lt;p>This is above&lt;/p><br>  &lt;p></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>props<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/p><br>  &lt;p style="</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>styles<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">">This is below&lt;/p></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><br><br>  <span class="token keyword">const</span> Clock <span class="token operator">=</span> <span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>    <span class="token keyword">const</span> <span class="token punctuation">[</span>time<span class="token punctuation">,</span> setTime<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>      <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>        <span class="token function">setTime</span><span class="token punctuation">(</span>useState<span class="token punctuation">.</span>time <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLocaleTimeString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><br>      <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><br>    <span class="token keyword">return</span> html<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br>  &lt;strong>The time is:&lt;/strong> &lt;span></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>time<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><br><br>  <span class="token keyword">const</span> CounterDisplay <span class="token operator">=</span> <span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>    <span class="token keyword">let</span> <span class="token punctuation">[</span>counter<span class="token punctuation">,</span> setCounter<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>    <span class="token keyword">const</span> <span class="token function-variable function">incCounter</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>      <span class="token function">setCounter</span><span class="token punctuation">(</span><span class="token parameter">counter</span> <span class="token operator">=></span> counter <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>    <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>      <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>        <span class="token function">incCounter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>    <span class="token keyword">return</span> html<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br>      &lt;div className="App"><br>        &lt;h1></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>counter<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/h1><br>        &lt;button onClick=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>incCounter<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">>Inc&lt;/button><br>      &lt;/div><br>    </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>  <span class="token function">render</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> html<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br>  &lt;div><br>    </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">Clock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"><br>    </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">Wrapper</span><span class="token punctuation">(</span><span class="token string">"Hello"</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> &lt;hr><br>    Some counters.<br>    </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">Counter</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">Counter</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"><br>    &lt;br><br>    </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">TextInput</span><span class="token punctuation">(</span><span class="token string">'something'</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"><br>    </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">CounterDisplay</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"><br>  &lt;/div><br></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+
+
+<script type="module">
+  import { Component, render, html, useState, useEffect } from 'https://cdn.esm.sh/v15/uland@0.6.3/esnext/uland.js';
+
+  const Counter = Component((initialState) => {
+    const [count, setCount] = useState(initialState);
+    return html`
+  <button onclick=${() => setCount(count + 1)}>
+    Count: ${count}
+  </button>`;
+  });
+
+  const TextInput = Component((text) => {
+    const [name, setName] = useState("");
+    const updateName = (event) => {
+      setName(event.target.value);
+    };
+    const clearName = () => {
+      setName('');
+      document.querySelector('#textinput').value = '';
+    };
+    const fillName = () => {
+      setName(text);
+      document.querySelector('#textinput').value = text;
+    };
+    return html`
+  <input id="textinput" type="text" value=${name} onInput=${updateName} placeholder="Reactive input" />
+  <p>${name}</p>
+  <button onclick=${clearName}>Clear</button>
+  <button onclick=${fillName}>${text}</button>
+  `;
+  })
+
+  const Wrapper = Component((props) => {
+    const styles = "color: red;"
+    return html`
+  <p>This is above</p>
+  <p>${props}</p>
+  <p style="${styles}">This is below</p>`;
+  })
+
+  const Clock = Component(() => {
+    const [time, setTime] = useState();
+    useEffect(() => {
+      setInterval(() => {
+        setTime(useState.time = new Date().toLocaleTimeString())
+      }, 1000);
+    })
+    return html`
+  <strong>The time is:</strong> <span>${time}</span>`;
+  })
+
+  const CounterDisplay = Component(() => {
+    let [counter, setCounter] = useState(0);
+
+    const incCounter = () => {
+      setCounter(counter => counter + 1);
+    };
+
+    useEffect(() => {
+      setInterval(() => {
+        incCounter();
+      }, 200);
+    }, []);
+
+    return html`
+      <div className="App">
+        <h1>${counter}</h1>
+        <button onClick=${incCounter}>Inc</button>
+      </div>
+    `;
+  });
+
+  render(document.querySelector('#app'), () => html`
+  <div>
+    ${Clock()}
+    ${Wrapper("Hello")} <hr>
+    Some counters.
+    ${Counter(0)} ${Counter(1)}
+    <br>
+    ${TextInput('something')}
+    ${CounterDisplay()}
+  </div>
+`);
+</script>
+
+</div>
+
+    </main>
+
+    <footer>
+      ©
+      Miguel Pinto
+      2021
+    </footer>
+
+    <!-- Current page: /vanillajsacademy/experiments/2/ -->
+
+    
+    
+  </body>
+</html>

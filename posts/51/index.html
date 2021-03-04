@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autosave with other fields types</title>
+    <meta name="description" content="Exercises on Vanilla JS Academy 2020">
+    <link rel="stylesheet" href="/vanillajsacademy/css/index.css">
+    <link rel="stylesheet" href="/vanillajsacademy/css/prism-base16-monokai.dark.css">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.xml" type="application/atom+xml" title="miguelslp - Vanilla JS">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.json" type="application/json" title="miguelslp - Vanilla JS">
+  </head>
+  <body>
+    <header>
+      <h1 class="home">
+        <a href="/vanillajsacademy/">miguelslp - Vanilla JS</a>
+      </h1>
+      
+    </header>
+
+    <main  class="tmpl-post" >
+      <h1>Autosave with other fields types</h1>
+
+<div class="grid">
+<style>
+
+</style>
+<!-- Setting the html code -->
+
+<!-- Setting the js code -->
+
+
+<!-- Rendering the html -->
+<div class="htmlBox">
+  
+<form class="save-me" id="save-me">
+
+  <label for="name">Name</label>
+  <input type="text" name="name" id="name">
+
+  <label for="address">Address</label>
+  <input type="text" name="address" id="address">
+
+  <label for="email">Email</label>
+  <input type="email" name="email" id="email">
+
+  <label for="hear-about-us">How did you hear about us?</label>
+  <select name="hear-about-us" id="hear-about-us">
+    <option value=""></option>
+    <option value="google">Google</option>
+    <option value="referral">Referred by a Friend</option>
+    <option value="tv">A TV Ad</option>
+    <option value="radio">A Radio Ad</option>
+  </select>
+
+  <label for="more">Additional thoughts?</label>
+  <textarea name="more" id="more"></textarea>
+
+  <p><strong>Do you agree to our terms of service?</strong></p>
+  <label>
+    <input type="radio" name="tos" value="yes">
+    Yes
+  </label>
+  <label>
+    <input type="radio" name="tos" value="no">
+    No
+  </label>
+
+  <p><strong>Pick your favorite super heros.</strong></p>
+
+  <label>
+    <input type="checkbox" name="spiderman">
+    Spiderman
+  </label>
+
+  <label>
+    <input type="checkbox" name="wonderwoman">
+    Wonder Woman
+  </label>
+
+  <label>
+    <input type="checkbox" name="blackpanther">
+    Black Panther
+  </label>
+
+  <p>
+    <button type="submit">Submit</button>
+  </p>
+
+</form>
+
+</div>
+
+<!-- Rendering the html and js as syntax highlight -->
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>save-me<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>save-me<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Name<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>address<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Address<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>address<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>address<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>email<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Email<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>email<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>email<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>email<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hear-about-us<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>How did you hear about us?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hear-about-us<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hear-about-us<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>google<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Google<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>referral<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Referred by a Friend<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tv<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>A TV Ad<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>A Radio Ad<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">></span></span><br><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>more<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Additional thoughts?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>textarea</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>more<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>more<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>textarea</span><span class="token punctuation">></span></span><br><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">></span></span>Do you agree to our terms of service?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tos<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>yes<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    Yes<br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tos<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>no<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    No<br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><br><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">></span></span>Pick your favorite super heros.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>spiderman<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    Spiderman<br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><br><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>wonderwoman<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    Wonder Woman<br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><br><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>blackpanther<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    Black Panther<br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><br><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Submit<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span><br> <br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><br>  <span class="token keyword">var</span> storagePrefix <span class="token operator">=</span> <span class="token string">'form-autosave-single-other-types_'</span><span class="token punctuation">;</span><br><br>  <span class="token keyword">var</span> <span class="token function-variable function">getID</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">field</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span>field<span class="token punctuation">.</span>id<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      <span class="token keyword">return</span> field<span class="token punctuation">.</span>id<span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><br><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span>field<span class="token punctuation">.</span>name<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      <span class="token keyword">return</span> field<span class="token punctuation">.</span>name<br>    <span class="token punctuation">}</span><br>    <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>  <span class="token keyword">var</span> <span class="token function-variable function">loadData</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br><br>    <span class="token comment">// get localstorage data</span><br>    <span class="token keyword">var</span> saved <span class="token operator">=</span> localStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span>storageID<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>saved<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span><br>    saved <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>saved<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// Get all of the form fields</span><br>    <span class="token keyword">var</span> fields <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">'#save-me input, #save-me textarea, #save-me select'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// Loop through each field and load any saved data in localStorage</span><br>    <span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>fields<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">field</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br><br>      <span class="token comment">// If the field has no usable ID, skip it</span><br>      <span class="token keyword">var</span> id <span class="token operator">=</span> <span class="token function">getID</span><span class="token punctuation">(</span>field<span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>id<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span><br><br>      <span class="token comment">// If there's no saved data in localStorage, skip it</span><br>      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>saved<span class="token punctuation">[</span>id<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span><br><br>      <span class="token comment">// Set the field value to the saved data in localStorage</span><br>      <span class="token comment">// if it is a checkbox, set its checked state</span><br>      <span class="token comment">// if it is a radio button and its value matches, set its checked state</span><br>      <span class="token comment">// otherwise, set the value</span><br>      <span class="token keyword">if</span> <span class="token punctuation">(</span>field<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token string">'checkbox'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        field<span class="token punctuation">.</span>checked <span class="token operator">=</span> saved<span class="token punctuation">[</span>id<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'on'</span> <span class="token operator">?</span> <span class="token boolean">true</span> <span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>field<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token string">'radio'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        field<span class="token punctuation">.</span>checked <span class="token operator">=</span> saved<span class="token punctuation">[</span>id<span class="token punctuation">]</span> <span class="token operator">===</span> field<span class="token punctuation">.</span>value <span class="token operator">?</span> <span class="token boolean">true</span> <span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>        field<span class="token punctuation">.</span>value <span class="token operator">=</span> saved<span class="token punctuation">[</span>id<span class="token punctuation">]</span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>  <span class="token keyword">var</span> <span class="token function-variable function">inputHandler</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token comment">// only run for fields in the #save-me form</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>event<span class="token punctuation">.</span>target<span class="token punctuation">.</span><span class="token function">closest</span><span class="token punctuation">(</span><span class="token string">'#save-me'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// get an id for the field</span><br>    <span class="token keyword">var</span> id <span class="token operator">=</span> <span class="token function">getID</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>id<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// get existing data from localstorage</span><br>    <span class="token keyword">var</span> saved <span class="token operator">=</span> localStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span>storageID<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    saved <span class="token operator">=</span> saved <span class="token operator">?</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>saved<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><br><br>    <span class="token comment">// add the field to the localstorage object</span><br>    <span class="token comment">// if it is a checkbox, use on/off values</span><br>    <span class="token comment">// otherwise, save the value</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token string">'checkbox'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      saved<span class="token punctuation">[</span>id<span class="token punctuation">]</span> <span class="token operator">=</span> event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>checked <span class="token operator">?</span> <span class="token string">'on'</span> <span class="token operator">:</span> <span class="token string">'off'</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>      saved<span class="token punctuation">[</span>id<span class="token punctuation">]</span> <span class="token operator">=</span> event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value<span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><br><br>    <span class="token comment">// save the object back to localstorage</span><br>    localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span>storageID<span class="token punctuation">,</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>saved<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>  <span class="token keyword">var</span> <span class="token function-variable function">submitHandler</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>id <span class="token operator">!==</span> <span class="token string">'save-me'</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span><br><br>    localStorage<span class="token punctuation">.</span><span class="token function">removeItem</span><span class="token punctuation">(</span>storageID<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token function">loadData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'input'</span><span class="token punctuation">,</span> inputHandler<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'submit'</span><span class="token punctuation">,</span> submitHandler<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+
+<!-- Inserting the js as a script -->
+
+<script>
+  var storagePrefix = 'form-autosave-single-other-types_';
+
+  var getID = function (field) {
+    if (field.id.length > 0) {
+      return field.id;
+    }
+
+    if (field.name.length > 0) {
+      return field.name
+    }
+    return null;
+  };
+
+  var loadData = function () {
+
+    // get localstorage data
+    var saved = localStorage.getItem(storageID);
+    if (!saved) return;
+    saved = JSON.parse(saved);
+
+    // Get all of the form fields
+    var fields = document.querySelectorAll('#save-me input, #save-me textarea, #save-me select');
+
+    // Loop through each field and load any saved data in localStorage
+    Array.prototype.slice.call(fields).forEach(function (field) {
+
+      // If the field has no usable ID, skip it
+      var id = getID(field);
+      if (!id) return;
+
+      // If there's no saved data in localStorage, skip it
+      if (!saved[id]) return;
+
+      // Set the field value to the saved data in localStorage
+      // if it is a checkbox, set its checked state
+      // if it is a radio button and its value matches, set its checked state
+      // otherwise, set the value
+      if (field.type === 'checkbox') {
+        field.checked = saved[id] === 'on' ? true : false;
+      } else if (field.type === 'radio') {
+        field.checked = saved[id] === field.value ? true : false;
+      } else {
+        field.value = saved[id];
+      }
+    });
+  };
+
+  var inputHandler = function (event) {
+    // only run for fields in the #save-me form
+    if (!event.target.closest('#save-me')) return;
+
+    // get an id for the field
+    var id = getID(event.target);
+    if (!id) return;
+
+    // get existing data from localstorage
+    var saved = localStorage.getItem(storageID);
+    saved = saved ? JSON.parse(saved) : {}
+
+    // add the field to the localstorage object
+    // if it is a checkbox, use on/off values
+    // otherwise, save the value
+    if (event.target.type === 'checkbox') {
+      saved[id] = event.target.checked ? 'on' : 'off';
+    } else {
+      saved[id] = event.target.value;
+    }
+
+    // save the object back to localstorage
+    localStorage.setItem(storageID, JSON.stringify(saved));
+  };
+
+  var submitHandler = function (event) {
+    if (event.target.id !== 'save-me') return;
+
+    localStorage.removeItem(storageID);
+  }
+
+  loadData();
+  document.addEventListener('input', inputHandler);
+  document.addEventListener('submit', submitHandler);
+
+</script>
+
+</div>
+
+    </main>
+
+    <footer>
+      ©
+      Miguel Pinto
+      2021
+    </footer>
+
+    <!-- Current page: /vanillajsacademy/posts/51/ -->
+
+    
+    
+  </body>
+</html>

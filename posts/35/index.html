@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <meta name="description" content="Exercises on Vanilla JS Academy 2020">
+    <link rel="stylesheet" href="/vanillajsacademy/css/index.css">
+    <link rel="stylesheet" href="/vanillajsacademy/css/prism-base16-monokai.dark.css">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.xml" type="application/atom+xml" title="miguelslp - Vanilla JS">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.json" type="application/json" title="miguelslp - Vanilla JS">
+  </head>
+  <body>
+    <header>
+      <h1 class="home">
+        <a href="/vanillajsacademy/">miguelslp - Vanilla JS</a>
+      </h1>
+      
+    </header>
+
+    <main  class="tmpl-post" >
+      <h1>Weather App</h1>
+
+<div class="grid">
+
+<!-- Setting the html code -->
+
+
+<!-- Setting the js code -->
+
+
+<!-- Rendering the html -->
+<div class="htmlBox">
+  
+<div id="app" class="weatherApp l-stack">Checking the weather near you...</div>
+
+</div>
+
+<!-- Rendering the html and js as syntax highlight -->
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>weatherApp l-stack<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Checking the weather near you...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br> <br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><br><br>  <span class="token comment">// Variables</span><br>  <span class="token keyword">let</span> locationAPI <span class="token operator">=</span> <span class="token string">'https://ipapi.co/json'</span><br>  <span class="token keyword">let</span> city<span class="token punctuation">;</span><br><br>  <span class="token keyword">let</span> weatherAPI <span class="token operator">=</span> <span class="token string">' https://api.weatherbit.io/v2.0/current'</span><br>  <span class="token keyword">let</span> weatherKey <span class="token operator">=</span> <span class="token string">'5503cec5734c4b79a0f908a36937391e'</span><br><br>  <span class="token keyword">let</span> app <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>  <span class="token comment">// Methods</span><br>  <span class="token keyword">function</span> <span class="token function">renderWeather</span><span class="token punctuation">(</span><span class="token parameter">prop</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    app<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"><br>    &lt;p>&lt;svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">&lt;path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z">&lt;/path>&lt;circle cx="12" cy="10" r="3">&lt;/circle>&lt;/svg> </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>city<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/p><br>    &lt;div class="weatherGrid"><br>      &lt;img src="https://www.weatherbit.io/static/img/icons/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>prop<span class="token punctuation">.</span>weather<span class="token punctuation">.</span>icon<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.png" alt="</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>prop<span class="token punctuation">.</span>weather<span class="token punctuation">.</span>description<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">">&lt;/img><br>      &lt;div><br>        &lt;p class="temperature">&lt;strong></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>prop<span class="token punctuation">.</span>app_temp<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">º C&lt;/strong>&lt;/span><br>        &lt;p class="description"></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>prop<span class="token punctuation">.</span>weather<span class="token punctuation">.</span>description<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/p><br>      &lt;div><br>    &lt;/div></span><span class="token template-punctuation string">`</span></span><br>  <span class="token punctuation">}</span><br><br>  <span class="token keyword">function</span> <span class="token function">getWeather</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token function">fetch</span><span class="token punctuation">(</span>locationAPI<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      <span class="token keyword">if</span> <span class="token punctuation">(</span>response<span class="token punctuation">.</span>ok<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        <span class="token keyword">return</span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>        <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">locationData</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      city <span class="token operator">=</span> locationData<span class="token punctuation">.</span>city<span class="token punctuation">;</span><br>      <span class="token keyword">let</span> lat <span class="token operator">=</span> locationData<span class="token punctuation">.</span>latitude<span class="token punctuation">;</span><br>      <span class="token keyword">let</span> lon <span class="token operator">=</span> locationData<span class="token punctuation">.</span>longitude<span class="token punctuation">;</span><br>      <span class="token keyword">let</span> locationParameters <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&amp;lat=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>lat<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&amp;lon=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>lon<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span><br>      <span class="token keyword">return</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>weatherAPI<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">?</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>locationParameters<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&amp;key=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>weatherKey<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      <span class="token keyword">if</span> <span class="token punctuation">(</span>response<span class="token punctuation">.</span>ok<span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        <span class="token keyword">return</span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span><br>        <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">weatherData</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      <span class="token keyword">let</span> userWeather <span class="token operator">=</span> weatherData<span class="token punctuation">.</span>data<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span><br>      <span class="token function">renderWeather</span><span class="token punctuation">(</span>userWeather<span class="token punctuation">)</span><span class="token punctuation">;</span> <br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      console<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br><br>  <span class="token comment">// Inits and listeners</span><br>  <span class="token function">getWeather</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+
+<!-- Inserting the js as a script -->
+
+<script>
+
+  // Variables
+  let locationAPI = 'https://ipapi.co/json'
+  let city;
+
+  let weatherAPI = ' https://api.weatherbit.io/v2.0/current'
+  let weatherKey = '5503cec5734c4b79a0f908a36937391e'
+
+  let app = document.querySelector('#app');
+
+  // Methods
+  function renderWeather(prop) {
+    app.innerHTML = `
+    <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> ${city}</p>
+    <div class="weatherGrid">
+      <img src="https://www.weatherbit.io/static/img/icons/${prop.weather.icon}.png" alt="${prop.weather.description}"></img>
+      <div>
+        <p class="temperature"><strong>${prop.app_temp}º C</strong></span>
+        <p class="description">${prop.weather.description}</p>
+      <div>
+    </div>`
+  }
+
+  function getWeather () {
+    fetch(locationAPI).then(function (response) {
+      if (response.ok) {
+        return response.json();
+      } else {
+        return Promise.reject(response);
+      }
+    }).then(function (locationData) {
+      city = locationData.city;
+      let lat = locationData.latitude;
+      let lon = locationData.longitude;
+      let locationParameters = `&lat=${lat}&lon=${lon}`;
+      return fetch(`${weatherAPI}?${locationParameters}&key=${weatherKey}`);
+    }).then(function (response) {
+      if (response.ok) {
+        return response.json();
+      } else {
+        return Promise.reject(response);
+      }
+    }).then(function (weatherData) {
+      let userWeather = weatherData.data[0];
+      renderWeather(userWeather); 
+    }).catch(function (error) {
+      console.warn(error);
+    });
+  }
+
+  // Inits and listeners
+  getWeather();
+
+</script>
+
+</div>
+
+    </main>
+
+    <footer>
+      ©
+      Miguel Pinto
+      2021
+    </footer>
+
+    <!-- Current page: /vanillajsacademy/posts/35/ -->
+
+    
+    
+  </body>
+</html>

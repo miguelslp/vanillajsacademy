@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer - reactive data</title>
+    <meta name="description" content="Exercises on Vanilla JS Academy 2020">
+    <link rel="stylesheet" href="/vanillajsacademy/css/index.css">
+    <link rel="stylesheet" href="/vanillajsacademy/css/prism-base16-monokai.dark.css">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.xml" type="application/atom+xml" title="miguelslp - Vanilla JS">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.json" type="application/json" title="miguelslp - Vanilla JS">
+  </head>
+  <body>
+    <header>
+      <h1 class="home">
+        <a href="/vanillajsacademy/">miguelslp - Vanilla JS</a>
+      </h1>
+      
+    </header>
+
+    <main  class="tmpl-post" >
+      <h1>Countdown Timer - reactive data</h1>
+
+<div class="grid">
+<style>
+
+</style>
+<!-- Setting the html code -->
+
+<!-- Setting the js code -->
+
+
+<!-- Rendering the html -->
+<div class="htmlBox">
+  
+<div id="app"></div>
+
+</div>
+
+<!-- Rendering the html and js as syntax highlight -->
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br> <br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><br>  <span class="token comment">//</span><br>  <span class="token comment">// Variables</span><br>  <span class="token comment">//</span><br><br>  <span class="token keyword">var</span> duration <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span><br>  <span class="token keyword">var</span> timer<span class="token punctuation">;</span><br><br>  <span class="token comment">//</span><br>  <span class="token comment">// Methods</span><br>  <span class="token comment">//</span><br><br>  <span class="token comment">/**<br>		 * Get the Proxy handler object<br>		 * @param  {Constructor} instance The current instance of the constructor<br>		 * @return {Object}               The proxy handler object<br>	*/</span><br>  <span class="token keyword">var</span> <span class="token function-variable function">handler</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">instance</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> <span class="token punctuation">{</span><br>      <span class="token function-variable function">get</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">obj<span class="token punctuation">,</span> prop</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'[object Object]'</span><span class="token punctuation">,</span><span class="token string">'[object Array]'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>obj<span class="token punctuation">[</span>prop<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>          <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span>obj<span class="token punctuation">[</span>prop<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token function">handler</span><span class="token punctuation">(</span>instance<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>        <span class="token punctuation">}</span><br>        <span class="token keyword">return</span> obj<span class="token punctuation">[</span>prop<span class="token punctuation">]</span><span class="token punctuation">;</span><br>        instance<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><span class="token punctuation">,</span><br>      <span class="token function-variable function">set</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">obj<span class="token punctuation">,</span> prop<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        obj<span class="token punctuation">[</span>prop<span class="token punctuation">]</span> <span class="token operator">=</span> value<span class="token punctuation">;</span><br>        instance<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><span class="token punctuation">,</span><br>      <span class="token function-variable function">deleteProperty</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">obj<span class="token punctuation">,</span> prop</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        <span class="token keyword">delete</span> obj<span class="token punctuation">[</span>prop<span class="token punctuation">]</span><span class="token punctuation">;</span><br>        instance<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><br>    <span class="token punctuation">}</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>  <span class="token comment">/**<br>   * State-based UI Component<br>   * @param {String} selector The selector for the target element<br>   * @param {Object} options  Component options<br>   */</span><br>  <span class="token keyword">var</span> <span class="token function-variable function">Rue</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">selector<span class="token punctuation">,</span> options</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br><br>    <span class="token comment">// Variables</span><br>    <span class="token keyword">var</span> _this <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span><br>    _this<span class="token punctuation">.</span>elem <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span>selector<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">var</span> _data <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span>options<span class="token punctuation">.</span>data<span class="token punctuation">,</span> <span class="token function">handler</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    _this<span class="token punctuation">.</span>template <span class="token operator">=</span> options<span class="token punctuation">.</span>template<span class="token punctuation">;</span><br><br>    <span class="token comment">// Define setter and getter for data</span><br>    Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token string">'data'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><br>      <span class="token function-variable function">get</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        <span class="token keyword">return</span> _data<span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><span class="token punctuation">,</span><br>      <span class="token function-variable function">set</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        _data <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token function">handler</span><span class="token punctuation">(</span>_this<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>        _this<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><br>    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><br>  <span class="token comment">/**<br>   * Render a new UI<br>   */</span><br>  <span class="token class-name">Rue</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">render</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">this</span><span class="token punctuation">.</span>elem<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">template</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>  <span class="token comment">/**<br>   * Stop the timer<br>   */</span><br>  <span class="token keyword">var</span> <span class="token function-variable function">stopTimer</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token function">clearInterval</span><span class="token punctuation">(</span>timer<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>  <span class="token comment">/**<br>   * Countdown the timer by 1<br>   */</span><br>  <span class="token keyword">var</span> <span class="token function-variable function">countdown</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br><br>    <span class="token comment">// Reduce the time by 1 second</span><br>    app<span class="token punctuation">.</span>data<span class="token punctuation">.</span>time<span class="token operator">--</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// Check if the timer should be stopped</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span>app<span class="token punctuation">.</span>data<span class="token punctuation">.</span>time <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      <span class="token function">stopTimer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><br><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>  <span class="token comment">/**<br>   * Handle click events<br>   * @param  {Event} event The Event object<br>   */</span><br>  <span class="token keyword">var</span> <span class="token function-variable function">clickHandler</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token function">startTimer</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token function">pauseTimer</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token function">restartTimer</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>  <span class="token comment">/**<br> * Start the timer<br> * @param  {Event} event The Event object<br> */</span><br>  <span class="token keyword">var</span> <span class="token function-variable function">startTimer</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br><br>    <span class="token comment">// Only run if the restart button was clicked</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>event<span class="token punctuation">.</span>target<span class="token punctuation">.</span><span class="token function">hasAttribute</span><span class="token punctuation">(</span><span class="token string">'data-start-timer'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// If the timer is done, restart instead</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span>app<span class="token punctuation">.</span>data<span class="token punctuation">.</span>time <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>      <span class="token function">restartTimer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token keyword">return</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><br><br>    <span class="token comment">// Unpause the timer</span><br>    app<span class="token punctuation">.</span>data<span class="token punctuation">.</span>paused <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// Stop any current runnign timers</span><br>    <span class="token function">stopTimer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// Start the countdown timer</span><br>    timer <span class="token operator">=</span> <span class="token function">setInterval</span><span class="token punctuation">(</span>countdown<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>  <span class="token comment">/**<br> * Pause the timer<br> * @param  {Event} event The Event object<br> */</span><br>  <span class="token keyword">var</span> <span class="token function-variable function">pauseTimer</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br><br>    <span class="token comment">// Only run if pause button was clicked</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>event<span class="token punctuation">.</span>target<span class="token punctuation">.</span><span class="token function">hasAttribute</span><span class="token punctuation">(</span><span class="token string">'data-pause-timer'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// Stop the countdown timer</span><br>    <span class="token function">stopTimer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// Update the app data</span><br>    app<span class="token punctuation">.</span>data<span class="token punctuation">.</span>paused <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span><br><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>  <span class="token comment">/**<br> * Restart the timer<br> * @param  {Event} event The Event object<br> */</span><br>  <span class="token keyword">var</span> <span class="token function-variable function">restartTimer</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br><br>    <span class="token comment">// Only run if the restart button was clicked</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>event<span class="token punctuation">.</span>target<span class="token punctuation">.</span><span class="token function">hasAttribute</span><span class="token punctuation">(</span><span class="token string">'data-restart-timer'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// Stop any current running timers</span><br>    <span class="token function">stopTimer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// Reset app data</span><br>    app<span class="token punctuation">.</span>data<span class="token punctuation">.</span>time <span class="token operator">=</span> duration<span class="token punctuation">;</span><br>    app<span class="token punctuation">.</span>data<span class="token punctuation">.</span>paused <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// Start the countdown timer</span><br>    timer <span class="token operator">=</span> <span class="token function">setInterval</span><span class="token punctuation">(</span>countdown<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><br><br>  <span class="token comment">/**<br>   * Create the timer component<br>   * @param  {Object} props The component options<br>   */</span><br>  <span class="token keyword">var</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rue</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><br>    data<span class="token operator">:</span> <span class="token punctuation">{</span><br>      time<span class="token operator">:</span> duration<span class="token punctuation">,</span><br>      paused<span class="token operator">:</span> <span class="token boolean">true</span><br>    <span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token function-variable function">template</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br><br>      <span class="token comment">// If the timer is done, show a button to restart it</span><br>      <span class="token keyword">if</span> <span class="token punctuation">(</span>props<span class="token punctuation">.</span>time <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>        <span class="token keyword">return</span> <span class="token string">'⏰ &lt;p>&lt;button data-restart-timer>Restart Timer&lt;/button>&lt;/p>'</span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><br><br>      <span class="token comment">// Otherwise, show the current time</span><br>      <span class="token keyword">return</span> <span class="token function">getTimerHTML</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>  <span class="token comment">// Get the active timer html</span><br>  <span class="token keyword">var</span> <span class="token function-variable function">getTimerHTML</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br><br>    <span class="token comment">// Get the minues and seconds</span><br>    <span class="token keyword">var</span> minutes <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>props<span class="token punctuation">.</span>time <span class="token operator">/</span> <span class="token number">60</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token keyword">var</span> seconds <span class="token operator">=</span> props<span class="token punctuation">.</span>time <span class="token operator">%</span> <span class="token number">60</span><span class="token punctuation">;</span><br><br>    <span class="token comment">// Create the timer html</span><br>    <span class="token keyword">var</span> html <span class="token operator">=</span><br>      minutes<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">':'</span> <span class="token operator">+</span> seconds<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">padStart</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'0'</span><span class="token punctuation">)</span> <span class="token operator">+</span><br>      <span class="token string">'&lt;p>'</span> <span class="token operator">+</span><br>      <span class="token punctuation">(</span>props<span class="token punctuation">.</span>paused <span class="token operator">?</span> <span class="token string">'&lt;button data-start-timer>Start&lt;/button>'</span> <span class="token operator">:</span> <span class="token string">'&lt;button data-pause-timer>Pause&lt;/button>'</span><span class="token punctuation">)</span> <span class="token operator">+</span><br>      <span class="token string">' &lt;button data-restart-timer>Restart&lt;/button>'</span> <span class="token operator">+</span><br>      <span class="token string">'&lt;/p>'</span><span class="token punctuation">;</span><br><br>    <span class="token keyword">return</span> html<span class="token punctuation">;</span><br><br>  <span class="token punctuation">}</span><br><br><br>  <span class="token comment">//</span><br>  <span class="token comment">// Inits &amp; Events</span><br>  <span class="token comment">//</span><br><br>  app<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> clickHandler<span class="token punctuation">)</span><span class="token punctuation">;</span><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+
+<!-- Inserting the js as a script -->
+
+<script>
+  //
+  // Variables
+  //
+
+  var duration = 5;
+  var timer;
+
+  //
+  // Methods
+  //
+
+  /**
+		 * Get the Proxy handler object
+		 * @param  {Constructor} instance The current instance of the constructor
+		 * @return {Object}               The proxy handler object
+	*/
+  var handler = function (instance) {
+    return {
+      get: function (obj, prop) {
+        if (['[object Object]','[object Array]'].indexOf(Object.prototype.toString.call(obj[prop])) > -1) {
+          return new Proxy(obj[prop], handler(instance));
+        }
+        return obj[prop];
+        instance.render();
+      },
+      set: function (obj, prop, value) {
+        obj[prop] = value;
+        instance.render();
+        return true;
+      },
+      deleteProperty: function (obj, prop) {
+        delete obj[prop];
+        instance.render();
+        return true;
+      }
+    };
+  };
+
+  /**
+   * State-based UI Component
+   * @param {String} selector The selector for the target element
+   * @param {Object} options  Component options
+   */
+  var Rue = function (selector, options) {
+
+    // Variables
+    var _this = this;
+    _this.elem = document.querySelector(selector);
+    var _data = new Proxy(options.data, handler(this));
+    _this.template = options.template;
+
+    // Define setter and getter for data
+    Object.defineProperty(this, 'data', {
+      get: function () {
+        return _data;
+      },
+      set: function (data) {
+        _data = new Proxy(data, handler(_this));
+        _this.render();
+        return true;
+      }
+    });
+  }
+  /**
+   * Render a new UI
+   */
+  Rue.prototype.render = function () {
+    this.elem.innerHTML = this.template(this.data);
+  };
+
+  /**
+   * Stop the timer
+   */
+  var stopTimer = function () {
+    clearInterval(timer);
+  };
+
+  /**
+   * Countdown the timer by 1
+   */
+  var countdown = function () {
+
+    // Reduce the time by 1 second
+    app.data.time--;
+
+    // Check if the timer should be stopped
+    if (app.data.time < 1) {
+      stopTimer();
+    }
+
+  };
+
+  /**
+   * Handle click events
+   * @param  {Event} event The Event object
+   */
+  var clickHandler = function (event) {
+    startTimer(event);
+    pauseTimer(event);
+    restartTimer(event);
+  };
+
+  /**
+ * Start the timer
+ * @param  {Event} event The Event object
+ */
+  var startTimer = function (event) {
+
+    // Only run if the restart button was clicked
+    if (!event.target.hasAttribute('data-start-timer')) return;
+
+    // If the timer is done, restart instead
+    if (app.data.time < 1) {
+      restartTimer();
+      return;
+    }
+
+    // Unpause the timer
+    app.data.paused = false;
+
+    // Stop any current runnign timers
+    stopTimer();
+
+    // Start the countdown timer
+    timer = setInterval(countdown, 1000);
+
+  };
+
+  /**
+ * Pause the timer
+ * @param  {Event} event The Event object
+ */
+  var pauseTimer = function (event) {
+
+    // Only run if pause button was clicked
+    if (!event.target.hasAttribute('data-pause-timer')) return;
+
+    // Stop the countdown timer
+    stopTimer();
+
+    // Update the app data
+    app.data.paused = true;
+
+  };
+
+  /**
+ * Restart the timer
+ * @param  {Event} event The Event object
+ */
+  var restartTimer = function (event) {
+
+    // Only run if the restart button was clicked
+    if (!event.target.hasAttribute('data-restart-timer')) return;
+
+    // Stop any current running timers
+    stopTimer();
+
+    // Reset app data
+    app.data.time = duration;
+    app.data.paused = false;
+
+    // Start the countdown timer
+    timer = setInterval(countdown, 1000);
+
+  };
+
+
+  /**
+   * Create the timer component
+   * @param  {Object} props The component options
+   */
+  var app = new Rue('#app', {
+    data: {
+      time: duration,
+      paused: true
+    },
+    template: function (props) {
+
+      // If the timer is done, show a button to restart it
+      if (props.time < 1) {
+        return '⏰ <p><button data-restart-timer>Restart Timer</button></p>';
+      }
+
+      // Otherwise, show the current time
+      return getTimerHTML(props);
+
+    }
+  });
+
+  // Get the active timer html
+  var getTimerHTML = function (props) {
+
+    // Get the minues and seconds
+    var minutes = parseInt(props.time / 60, 10);
+    var seconds = props.time % 60;
+
+    // Create the timer html
+    var html =
+      minutes.toString() + ':' + seconds.toString().padStart(2, '0') +
+      '<p>' +
+      (props.paused ? '<button data-start-timer>Start</button>' : '<button data-pause-timer>Pause</button>') +
+      ' <button data-restart-timer>Restart</button>' +
+      '</p>';
+
+    return html;
+
+  }
+
+
+  //
+  // Inits & Events
+  //
+
+  app.render();
+  document.addEventListener('click', clickHandler);
+</script>
+
+</div>
+
+    </main>
+
+    <footer>
+      ©
+      Miguel Pinto
+      2021
+    </footer>
+
+    <!-- Current page: /vanillajsacademy/posts/63/ -->
+
+    
+    
+  </body>
+</html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggling multiple password fields</title>
+    <meta name="description" content="Exercises on Vanilla JS Academy 2020">
+    <link rel="stylesheet" href="/vanillajsacademy/css/index.css">
+    <link rel="stylesheet" href="/vanillajsacademy/css/prism-base16-monokai.dark.css">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.xml" type="application/atom+xml" title="miguelslp - Vanilla JS">
+    <link rel="alternate" href="/vanillajsacademy/feed/feed.json" type="application/json" title="miguelslp - Vanilla JS">
+  </head>
+  <body>
+    <header>
+      <h1 class="home">
+        <a href="/vanillajsacademy/">miguelslp - Vanilla JS</a>
+      </h1>
+      
+    </header>
+
+    <main  class="tmpl-post" >
+      <h1>Toggling multiple password fields</h1>
+
+<div class="grid">
+
+
+<div class="htmlBox">
+	
+<form>
+	<div>
+		<label for="current-password">Current Password</label>
+		<input type="password" name="current-password" id="current-password" data-password>
+	</div>
+
+	<div>
+		<label for="new-password">New Password</label>
+		<input type="password" name="new-password" id="new-password" data-password>
+	</div>
+
+	<div>
+		<label for="show-passwords">
+			<input type="checkbox" name="show-passwords" id="show-passwords">
+			Show passwords
+		</label>
+	</div>
+
+	<p>
+		<button type="submit">Change Passwords</button>
+	</p>
+</form>
+
+</div>
+
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">></span></span><br>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>current-password<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Current Password<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>current-password<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>current-password<span class="token punctuation">"</span></span> <span class="token attr-name">data-password</span><span class="token punctuation">></span></span><br>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><br>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>new-password<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>New Password<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>new-password<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>new-password<span class="token punctuation">"</span></span> <span class="token attr-name">data-password</span><span class="token punctuation">></span></span><br>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><br>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>show-passwords<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>show-passwords<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>show-passwords<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>			Show passwords<br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><br>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><br>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><br>		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Change Passwords<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br>	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span></code></pre>
+
+
+
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">async</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><br><br>	<span class="token comment">// Variables</span><br>	<span class="token keyword">var</span> passwords <span class="token operator">=</span> <span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">'[data-password]'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token keyword">var</span> passwordToggle <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#show-passwords'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>	<span class="token comment">// Methods</span><br>	<span class="token keyword">var</span> <span class="token function-variable function">togglePasswords</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>target <span class="token operator">!=</span> passwordToggle<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span><br>		passwords<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">element</span> <span class="token operator">=></span> <span class="token punctuation">{</span><br>			element<span class="token punctuation">.</span>type <span class="token operator">=</span> passwordToggle<span class="token punctuation">.</span>checked <span class="token operator">?</span> <span class="token string">'text'</span> <span class="token operator">:</span> <span class="token string">'password'</span><span class="token punctuation">;</span><br>		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><span class="token punctuation">;</span><br><br>	<span class="token comment">// Listeners</span><br>	document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>		<span class="token function">togglePasswords</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+
+<div class="htmlBox">
+	<h2>Other ideas</h2>
+<ul>
+<li>
+<p><code>type=password</code> could instead have been used as a selector.</p>
+</li>
+<li>
+<p><code>Array.from()</code> could replace the <code>Array.prototype.slice.call()</code>.</p>
+</li>
+<li>
+<p>Or with a pure function</p>
+<pre><code>function togglePassword (checkbox, field) {
+  field.type = checkbox.checked ? 'text' : 'password';
+}
+
+function handleChange () {
+  passwords.forEach(password =&gt; {
+    togglePassword(this, password);
+  });
+}
+</code></pre>
+</li>
+</ul>
+
+</div>
+
+
+<script async>
+
+	// Variables
+	var passwords = Array.prototype.slice.call(document.querySelectorAll('[data-password]'));
+	var passwordToggle = document.querySelector('#show-passwords');
+
+	// Methods
+	var togglePasswords = function (event) {
+		if (event.target != passwordToggle) return;
+		passwords.forEach(element => {
+			element.type = passwordToggle.checked ? 'text' : 'password';
+		});
+	};
+
+	// Listeners
+	document.addEventListener('click', function (event) {
+		togglePasswords(event);
+	});
+
+</script>
+
+</div>
+
+    </main>
+
+    <footer>
+      ©
+      Miguel Pinto
+      2021
+    </footer>
+
+    <!-- Current page: /vanillajsacademy/posts/3/ -->
+
+    
+    
+  </body>
+</html>
