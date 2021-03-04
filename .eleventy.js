@@ -83,6 +83,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("fonts");
   eleventyConfig.addPassthroughCopy("node_modules/reefjs");
+  eleventyConfig.addPassthroughCopy("node_modules/alpinejs/dist");
 
   /* Markdown Overrides */
   let markdownLibrary = markdownIt({

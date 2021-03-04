@@ -1,0 +1,84 @@
+---
+title: "alpine"
+---
+{% set html %}
+
+<form id="myForm" x-data="createFormComponent()" x-init="() => {makeClock()}">
+  <input id="text" type="text" name="text" x-model="text" />
+  <button @click.prevent="text = ''">Clear</button>
+  <button @click.prevent="text = 'Something'">Something</button>
+  <p x-text="text"></p>
+  <p x-text="time"></p>
+</form>
+
+
+<form id="myForm-2" x-data="createFormComponent('Miguel')" x-init="() => {makeClock()}">
+  <input id="text" type="text" name="text" x-model="text" />
+  <button @click.prevent="text = ''">Clear</button>
+  <button @click.prevent="text = 'Something'">Something</button>
+  <p x-text="text"></p>
+  <p x-text="time"></p>
+</form>
+
+
+
+
+{% endset %}
+
+<div class="htmlBox">
+  {{ html | safe }}
+</div>
+
+{% highlight "html" %}
+{{ html | safe }}
+{% endhighlight %}
+
+{% set js %}
+<!-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script> -->
+<script src="../../node_modules/alpinejs/dist/alpine.js"></script>
+<script>
+  // (function () {
+  //   'use strict';
+  //   window.createFormComponent = function () {
+  //     return {
+  //       text: '',
+  //       clock: '',
+  //       get time() {
+  //         return `The time is ${this.clock}`;
+  //       },
+  //       makeClock: function () {
+  //         setInterval(() => {
+  //           this.clock = new Date().toLocaleTimeString();
+  //         }, 1000);
+  //       }
+  //     };
+  //   };
+  // })();
+
+  function createFormComponent(name = '') {
+    return {
+      text: '',
+      clock: new Date().toLocaleTimeString(),
+      get time() {
+        return `The time is ${this.clock} ${name ? `of ${name}` : ''} `;
+      },
+      makeClock: function () {
+        setInterval(() => {
+          this.clock = new Date().toLocaleTimeString();
+        }, 1000);
+      }
+    };
+  };
+
+
+</script>
+
+
+{% endset %}
+
+
+{% highlight "html" %}
+{{ js | safe }}
+{% endhighlight %}
+
+{{ js | safe }}

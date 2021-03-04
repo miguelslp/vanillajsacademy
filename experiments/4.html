@@ -1,17 +1,26 @@
 ---
 title: "observable"
+permalink: false
 ---
 {% set html %}
-<iframe width="100%" height="484" frameborder="0"
-  src="https://observablehq.com/embed/93a9fa1f7199326c?cells=chart"></iframe>
-  <div id="observablehq-chart-46004667"></div>
-  <iframe width="100%" height="514" frameborder="0"
-  src="https://observablehq.com/embed/19d0148abcdaa4bf?cells=chart"></iframe>
-  <div id="observablehq-chart-c5e781f4"></div>
-  <iframe width="100%" height="277" frameborder="0"
+
+
+
+
+  
+<!-- <iframe width="100%" height="484" frameborder="0"
+  src="https://observablehq.com/embed/93a9fa1f7199326c?cells=chart"></iframe> -->
+<!-- <div id="observablehq-chart-46004667"></div> -->
+<!-- <iframe width="100%" height="514" frameborder="0"
+  src="https://observablehq.com/embed/19d0148abcdaa4bf?cells=chart"></iframe> -->
+<!-- <div id="observablehq-chart-c5e781f4"></div> -->
+<!-- <iframe width="100%" height="277" frameborder="0"
   src="https://observablehq.com/embed/19d0148abcdaa4bf?cells=chart2"></iframe>
-  <iframe width="100%" height="514" frameborder="0"
-  src="https://observablehq.com/embed/19d0148abcdaa4bf?cells=chart"></iframe>
+<iframe width="100%" height="514" frameborder="0"
+  src="https://observablehq.com/embed/19d0148abcdaa4bf?cells=chart"></iframe> -->
+
+  <!-- <div id="observablehq-chartStopOverthinking-823a3160"></div> -->
+
 
 
 {% endset %}
@@ -25,19 +34,24 @@ title: "observable"
 {% endhighlight %}
 
 {% set js %}
-<script type="module">
-import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
-import lines from "https://api.observablehq.com/d/19d0148abcdaa4bf.js?v=3";
-import arrows from "https://api.observablehq.com/d/93a9fa1f7199326c.js?v=3";
+<!-- <script type="module">
+  import { Runtime, Inspector } from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+  // import lines from "https://api.observablehq.com/d/19d0148abcdaa4bf.js?v=3";
+  // import arrows from "https://api.observablehq.com/d/93a9fa1f7199326c.js?v=3";
+  import stopOverthinking from "https://api.observablehq.com/d/19d0148abcdaa4bf.js?v=3";
 
-new Runtime().module(lines, name => {
-  if (name === "chart") return new Inspector(document.querySelector("#observablehq-chart-c5e781f4"));
-});
+  // new Runtime().module(lines, name => {
+  //   if (name === "chart") return new Inspector(document.querySelector("#observablehq-chart-c5e781f4"));
+  // });
 
-new Runtime().module(arrows, name => {
-  if (name === "chart") return new Inspector(document.querySelector("#observablehq-chart-46004667"));
-});
-</script>
+  // new Runtime().module(arrows, name => {
+  //   if (name === "chart") return new Inspector(document.querySelector("#observablehq-chart-46004667"));
+  // });
+
+  new Runtime().module(stopOverthinking, name => {
+    if (name === "chartStopOverthinking") return new Inspector(document.querySelector("#observablehq-chartStopOverthinking-823a3160"));
+  });
+</script> -->
 
 {% endset %}
 
